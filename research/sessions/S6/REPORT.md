@@ -281,6 +281,26 @@ report against tolerances: **35/35 PASS** at commit time. Run after any rerun:
 
 ---
 
+# ROUND 4 ADDENDUM — preregistered negative result (`PREREGISTERED_R4.md`)
+
+## exp14 — constant optimization does NOT fix the root-form miss
+
+> **C9 (negative result).** Adding periodic numerical refinement of ephemeral
+> constants (cyclic coordinate descent on top-10 elites every 10 generations) to an
+> otherwise identical GP does not enable discovery of exact root-form laws: over 30
+> paired seeds × 2 tasks (c/√x, Lorentzian 2/(1+x²)), success rate was **0/30 vs 0/30**
+> with no significant NMSE difference (Wilcoxon p = 0.35 / 0.67; medians 1.3e-4 vs
+> 3.5e-4 and 2.3e-3 vs 2.9e-3).
+
+Interpretation: the documented miss is a STRUCTURE-construction failure of vanilla
+tree search (the c/√x topology is essentially never assembled), not a constant-tuning
+failure — so the exp04 note stands, now with evidence against the obvious first fix.
+This is exactly the kind of dead end the lab's `/failed`-style bookkeeping exists for.
+Label: **experimentally_validated_result** (null).
+Regenerate: `python run_all.py exp14_constopt`.
+
+---
+
 # ROUND 3 ADDENDUM (preregistered in `experiments/S6/PREREGISTERED_R3.md`)
 
 ## exp12 — hidden modal structure from trajectories alone
