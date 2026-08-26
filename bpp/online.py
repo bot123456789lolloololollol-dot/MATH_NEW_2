@@ -330,4 +330,19 @@ def harmonic_count(sizes, cap, m):
                 open_r.append(hi - sz)
                 binsk += 1
         total += binsk
+    # residual class: items <= cap//(m+1) are NOT covered by the m harmonic
+    # classes; pack them honestly with Best Fit into ordinary bins.
+    lo_min = cap // (m + 1)
+    rest = np.sort(s[s <= lo_min])[::-1]
+    open_r = []
+    for sz in rest:
+        placed = False
+        for j in range(len(open_r)):
+            if open_r[j] >= sz:
+                open_r[j] -= sz
+                placed = True
+                break
+        if not placed:
+            open_r.append(cap - sz)
+            total += 1
     return total

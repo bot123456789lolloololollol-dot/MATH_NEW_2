@@ -77,7 +77,7 @@ _SERIAL_FALLBACK = [False]
 def run(out_prefix="experiments/onrun1", islands=4, pop_per_island=80,
         gens=120, n_streams=200, seed=7, elitism=4, parsimony=3e-4,
         migrate_every=15, immigrant_frac=0.15, log_every=10,
-        max_stream_len=800):
+        max_stream_len=800, offspring_frac=0.5):
     rng = np.random.default_rng(seed)
     t0 = time.time()
 
@@ -136,6 +136,15 @@ def run(out_prefix="experiments/onrun1", islands=4, pop_per_island=80,
             ProgSpec(pr([F,7],[F,1],[NEG,0],[ADD,0]), np.full(8,0.5)),  # BF+exact-count
             ProgSpec(pr([F,18],[F,1],[INV,0],[MUL,0]), np.full(8,0.5)),
         ]
+        # TOF(K) templates ("tight-or-first"): score = 1/(min(fit,K)+delta).
+        # Any fit<=K outranks ALL fits>K (plateau) -> Best-Fit among tight
+        # candidates, First-Fit fallback, perfect fills explode-ranked.
+        for K, d in ((20,0.5),(50,0.5),(100,0.5),(200,0.5),(400,0.5),
+                     (100,2.0),(200,2.0)):
+            consts = np.zeros(8); consts[0] = float(K); consts[1] = float(d)
+            ops_ = pr([PUSH_FEAT,1],[PUSH_CONST,0],[MIN,0],
+                      [PUSH_CONST,1],[ADD,0],[INV,0])
+            seeds.append(ProgSpec(ops_, consts))
         return seeds
 
     pops, fitss = [], []
@@ -152,7 +161,7 @@ def run(out_prefix="experiments/onrun1", islands=4, pop_per_island=80,
     for g in range(gens):
         for isl in range(islands):
             pop, fits = pops[isl], fitss[isl]
-            n_off = int(0.5 * len(pop))
+            n_off = int(offspring_frac * len(pop))
             children = []
             while len(children) < n_off:
                 ch = breed(pop, fits, rng)
@@ -228,5 +237,10 @@ if __name__ == "__main__":
     ap.add_argument("--gens", type=int, default=120)
     ap.add_argument("--streams", type=int, default=200)
     ap.add_argument("--seed", type=int, default=7)
+    ap.add_argument("--maxlen", type=int, default=800)
+    ap.add_argument("--offspring", type=float, default=0.5)
+    ap.add_argument("--logevery", type=int, default=10)
     args = ap.parse_args()
-    run(args.out, args.islands, args.pop, args.gens, args.streams, args.seed)
+    run(args.out, args.islands, args.pop, args.gens, args.streams, args.seed,
+        max_stream_len=args.maxlen, offspring_frac=args.offspring,
+        log_every=args.logevery)

@@ -63,29 +63,46 @@ drop-in variant that wins 90x more often than it loses on random instances.
 No claim of worst-case improvement is made; both are Any-Fit algorithms and
 inherit the Johnson et al. Any-Fit asymptotic bounds.
 
-## 3. Online line: analysis targets for discovered policies
+## 3. Online line: RSBF — statement of properties
 
-The online GP policies are functions of causal features only. Two rigorous
-properties will be established for the final champion P*:
+**Definition (RSBF).** Fix integers warmup W, thresholds theta_mid,
+eps_small in (0,1), and tau = tau_num/tau_den.  RSBF maintains Best Fit's
+placement rule and causal counters c_mid (past items with cap/4 < s <=
+cap/2), c_small (past items s <= cap/4), n_past.  At each arrival i >= W,
+if mode is still BF and c_mid/n_past >= theta_mid and c_small/n_past <=
+eps_small, the mode switches permanently to TBF(tau): thereafter place into
+the tightest feasible bin if its fit <= tau*cap, else into the feasible bin
+with largest post-placement residual.
 
-**(a) Any-Fit lemma.** If P* never opens a new bin while a feasible open bin
-exists (checked programmatically by instrumented simulation), then classical
-arguments give CR(P*) <= 2, matching the Any-Fit family bound; if additionally
-P*'s choice among feasible bins coincides with Best Fit whenever the tightest
-fit is unique-minimum, the Dósa-Sgall style weight function for BF (tight
-ratio floor(1.7)·OPT) can be attempted as a template.
+**Proposition 1 (pre-trigger identity).** On any stream where the trigger
+condition never becomes true, RSBF performs exactly the same placements as
+Best Fit and therefore uses exactly the same number of bins.
 
-**(b) Restricted-class dominance.** On streams where every item exceeds c/3
-(bins hold at most two items), online packing reduces to greedy matching;
-for this class we prove exact characterizations of the champion's behavior
-vs Best Fit (see docs/proof_restricted_class.md).
+*Proof.* Before switching, RSBF's placement rule is literally Best Fit's;
+counters are read-only. QED.
 
-**(c) Finite-state verification (planned).** For small capacities c, the
-joint state (multiset of open-bin residuals, past-size histogram summary the
-program actually reads) is finite up to relabeling; the champion's decision
-table can then be exhaustively explored to compute its exact competitive
-curve against adversarial continuations, giving machine-checked worst-case
-bounds for small c. This is implemented in bpp/verify_smallcap.py.
+**Proposition 2 (Any-Fit membership).** RSBF is an Any-Fit algorithm: it
+opens a new bin for item s only when no open bin has residual >= s (both
+modes place into a feasible bin whenever one exists).  Hence it inherits the
+classical Any-Fit asymptotic worst-case bounds from Johnson et al.
+
+**Proposition 3 (trigger monotonicity).** The trigger condition as a
+function of the stream prefix can only be evaluated after W arrivals; once
+true it latches.  False triggers require a prefix whose entire past-item
+multiset concentrates >= theta_mid inside one width-cap/4 size band while
+having <= eps_small mass below cap/4 — a measure-zero-ish event for the
+i.i.d.-like families tested (empirically: 0-2 firings per 300 streams on
+non-mid-band families, each firing changing no bin count).
+
+**Empirical competitive behaviour.** See docs/RESULTS.md: significant
+improvements vs Best Fit on mid-band regimes (p up to 3.5e-08), exact
+equality elsewhere, and no adversarial regression found by stochastic
+hill-climbing with 12 restarts.
+
+**Scope caveat.** No improvement over Best Fit's worst-case ratio is claimed
+(or possible without new ideas, since BF is tightly floor(1.7)OPT and RSBF
+degenerates to BF).  The contribution is average-case, regime-targeted, and
+safety-preserving by construction.
 
 ## References
 

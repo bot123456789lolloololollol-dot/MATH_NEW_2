@@ -100,3 +100,44 @@ def make_stream_set(rng, m, names=None):
         nm = names[int(rng.integers(0, len(names)))]
         out.append((nm,) + STREAM_GENS[nm](rng))
     return out
+
+
+# ---------------------------------------------------------------- real-benchmark streams
+_ORLIB_CACHE = {}
+
+
+def _orlib_multisets():
+    if not _ORLIB_CACHE:
+        import os
+        from .suites import load_falkenauer
+        try:
+            insts = load_falkenauer(classes=("u120", "u250", "t60", "t120"))
+        except Exception:
+            insts = []
+        for i in insts:
+            _ORLIB_CACHE.setdefault(i["name"].split("_")[0][:1], []).append(
+                (i["sizes"], i["cap"]))
+    return _ORLIB_CACHE
+
+
+def st_orlib(rng, cls):
+    ms = _orlib_multisets()[cls]
+    sizes, cap = ms[int(rng.integers(0, len(ms)))]
+    s = np.array(sizes, dtype=np.int32)
+    rng.shuffle(s)
+    return s, int(cap)
+
+
+def st_weibull(rng, n=None, cap=1000, shape=1.5):
+    cap = cap or 1000
+    n = n or int(rng.integers(200, 2000))
+    x = rng.weibull(shape, size=n)
+    x = x / x.max()
+    return np.clip((x * cap).astype(np.int32), 1, cap), int(cap)
+
+
+if _orlib_multisets():
+    STREAM_GENS["orlib_u"] = lambda rng: st_orlib(rng, "u")
+    STREAM_GENS["orlib_t"] = lambda rng: st_orlib(rng, "t")
+STREAM_GENS["weibull15"] = lambda rng: st_weibull(rng, shape=1.5)
+STREAM_GENS["weibull30"] = lambda rng: st_weibull(rng, shape=3.0)
