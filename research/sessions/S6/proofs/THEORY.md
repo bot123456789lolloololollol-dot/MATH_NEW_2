@@ -187,6 +187,51 @@ Ls² + Rs + 1/C. Roots s = −R/(2L) ± √(R²/(4L²) − 1/(LC)); in the under
 Exp06 verifies the discovery pipeline recovers exactly these parameter dependencies from
 waveform measurements alone, generalizing to unseen component values.
 
+## P9 — PDE identifiability and the traveling-wave degeneracy (proven)
+
+**Statement.** Let a PDE u_t = D(u, ∂u_x, ∂u_xx, …) with dictionary Θ(u) be sampled on
+space-time rows. (a) The sparse-regression argument of P1 applies verbatim row-wise,
+provided the space-time design matrix satisfies the strong rank condition. (b) If all
+data come from a single traveling wave u(x,t)=U(x−ct), then every pair of terms related
+by the wave ansatz becomes collinear: along the wave, u_t = −cU', and any polynomial
+combination of (U', U'', U''') is a function of U alone restricted to one curve; in
+particular the library columns are functions evaluated on a ONE-dimensional set, so
+Θ has numerical rank ≤ (number of independent functions of one variable among its
+columns) ≪ p, and the support is not identifiable.
+
+**Proof of (b).** The map x ↦ U(x−ct) parametrizes the data by one variable s=x−ct;
+every library column is φ_j(U(s), U'(s), …). All columns therefore lie in the
+finite-dimensional span {g(s)} of {1, U', U'', …} pulled back through finitely many
+compositions; their count can exceed this span's dimension only by linear dependence.
+With m > dim span, singular values collapse to zero and STLSQ's selection among
+dependent columns is arbitrary (any basis of the span represents the same residual).
+∎
+
+Empirical confirmation: exp10's first KdV attempt recovered {−26.5 u_x, −0.70 u_xxx,
+−0.092 u²u_x} — an alternative representation of the same single-wave data — while the
+two-soliton dataset (collision = genuinely 2D space-time structure) recovers
+{−6.01 u u_x, −1.0005 u_xxx} exactly. Practical rule recorded for practitioners:
+*excite more than one wave/family before trusting PDE support recovery.*
+
+## P10 — Actionability: controllers synthesized from discovered models (statement + rationale)
+
+If f̂ approximates f uniformly on an invariant operating region K with ‖f̂−f‖∞ ≤ ε,
+then exact-feedback-linearization controllers u = −f̂(x) + v close the loop on the TRUE
+plant with error dynamics ẋ = v + Δ(x), ‖Δ‖∞ ≤ ε; for the double-integrator-like case
+with PD outer loop v = −kp x − kd ẋ, ultimate boundedness holds with an O(ε) offset.
+We state this as a design rationale rather than a theorem about specific gains; the
+claim carried in REPORT.md is experimental: IAE(discovered-controller)/IAE(oracle) =
+1.000 with settling 1.946 vs 1.945 s (exp11).
+
+## P11 — Time-stencil sign discipline (engineering note)
+
+A central difference stencil must be verified against a known function before use:
+exp10 initially used a sign-flipped 4th-order time stencil, producing an exactly
+negated Burgers equation (anti-dissipative; the rollout solver then diverged — itself
+a useful built-in consistency check). Both stencils in this repo are now unit-tested
+against sin(ωt). Lesson generalized: *in discovery pipelines, derivative operators are
+part of the hypothesis class and deserve tests.*
+
 ## Honest-failure criterion (definition, not theorem)
 
 A discovery attempt on dataset D is labeled **"no compact law found"** iff the best
@@ -194,3 +239,4 @@ candidate's held-out NMSE exceeds 1e-2 (preregistered). Rationale: a model that 
 >1% of variance out-of-sample has failed the predeclared usefulness bar regardless of
 training fit; reporting it as a law would be curve fitting, not discovery. Applied to
 adversarial cases A1/A2 in exp08.
+

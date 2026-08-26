@@ -1,0 +1,37 @@
+{
+ "f_hat_terms": {
+  "th": -0.99934,
+  "om": -0.149245,
+  "th^3": 0.161278
+ },
+ "runs": {
+  "near": {
+   "discovered": {
+    "IAE": 0.5000459656354469,
+    "settling_time": 1.946,
+    "stable": true
+   },
+   "oracle": {
+    "IAE": 0.4999999886636596,
+    "settling_time": 1.945,
+    "stable": true
+   },
+   "iae_ratio": 1.0000919539456594,
+   "preregistered_success": true
+  },
+  "far_adversarial": {
+   "discovered": {
+    "IAE": 2.4453284366975203,
+    "settling_time": 2.882,
+    "stable": true
+   },
+   "oracle": {
+    "IAE": 2.499999943318308,
+    "settling_time": 2.9170000000000003,
+    "stable": true
+   },
+   "iae_ratio": 0.978131396855865,
+   "preregistered_success": null
+  }
+ }
+}

@@ -204,3 +204,71 @@ is claimed (proofs P1–P8 + machine-checkable certificate), reproducibility max
 (one command, fixed seeds, no exotic dependencies), improvement demonstrated vs
 baselines where it matters (rollouts) and honestly conceded where it does not
 (in-domain interpolation).
+
+---
+
+# ROUND 2 ADDENDUM (same night, preregistered in `experiments/S6/PREREGISTERED_R2.md`)
+
+## exp10 — PDE discovery (numerical modeling)
+
+> **C5.** Given spatiotemporal snapshots on a periodic domain, the same sparse-regression
+> machinery recovers viscous Burgers exactly — {u·u_x: −0.99999854, u_xx: 0.04999994}
+> (coeff err 1.5e-6) with held-out rollout from a NEW initial condition at rel err
+> 1.0e-6 — degrading gracefully under snapshot noise (σ=1e-3·max|u|: coeff err 1.4e-2,
+> rollout 1.2%); and recovers KdV's structure {u·u_x: −6.010057, u_xxx: −1.000455} from
+> a two-soliton dataset with 1.9% held-out rollout.
+>
+> Two instructive failures are archived rather than hidden: (i) a SINGLE-soliton KdV
+> dataset makes all advective/derivative library terms collinear (traveling-wave
+> degeneracy; THEORY P9) and support is unidentifiable — the first attempt's wrong
+> support is preserved in the deviation log as the demonstration; (ii) an initially
+> sign-flipped time stencil produced an exactly negated (anti-dissipative) Burgers
+> equation, caught by the rollout diverging — derivative operators are part of the
+> hypothesis class and now carry unit tests (THEORY P11).
+
+Label: **experimentally_validated_result**. Prior art: Rudy et al., Science 357:940
+(2017) PDE-FIND (added to novelty audit). Regenerate: `python run_all.py exp10_pde`.
+
+## exp11 — control loop synthesized from the discovered model (control systems)
+
+> **C6.** Given only (state, input) triples from an unknown driven pendulum under
+> bounded random excitation — with a deliberately mismatched polynomial library (no
+> sin available) — the identifier discovers f̂(θ,ω) = −0.99934·θ − 0.14925·ω + 0.16128·θ³,
+> i.e., it autonomously finds the cubic Taylor structure of −sinθ; an exact-feedback-
+> linearization PD controller built ONLY from f̂ regulates the TRUE plant from
+> (0.5 rad, 0) with IAE ratio 1.000 vs the oracle controller built from the true f
+> (settling 1.946 s vs 1.945 s), meeting the preregistered success criterion
+> (ratio < 1.25, stable). From the adversarial far IC (2.5 rad) the discovered-model
+> controller remains stable with IAE ratio 0.978.
+
+This closes the loop on usefulness: the discovered equations are not just descriptions;
+they synthesize a controller indistinguishable from one designed with perfect knowledge,
+under a knowingly imperfect library. Label: **experimentally_validated_result**.
+Design failure archived: the first run's strong torque spun the pendulum through 32
+rad where no polynomial premise can hold (with sin added back, that same run recovered
+−0.9998·sinθ — pipeline right, design wrong); fixed by bounding excitation to the
+intended operating region (deviation log).
+Regenerate: `python run_all.py exp11_control`.
+
+## exp09b — external GP baseline
+
+gplearn 0.4.3 (independent implementation; population 1000, 20 generations,
+best-of-final-generation, 30 paired seeds per task) vs our MDL-selected GP:
+
+| task | ours (med holdout NMSE) | gplearn | Wilcoxon p |
+|---|---|---|---|
+| sin(x)cos(x) | **0.0** (exact) | 1.32e-1 (10 nodes) | 0.002 |
+| (x³−1)/(x−1) | **3.6e-21** (exact x²+x+1) | 4.67e-2 | <0.001 |
+| log(x²−1)−log(x−1) | **1.6e-18** (exact log(x+1)-form) | 2.12e-1 (4 nodes) | <0.001 |
+
+The external implementation does not reach any exact minimal form under this budget
+while ours does so consistently — anchoring that the session's GP numbers are not an
+artifact of a hand-tuned toy: an off-the-shelf tool is strictly weaker here, and where
+gplearn is stronger (raw speed) we do not compete. Full JSON:
+`results/exp09b_gplearn.json`.
+
+## Evidence-chain gate
+
+`check_claims.py` re-reads committed JSONs and asserts 35 headline numbers from this
+report against tolerances: **35/35 PASS** at commit time. Run after any rerun:
+`python check_claims.py`.

@@ -20,7 +20,13 @@
       "scores": {"novelty": 3, "usefulness": 4, "provability": 3, "reproducibility": 5, "improvement": 3},
       "total": 540,
       "justification": "Packaged gate rule set (compactness + domain transfer + interventional + twin-horizon tests) is the session's most transferable contribution; no blocking prior work found for the packaged rule set though ingredients are known; demonstrated zero false-law rate without losing any true discovery."
+    },
+    {
+      "candidate": "C-S6-04",
+      "scores": {"novelty": 2, "usefulness": 4, "provability": 3, "reproducibility": 5, "improvement": 3},
+      "total": 360,
+      "justification": "Round 2: PDE discovery (Burgers exact to 1.5e-6, KdV structure recovered) with the traveling-wave degeneracy failure archived as a documented identifiability boundary (THEORY P9); control loop from discovered model matches oracle controller at IAE ratio 1.000 under known library mismatch; check_claims.py mechanically verifies 35 report numbers against committed artifacts."
     }
   ],
-  "notes_for_coordinator": "All claims regenerable via research/experiments/S6/run_all.py; seeds preregistered before runs; post-hoc deviations logged in PREREGISTERED.md; honest failures documented (GP root-form miss, conservation detectability boundary, exp09 poly15 beats GP in-domain). Reproduction by non-author agent still pending."
+  "notes_for_coordinator": "All claims regenerable via research/experiments/S6/run_all.py (+ exp09b/exp10/exp11); seeds preregistered before runs in PREREGISTERED.md and PREREGISTERED_R2.md with deviation logs; honest failures documented (GP root-form miss, conservation detectability boundary, traveling-wave degeneracy, sign-flipped stencil incident, poly15 beats GP in-domain). Reproduction by non-author agent still pending."
 }

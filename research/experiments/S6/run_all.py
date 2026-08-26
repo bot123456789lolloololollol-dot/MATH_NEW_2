@@ -18,6 +18,8 @@ EXPS = [
     "exp07_invariants",
     "exp08_adversarial",
     "exp09_baselines",
+    "exp10_pde",
+    "exp11_control",
 ]
 
 

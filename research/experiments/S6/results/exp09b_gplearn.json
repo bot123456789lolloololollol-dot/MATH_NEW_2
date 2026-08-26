@@ -1,0 +1,20 @@
+{
+ "S1_sincos": {
+  "ours_median_holdout_nmse": 0.0,
+  "gplearn_median_holdout_nmse": 0.13188730276614033,
+  "gplearn_median_nodes": 9.5,
+  "wilcoxon_p": 0.0015606913947156687
+ },
+ "S2_rational": {
+  "ours_median_holdout_nmse": 3.603593948969406e-21,
+  "gplearn_median_holdout_nmse": 0.04669862702675694,
+  "gplearn_median_nodes": 10.5,
+  "wilcoxon_p": 1.862645149230957e-09
+ },
+ "S3_log": {
+  "ours_median_holdout_nmse": 1.5759077371599047e-18,
+  "gplearn_median_holdout_nmse": 0.21167057106366305,
+  "gplearn_median_nodes": 4.0,
+  "wilcoxon_p": 1.862645149230957e-09
+ }
+}

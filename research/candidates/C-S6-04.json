@@ -1,0 +1,24 @@
+{
+  "id": "C-S6-04",
+  "title": "Round-2 extensions: PDE discovery (with traveling-wave degeneracy archived), control loop synthesized from the discovered model, and an evidence-chain gate",
+  "domain": "equation discovery / PDEs / control systems / evaluation methodology",
+  "status": "validated",
+  "problem": "(a) Does sparse discovery extend to PDEs from snapshot data, and when does support recovery fail? (b) Are discovered ODE models actionable -- can a controller built ONLY from the discovered model match one built from ground truth? (c) Can the report's numbers be mechanically verified against committed artifacts?",
+  "hypothesis": "(a) Burgers and KdV are recovered from periodic-domain snapshots with held-out new-IC rollouts <5%; a single traveling wave makes support unidentifiable (P9). (b) A feedback-linearization PD controller from a polynomial (mismatched) discovered f_hat matches the oracle controller within IAE ratio <1.25 in the bounded-angle regime. (c) All headline numbers are checkable by script.",
+  "baseline": "PDE-FIND (Rudy et al., Science 2017) for method; oracle-model controller for exp11; gplearn for GP comparison.",
+  "proposed_improvement": "No method novelty claimed. Contributions: documented traveling-wave degeneracy with the failed first attempt preserved as evidence; sign-discipline lesson for derivative stencils (unit-tested); demonstration that discovered dynamics close the loop at oracle performance under known library mismatch; check_claims.py gate (35/35).",
+  "experimental_evidence": [
+    {"what": "Burgers recovery + noise sweep", "how_to_reproduce": "python run_all.py exp10_pde", "result": "{u*u_x:-0.99999854, u_xx:0.04999994}, coeff err 1.5e-6, holdout new-IC rollout 1.0e-6; sigma=1e-3: 1.4e-2/1.2%"},
+    {"what": "KdV from two-soliton data", "how_to_reproduce": "python run_all.py exp10_pde", "result": "{u*u_x:-6.010057, u_xxx:-1.000455}, holdout rollout 1.9%; single-soliton failure archived"},
+    {"what": "discovered-model controller vs oracle", "how_to_reproduce": "python run_all.py exp11_control", "result": "f_hat=-0.99934 th -0.14925 om +0.16128 th^3 (autonomous Taylor structure); IAE ratio 1.000 near IC; stable at far adversarial IC (0.978)"},
+    {"what": "evidence-chain gate", "how_to_reproduce": "python check_claims.py", "result": "35/35 PASS"}
+  ],
+  "counterexamples": ["single traveling wave -> non-identifiable support (exp10 first attempt, archived)", "sign-flipped time stencil -> exactly negated Burgers equation, caught by divergent rollout"],
+  "adversarial_attacks": ["far-IC control test (2.5 rad)", "snapshot noise levels", "external gplearn baseline"],
+  "novelty_status": "audited_clean",
+  "novelty_notes": "Method components prior art (PDE-FIND 2017; feedback linearization classical); packaged degeneracy demonstration + actionability benchmark + claims-gate are incremental engineering contributions (audit updated 2026-08-26).",
+  "proof_status": "experimentally_validated_result",
+  "reproduction_status": "pending",
+  "score": {"novelty": 2, "usefulness": 4, "provability": 3, "reproducibility": 5, "improvement": 3, "total": 360},
+  "next_action": "independent reproduction from SPEC.md sections A-F + PREREGISTERED_R2.md"
+}

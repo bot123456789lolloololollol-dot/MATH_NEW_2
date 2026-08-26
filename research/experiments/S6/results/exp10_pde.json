@@ -1,0 +1,36 @@
+{
+ "burgers_sigma0.0": {
+  "active_terms": {
+   "u_xx": 0.04999994,
+   "u*u_x": -0.99999854
+  },
+  "coeff_err_active": 1.4595315007692733e-06,
+  "holdout_rel_err_new_IC": 9.993373137640166e-07
+ },
+ "burgers_sigma0.0001": {
+  "active_terms": {
+   "u_xx": 0.04993679,
+   "u*u_x": -0.99982484
+  },
+  "coeff_err_active": 0.00017516194170674737,
+  "holdout_rel_err_new_IC": 0.00017775363923632916
+ },
+ "burgers_sigma0.001": {
+  "active_terms": {
+   "u_xx": 0.04503329,
+   "u*u_x": -0.98593822
+  },
+  "coeff_err_active": 0.014061780760750486,
+  "holdout_rel_err_new_IC": 0.012492050193143693
+ },
+ "kdv_clean": {
+  "active_terms": {
+   "u_x": 0.015226,
+   "u_xxx": -1.000455,
+   "u*u_x": -6.010057,
+   "u^2*u_x": 0.000962
+  },
+  "coeff_err_active": 0.010056792260426661,
+  "holdout_rel_err_new_IC": 0.018771284857247817
+ }
+}
