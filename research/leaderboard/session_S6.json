@@ -1,0 +1,26 @@
+{
+  "session": "S6",
+  "date": "2026-08-26",
+  "domain": "scientific equation discovery from data (dynamical systems, physics, electrical engineering)",
+  "self_assessment": [
+    {
+      "candidate": "C-S6-01",
+      "scores": {"novelty": 2, "usefulness": 3, "provability": 4, "reproducibility": 5, "improvement": 3},
+      "total": 360,
+      "justification": "Method is published SINDy (audit found prior art); exact-recovery + out-of-regime generalization demonstrations are rigorous and one-command reproducible; proofs P1-P3 cover recovery/stability/selection; improvement vs preregistered baselines is 9x-1000x on rollouts."
+    },
+    {
+      "candidate": "C-S6-02",
+      "scores": {"novelty": 2, "usefulness": 3, "provability": 4, "reproducibility": 5, "improvement": 2},
+      "total": 240,
+      "justification": "Core method has direct prior art (AI Poincare 2021 / SVD variant 2024) so novelty capped at replication level; exact recoveries at machine precision plus a machine-checked symbolic certificate; detectability boundary measured."
+    },
+    {
+      "candidate": "C-S6-03",
+      "scores": {"novelty": 3, "usefulness": 4, "provability": 3, "reproducibility": 5, "improvement": 3},
+      "total": 540,
+      "justification": "Packaged gate rule set (compactness + domain transfer + interventional + twin-horizon tests) is the session's most transferable contribution; no blocking prior work found for the packaged rule set though ingredients are known; demonstrated zero false-law rate without losing any true discovery."
+    }
+  ],
+  "notes_for_coordinator": "All claims regenerable via research/experiments/S6/run_all.py; seeds preregistered before runs; post-hoc deviations logged in PREREGISTERED.md; honest failures documented (GP root-form miss, conservation detectability boundary, exp09 poly15 beats GP in-domain). Reproduction by non-author agent still pending."
+}

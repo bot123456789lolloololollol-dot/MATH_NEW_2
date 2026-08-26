@@ -1,0 +1,26 @@
+{
+  "id": "C-S6-01",
+  "title": "Preregistered pipeline recovers governing equations exactly and generalizes them beyond the discovery regime",
+  "domain": "scientific equation discovery / dynamical systems",
+  "status": "validated",
+  "problem": "Can autonomous sparse-regression discovery recover known governing equations from simulation data exactly, under held-out ICs, unseen parameter regimes, and noise, without confusing curve fitting with discovery?",
+  "hypothesis": "STLSQ with chronological-validation threshold selection and 6th-order derivative stencils recovers exact equation sets (coefficient error <1e-6 clean, correct support, rollout <5%) for polynomial-library systems, and discovered closed-form laws extrapolate beyond their training regime.",
+  "baseline": "SINDy (Brunton et al., PNAS 2016, arXiv:1509.03580); STLSQ analysis (Zhang & Schaeffer 2019, arXiv:1805.06445); baselines OLS-full/Ridge/Lasso per PREREGISTERED.md",
+  "proposed_improvement": "No method novelty claimed (replication study). Contributions: validation-split threshold selection robust to correlated FD error; significance-test support criterion; demonstration that recovered laws generalize out-of-regime (pendulum period to 120 deg, Kepler across unseen mu/e, RLC to unseen circuits).",
+  "experimental_evidence": [
+    {"what": "exact recovery of 3/3 systems incl. Lorenz", "how_to_reproduce": "python run_all.py exp01_known_laws", "result": "coeff err 7.8e-12/1.6e-11/5.2e-11, support Jaccard 1.0, rollouts 3.8e-11/1.9e-10/5.9e-10"},
+    {"what": "noise sweep 30 seeds x 5 levels", "how_to_reproduce": "python run_all.py exp02_noise", "result": "LV recovery to sigma=0.005; honest degradation documented; results/exp02_noise.json"},
+    {"what": "Kepler III + eccentricity invariance + drag falsification", "how_to_reproduce": "python run_all.py exp05_kepler", "result": "exponents exact to 8 digits, held-out RMS 9.2e-11 over all unseen cells, e-coefs |c|<1e-6, drag drift -47%/orbit flagged"},
+    {"what": "pendulum period law extrapolation", "how_to_reproduce": "python run_all.py exp04_pendulum_period", "result": "coefficients match P6 theory; extrapolation err 8.4e-6@45deg..1.9e-2@120deg vs small-angle law 3.8e-2..2.7e-1; unseen g/L=1.25 rel err 4.4e-7"},
+    {"what": "RLC laws from waveforms", "how_to_reproduce": "python run_all.py exp06_rlc", "result": "alpha coef 0.50031, omega_d^2 coefs 1.00008/-0.24988; held-out prediction 5.2e-3/6.1e-4"},
+    {"what": "preregistered baseline comparison, 30 paired seeds", "how_to_reproduce": "python run_all.py exp09_baselines", "result": "rollouts: ours 1.1e-2/4.3e-2 vs OLS-full 1.0e-1/2.3e-1, Ridge 5.4e-1/2.7e+8, Lasso 5.8e+1/2.7e+0"}
+  ],
+  "counterexamples": [],
+  "adversarial_attacks": ["noise sweeps exp02", "chaos-limited horizons exp08-A4", "baseline comparison exp09"],
+  "novelty_status": "prior_work_found",
+  "novelty_notes": "Method = SINDy (known). Value is rigorous replication + generalization demonstrations + disclosed engineering fixes; see literature/S6-novelty.md (audit date 2026-08-26).",
+  "proof_status": "experimentally_validated_result",
+  "reproduction_status": "pending",
+  "score": {"novelty": 2, "usefulness": 3, "provability": 4, "reproducibility": 5, "improvement": 3, "total": 360},
+  "next_action": "independent reproduction by a non-author session from SPEC.md alone"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "C-S6-02",
+  "title": "Conservation-law discovery from trajectories alone: exact recovery on new test systems, calibrated rejection boundary, and a symbolic zero-dF/dt certificate",
+  "domain": "dynamical systems / conserved quantities",
+  "status": "validated",
+  "problem": "Given only trajectory samples (no force model), discover conserved quantities and know when none exists.",
+  "hypothesis": "Nullspace/SVD discovery on feature increments F(s_{k+1})-F(s_k)=0 recovers Duffing energy and planar angular momentum exactly (multiple trajectories required), rejects damped/forced controls by preregistered spectral criteria, and yields a machine-checkable symbolic certificate dF/dt = grad F . f_hat == 0.",
+  "baseline": "AI Poincare (Liu & Tegmark, PRL 126, 180604, 2021, arXiv:2011.04698) -- same increment formulation via LP; Liu et al. PRE 109, L023301 (2024) SVD nullspace variant; ConservNet (Ha & Jeong 2021)",
+  "proposed_improvement": "No method novelty (prior art found in audit). Increments: (a) replication on double-well Duffing + central-force system whose energy is non-polynomial (only Lz recoverable -- verified); (b) measured detectability boundary vs damping (delta>=0.005 undetectable at preregistered thresholds); (c) SymPy-certificate artifact with rational snapping guarded by data-fit checks.",
+  "experimental_evidence": [
+    {"what": "Duffing Hamiltonian recovery", "how_to_reproduce": "python run_all.py exp07_invariants", "result": "cos-angle to H direction 1.000000000000, affine R2=1.0, resid/range(H)=2.0e-9, held-out conservation ratio 2e-9, detected=True"},
+    {"what": "angular momentum recovery (energy provably outside library)", "how_to_reproduce": "python run_all.py exp07_invariants", "result": "cos-angle to Lz 1.0, detected=True"},
+    {"what": "negative controls + calibration sweep", "how_to_reproduce": "python run_all.py exp07_invariants", "result": "damped(delta=.3)/forced(F=.5) correctly rejected; boundary between delta=0 and delta=0.005"},
+    {"what": "symbolic certificate", "how_to_reproduce": "python ../../sessions/S6/proofs/certificate_duffing.py", "result": "discovered F=-v^2-x^4/2+x^2, field v'=x-x^3+x, dF/dt expands to exactly 0 -> CERTIFIED"}
+  ],
+  "counterexamples": [],
+  "adversarial_attacks": ["single-trajectory degeneracy identified (spurious nulls) and fixed by multi-energy sampling", "ill-posed within-trajectory normalization replaced by cross-energy conservation ratio"],
+  "novelty_status": "prior_work_found",
+  "novelty_notes": "Core method published (AI Poincare 2021; SVD variant 2024). Our additions are calibration + certificate + negative-control protocol; labeled replication-level novelty.",
+  "proof_status": "experimentally_validated_result (certificate itself is formally machine-checked for the fitted model)",
+  "reproduction_status": "pending",
+  "score": {"novelty": 2, "usefulness": 3, "provability": 4, "reproducibility": 5, "improvement": 2, "total": 240},
+  "next_action": "independent reproduction from SPEC.md section E"
+}

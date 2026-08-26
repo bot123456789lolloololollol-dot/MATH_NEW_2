@@ -51,7 +51,12 @@ def conservation_ratio(F, traj_list):
     cross-trajectory spread of mean(F). A perfectly conserved F gives ~0;
     note that normalizing by the span *within* one trajectory is ill-posed
     because a conserved quantity has (near-)zero within-trajectory range.
+    Requires >= 2 trajectories at distinct energies (otherwise the
+    normalization is degenerate).
     """
+    if len(traj_list) < 2:
+        raise ValueError("conservation_ratio needs >= 2 trajectories at "
+                         "distinct energies for a well-posed normalization")
     spans, means = [], []
     for T in traj_list:
         vals = F(T)

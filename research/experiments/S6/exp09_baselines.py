@@ -30,21 +30,23 @@ def dynamics_one(sigma, seed):
         "lasso_bic": sd.lasso_bic(Theta, dX),
     }
     scale = 1.1
+    C_true = np.zeros((len(nm), 2))
+    for nmeq in ("x", "y", "x*y"):
+        pass
+    true_entries = {("x", 0): 1.0, ("x*y", 0): -0.1, ("y", 1): -1.1, ("x*y", 1): 0.4}
+    for (nmeq, k), ct in true_entries.items():
+        C_true[nm.index(nmeq), k] = ct
     at = np.zeros(len(nm), bool)
     for nmeq in ("x", "y", "x*y"):
         at[nm.index(nmeq)] = True
-    tvals = {("x", 0): 1.0, ("x*y", 0): -0.1, ("y", 1): -1.1, ("x*y", 1): 0.4}
     true_rhs = lambda s: np.stack([s[..., 0] - .1 * s[..., 0] * s[..., 1],
                                    .4 * s[..., 0] * s[..., 1] - 1.1 * s[..., 1]], -1)
     out = {}
     t_eval = np.arange(0.0, 20.0 + 1e-9, 0.05)
     for mname, C in methods.items():
-        cerr = 0.0
-        for (nmeq, k), ct in tvals.items():
-            i = nm.index(nmeq)
-            j = int(np.argmax(np.abs(C[i])))
-            cerr = max(cerr, abs(C[i][j] - ct) / scale)
-        jac = mt.support_jaccard(C, at, 0.05)
+        cerr = mt.coeff_rel_err(C, C_true)
+        act_hat = sd.significant_support(Theta, dX, C, z=5.0)
+        jac = float(np.sum(act_hat.any(1) & at) / np.sum(act_hat.any(1) | at))
         rerr = mt.rollout_error(sd.DiscoveredModel(C, fn, 2).rhs, true_rhs,
                                 [12.0, 4.0], t_eval) if np.all(np.isfinite(C)) else 1e9
         out[mname] = {"coeff_rel_err": min(cerr, 1e6), "support_jaccard": jac,

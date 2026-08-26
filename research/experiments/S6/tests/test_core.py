@@ -46,10 +46,15 @@ def test_discovered_model_rollout():
 def test_protected_operations_never_nan():
     rng = np.random.default_rng(0)
     X = rng.uniform(-5, 5, (500, 1))
-    for op in ("div", "log", "sqrt", "exp"):
-        tree = (op, ("var", 0)) if op != "div" else (("var", 0), ("add", ("var", 0), ("const", 0.0)))
+    cases = {
+        "div": ("div", ("var", 0), ("add", ("var", 0), ("const", 0.0))),
+        "log": ("log", ("var", 0)),
+        "sqrt": ("sqrt", ("var", 0)),
+        "exp": ("exp", ("var", 0)),
+    }
+    for tree in cases.values():
         v = sr.evaluate(tree, X)
-        assert np.all(np.isfinite(v))
+        assert np.all(np.isfinite(v)), tree[0]
 
 
 def test_gp_finds_minimal_equivalent_form():
@@ -87,8 +92,8 @@ def test_invariant_recovery_and_negative_control():
     hdir[pnames.index("x^4")] = .25
     cosang = abs(res["c"] @ hdir) / (np.linalg.norm(res["c"]) * np.linalg.norm(hdir))
     assert cosang > 1 - 1e-9
-    held = sy.duffing(x0=0.7, v0=-1.1)["X"]
-    assert inv.conservation_ratio(res["F"], [held]) < 1e-7
+    held = [sy.duffing(x0=0.7, v0=-1.1)["X"], sy.duffing(x0=2.2)["X"]]
+    assert inv.conservation_ratio(res["F"], held) < 1e-7
     # negative control: damping destroys the nullspace
     neg = inv.discover_invariant([sy.duffing(delta=0.3)["X"]], feat)
     assert not (neg["sigma_ratio"] < 1e-8 and neg["spectral_gap"] > 100)

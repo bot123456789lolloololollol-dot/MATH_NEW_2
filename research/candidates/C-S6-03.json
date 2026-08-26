@@ -1,0 +1,24 @@
+{
+  "id": "C-S6-03",
+  "title": "Adversarial gate protocol that separates laws from curve fits (generalization gate, compactness + domain-transfer bars, interventional test, Lyapunov-aware validation)",
+  "domain": "evaluation methodology for equation discovery",
+  "status": "validated",
+  "problem": "Equation-discovery pipelines fit noise and produce confident spurious laws; accuracy-only model selection cannot tell a law from a domain-limited fit.",
+  "hypothesis": "A preregistered gate stack -- (i) held-out one-step generalization on untouched rows, (ii) compactness <=25 nodes, (iii) out-of-domain transfer NMSE, (iv) interventional regime testing, (v) chaos-limited horizon comparison against twin baselines -- reduces false-law rate to zero on adversarial datasets while keeping all genuine discoveries.",
+  "baseline": "Standard practice: train/holdout NMSE selection; Lyapunov-time normalization of valid-prediction time (Pathak et al., Chaos 2017; Gilpin, NeurIPS 2021).",
+  "proposed_improvement": "Domain-transfer bar exposed a 16-node tanh-imitator passing all accuracy gates (in-domain 5.2e-5, extrapolation 1.33); generalization gate cut STLSQ false-law rate from 7/30 to 0/30; interventional test killed a confounded link (obs dY/dX=-0.769, interventional R2=0.0005); twin-horizon decomposition attributes discovered-model vs perfect-model differences to ln(eps-ratio)/lambda.",
+  "experimental_evidence": [
+    {"what": "noise-only false-law rates", "how_to_reproduce": "python run_all.py exp08_adversarial", "result": "raw support 7/30 -> gated 0/30; smooth-OU control no claim; GP NMSE=1.0"},
+    {"what": "out-of-class truth tanh(2x)", "how_to_reproduce": "python run_all.py exp08_adversarial", "result": "verdict NOT-a-law via extrapolation NMSE 1.33 despite in-domain 5.2e-5"},
+    {"what": "confounded causality", "how_to_reproduce": "python run_all.py exp08_adversarial", "result": "-0.769 observational link collapses under intervention"},
+    {"what": "chaos horizons", "how_to_reproduce": "python run_all.py exp08_adversarial", "result": "lambda=0.945; twin gap 7.7s measured vs 9.7s theory; discovered model between twins as predicted"}
+  ],
+  "counterexamples": [],
+  "adversarial_attacks": ["the gates themselves were attacked with iid-noise states, a smooth-OU control, an out-of-class truth, and a confounded generator"],
+  "novelty_status": "audited_clean",
+  "novelty_notes": "Individual ingredients exist (holdout validation; Lyapunov-time evaluation). The specific compactness+domain-transfer verdict rule for symbolic fits and the packaged protocol are incremental; no direct blocking prior work found for the packaged rule set (audit 2026-08-26), but it is close to standard practice -- modest novelty claimed deliberately.",
+  "proof_status": "experimentally_validated_result",
+  "reproduction_status": "pending",
+  "score": {"novelty": 3, "usefulness": 4, "provability": 3, "reproducibility": 5, "improvement": 3, "total": 540},
+  "next_action": "independent reproduction from SPEC.md section F"
+}
