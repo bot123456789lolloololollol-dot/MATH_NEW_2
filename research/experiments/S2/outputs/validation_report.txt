@@ -1,0 +1,12 @@
+[gate1] LPT p=[3,3,2,2,2] m=2 -> Cmax=7 expect 7 PASS
+[gate1] MULTIFIT same -> Cmax=6 expect 6 PASS
+[gate1] LPT+LS same -> Cmax=6 (documented local optimum; LS cannot see the optimal 6 from here without a wider neighborhood)
+[gate1] LS local-optimum verified by independent naive checker: True PASS
+[gate1] LB(hand)=6 expect 6 PASS
+[gate23] 200 random tiny instances x 4 algorithms vs brute force: ALL PASS
+[gate4] determinism lpt: PASS (Cmax=537)
+[gate4] determinism multifit: PASS (Cmax=535)
+[gate4] determinism lpt_ls: PASS (Cmax=536)
+[gate4] determinism rol: PASS (Cmax=537)
+
+VALIDATION PASS

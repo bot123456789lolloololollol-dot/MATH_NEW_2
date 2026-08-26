@@ -1,0 +1,59 @@
+{
+  "seed": 12345,
+  "pop_size": 40,
+  "gens": 6,
+  "n_train": 60,
+  "parsimony": 0.0004,
+  "train_names": [
+    "uniform",
+    "uniform_small_n",
+    "discrete_3",
+    "discrete_5",
+    "triplet",
+    "bimodal",
+    "clustered",
+    "sawtooth",
+    "almost_perfect",
+    "ffd_trap"
+  ],
+  "best_fitness": 0.05227140787956648,
+  "history": [
+    {
+      "gen": 0,
+      "best": 0.05227140787956648,
+      "median": 0.05860292291789849,
+      "len_best": 1
+    },
+    {
+      "gen": 1,
+      "best": 0.05227140787956648,
+      "median": 0.054071407879566484,
+      "len_best": 1
+    },
+    {
+      "gen": 2,
+      "best": 0.05227140787956648,
+      "median": 0.05367140787956648,
+      "len_best": 1
+    },
+    {
+      "gen": 3,
+      "best": 0.05227140787956648,
+      "median": 0.05307140787956648,
+      "len_best": 1
+    },
+    {
+      "gen": 4,
+      "best": 0.05227140787956648,
+      "median": 0.052671407879566486,
+      "len_best": 1
+    },
+    {
+      "gen": 5,
+      "best": 0.05227140787956648,
+      "median": 0.052671407879566486,
+      "len_best": 1
+    }
+  ],
+  "champion_str": "rem_count_frac"
+}
