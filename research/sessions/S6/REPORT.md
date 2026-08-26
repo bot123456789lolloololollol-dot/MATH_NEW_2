@@ -172,8 +172,12 @@ P1 exact-recovery conditions for STLSQ (entrywise form) · P2 bias/noise stabili
 (motivating the 6th-order stencil) · P3 validation-split selection consistency ·
 P4 invariant exactness/uniqueness/certificate · P5 Kepler derivation (proves C2's
 exponents AND e-invariance) · P6 pendulum expansion (derives 1/16, 11/3072) ·
-P7 Lyapunov-bounded validation horizons · P8 RLC linear response.
-Machine-checked artifact: `certificate_duffing.py` → CERTIFIED.
+P7 Lyapunov-bounded validation horizons · P8 RLC linear response · P9 PDE
+identifiability + traveling-wave degeneracy · P10 actionability rationale ·
+P11 stencil sign discipline · P12 integral-form noise argument.
+Machine-checked artifacts: `certificate_duffing.py` → CERTIFIED (dF/dt ≡ 0);
+`certificate_lorenz.py` → CERTIFIED (discovered chaotic field symbolically identical
+to classical Lorenz after guarded rational snapping).
 
 ## Honest failures & limitations (all disclosed)
 
