@@ -1,5 +1,5 @@
 {
-  "id": "C-S6-001",
+  "id": "C-S6M-001",
   "title": "Strict (distinct-variable) two-color Rado numbers for x+y=kz",
   "domain": "Ramsey theory / Rado numbers (combinatorial number theory)",
   "status": "failed-novelty",
@@ -8,16 +8,30 @@
   "baseline": "Non-strict family classical: A100542, Burr-Loo, Harborth-Maasberg 1999, Jones-Schaal 2004.",
   "proposed_improvement": "Full determination of the distinct-variable family incl. formula and exceptions.",
   "experimental_evidence": [
-    {"what": "exact RR*_2(k) for k=1..30 by two independent solvers (DFS + CaDiCaL SAT), validated on S(2)=5, S(3)=14", "how_to_reproduce": "python research/sessions/S6/code/sat_solver.py rado 30 2 weak ; python research/sessions/S6/code/solver.py interval 30 2 weak", "result": "formula matches all k in [8,30]; table archived in experiments/S6/"}
+    {
+      "what": "exact RR*_2(k) for k=1..30 by two independent solvers (DFS + CaDiCaL SAT), validated on S(2)=5, S(3)=14",
+      "how_to_reproduce": "python research/sessions/S6/code/sat_solver.py rado 30 2 weak ; python research/sessions/S6/code/solver.py interval 30 2 weak",
+      "result": "formula matches all k in [8,30]; table archived in experiments/S6/"
+    }
   ],
   "counterexamples": [],
   "adversarial_attacks": [
-    {"attack": "literature novelty audit (50 tool calls: arXiv API, Crossref, OpenAlex, Semantic Scholar, OEIS)", "outcome": "DIRECT PRIOR ART: A. Towell, Zenodo DOI 10.5281/zenodo.19372727 (2026-04-01) + OEIS A394445 (approved 2026-03): same table to k=500, same parity-split closed form, same exceptions, complete claimed proof."}
+    {
+      "attack": "literature novelty audit (50 tool calls: arXiv API, Crossref, OpenAlex, Semantic Scholar, OEIS)",
+      "outcome": "DIRECT PRIOR ART: A. Towell, Zenodo DOI 10.5281/zenodo.19372727 (2026-04-01) + OEIS A394445 (approved 2026-03): same table to k=500, same parity-split closed form, same exceptions, complete claimed proof."
+    }
   ],
   "novelty_status": "prior_work_found",
   "novelty_notes": "Identical theorem published April 2026 (Towell). Our computation is an independent confirmation; no first-determination claim possible. See sessions/S6/postmortems/C-001.md.",
   "proof_status": "experimentally_validated_result",
   "reproduction_status": "pending",
-  "score": {"novelty": 0, "usefulness": 3, "provability": 5, "reproducibility": 5, "improvement": 0, "total": 0},
+  "score": {
+    "novelty": 0,
+    "usefulness": 3,
+    "provability": 5,
+    "reproducibility": 5,
+    "improvement": 0,
+    "total": 0
+  },
   "next_action": "Pivot to cyclic variant C-S6-002: 2-colorings of Z_n avoiding mono distinct x+y=kz (mod n); classification unknown as of interim search."
 }

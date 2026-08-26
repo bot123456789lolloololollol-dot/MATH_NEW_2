@@ -1,0 +1,5 @@
+# C-S6M-002 construction verification. Deterministic; rerun to regenerate.
+k=0   family: n=3..600 failures=0
+k=n/2 family: even n=12..600 failures=0
+k=n/3,2n/3 families: t=1..150 both signs failures=0
+ALL CONSTRUCTIONS VALID
