@@ -1,0 +1,28 @@
+[init] best=0.04312  perfect
+[gen   0] best=0.04312 median=0.06044 elapsed=10s
+[gen   5] best=0.04312 median=0.04370 elapsed=16s
+[gen  10] best=0.04312 median=0.04370 elapsed=21s
+[gen  15] best=0.04312 median=0.04370 elapsed=26s
+[gen  20] best=0.04312 median=0.04370 elapsed=32s
+[gen  25] best=0.04312 median=0.04370 elapsed=37s
+[gen  30] best=0.04312 median=0.04370 elapsed=42s
+[gen  35] best=0.04312 median=0.04370 elapsed=48s
+[gen  40] best=0.04312 median=0.04370 elapsed=53s
+[gen  45] best=0.04312 median=0.04370 elapsed=59s
+[gen  50] best=0.04312 median=0.04370 elapsed=64s
+[gen  55] best=0.04312 median=0.04370 elapsed=70s
+[gen  60] best=0.04312 median=0.04370 elapsed=75s
+[gen  65] best=0.04312 median=0.04370 elapsed=81s
+[gen  70] best=0.04312 median=0.04370 elapsed=87s
+[gen  75] best=0.04312 median=0.04370 elapsed=92s
+[gen  80] best=0.04312 median=0.04370 elapsed=98s
+[gen  85] best=0.04312 median=0.04370 elapsed=104s
+[gen  90] best=0.04312 median=0.04370 elapsed=110s
+[gen  95] best=0.04312 median=0.04370 elapsed=116s
+[gen 100] best=0.04312 median=0.04370 elapsed=121s
+[gen 105] best=0.04312 median=0.04370 elapsed=127s
+[gen 110] best=0.04312 median=0.04370 elapsed=132s
+[gen 115] best=0.04312 median=0.04370 elapsed=138s
+[gen 119] best=0.04312 median=0.04370 elapsed=142s
+champion: perfect
+fitness: 0.04312308673758908
