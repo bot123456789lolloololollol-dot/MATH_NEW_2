@@ -1,0 +1,65 @@
+{
+ "runs": [
+  {
+   "system": "damped_oscillator",
+   "terms": {
+    "x_dot": {
+     "v": 1.0
+    },
+    "v_dot": {
+     "x": -2.0,
+     "v": -0.3
+    }
+   },
+   "coeff_rel_err": 7.808753643701039e-12,
+   "support_jaccard": 1.0,
+   "rollout_rel_err": 3.809663543277121e-11,
+   "bic": -2.562803585260209e-19,
+   "threshold": 1.0278465918883719e-07,
+   "recovered_per_preregistered_criterion": true
+  },
+  {
+   "system": "lotka_volterra",
+   "terms": {
+    "x_dot": {
+     "x": 1.0,
+     "x*y": -0.1
+    },
+    "y_dot": {
+     "y": -1.1,
+     "x*y": 0.4
+    }
+   },
+   "coeff_rel_err": 1.5670596133852332e-11,
+   "support_jaccard": 1.0,
+   "rollout_rel_err": 1.900465135748135e-10,
+   "bic": -6.460904779560485e-14,
+   "threshold": 1.3692801807072522e-06,
+   "recovered_per_preregistered_criterion": true
+  },
+  {
+   "system": "lorenz63",
+   "terms": {
+    "x_dot": {
+     "x": -10.0000000001,
+     "y": 10.0
+    },
+    "y_dot": {
+     "x": 28.0000000015,
+     "y": -1.0000000007,
+     "x*z": -1.0
+    },
+    "z_dot": {
+     "z": -2.6666666667,
+     "x*y": 1.0
+    }
+   },
+   "coeff_rel_err": 0.03571428571428571,
+   "support_jaccard": 1.0,
+   "rollout_rel_err": 5.936761327747364e-10,
+   "bic": -1.573283963539414e-13,
+   "threshold": 6.390734348264482e-06,
+   "recovered_per_preregistered_criterion": false
+  }
+ ]
+}

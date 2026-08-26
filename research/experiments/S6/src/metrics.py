@@ -3,18 +3,17 @@ import numpy as np
 from scipy.integrate import solve_ivp
 
 
-def coeff_rel_err(C_hat, C_true, active_true):
-    """Max relative coefficient error over truly-active entries (scaled by largest |c|).
+def coeff_rel_err(C_hat, C_true):
+    """Max relative coefficient error over truly-active entries.
 
-    For each truly-active row, the dominant discovered coefficient in that row is
-    compared with the true one.
+    C_hat, C_true: (n_terms, n_targets). Compares entrywise wherever
+    C_true != 0; a coefficient placed on the wrong term therefore scores ~1.
     """
-    scale = np.max(np.abs(C_true[active_true])) if np.any(active_true) else 1.0
-    err = 0.0
-    for i in np.where(active_true)[0]:
-        j = int(np.argmax(np.abs(C_hat[i])))
-        err = max(err, abs(C_hat[i][j] - C_true[i]) / scale)
-    return float(err)
+    mask = np.abs(C_true) > 0
+    if not np.any(mask):
+        return 0.0
+    scale = float(np.max(np.abs(C_true[mask])))
+    return float(np.max(np.abs(C_hat[mask] - C_true[mask])) / scale)
 
 
 def support_jaccard(C_hat, active_true, tol):

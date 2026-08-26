@@ -71,4 +71,9 @@ out-of-class truth y=tanh(x), confounded causal test, chaos horizon) · exp09 ba
 
 ## Post-hoc deviations
 
-(to be listed here if any occur)
+- 2026-08-26 (during library smoke-testing, before any recorded experiment): derivative
+  operator upgraded from 2nd-order (`np.gradient`) to 4th-order central stencils with
+  trimmed edges. Reason: O(dt^2) truncation bias projected onto spurious library terms
+  at the 1e-6 level; the 4th-order operator removes the bias rather than loosening the
+  recovery criterion. No result files existed when this change was made.
+

@@ -180,7 +180,31 @@ def cyclic_coloring_conv(n, k, t, convention="all"):
     return CSP(n, t, cons).solve()
 
 
-# ---------------------------------------------------------------- Rado numbers
+def interval_constraints_conv(N, k, convention="all"):
+    out = []
+    for z in range(1, N + 1):
+        s = k * z
+        for x in range(1, s // 2 + 1):
+            y = s - x
+            if y <= N and filter_constraint(x, y, z, convention):
+                out.append((x - 1, y - 1, z - 1))
+    return out
+
+
+def interval_coloring_conv(N, k, t, convention="all"):
+    return CSP(N, t, interval_constraints_conv(N, k, convention)).solve()
+
+
+def rado_number_conv(k, t, convention="all", cap=20000):
+    N = 1
+    while interval_coloring_conv(N, k, t, convention) is not None:
+        N += 1
+        if N > cap:
+            raise RuntimeError("cap exceeded")
+    return N
+
+
+# ---------------------------------------------------------------- CLI / data
 
 def rado_number(k, t, cap=20000):
     """Smallest N such that every t-coloring of {1..N} has mono x+y=kz.
@@ -216,8 +240,9 @@ if __name__ == "__main__":
 
     elif mode == "interval":
         kmax = int(sys.argv[2]); t = int(sys.argv[3])
+        conv = sys.argv[4] if len(sys.argv) > 4 else "all"
         for k in range(2, kmax + 1):
             try:
-                print(f"RR_{t}(x+y={k}z) =", rado_number(k, t))
+                print(f"RR_{t}(x+y={k}z,{conv}) =", rado_number_conv(k, t, conv))
             except RuntimeError:
-                print(f"RR_{t}(x+y={k}z) = >cap")
+                print(f"RR_{t}(x+y={k}z,{conv}) = >cap")

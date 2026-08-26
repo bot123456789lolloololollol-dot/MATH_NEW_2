@@ -97,18 +97,42 @@ def bic(C, Theta, dX):
     return n * np.log(rss / n) + k * np.log(n)
 
 
-def fit_sindy(Theta, dX, thresholds=None):
-    """STLSQ over a threshold grid; select by BIC. Returns dict with C, threshold, bic."""
+def fit_sindy(Theta, dX, thresholds=None, val_fraction=0.25):
+    """STLSQ over a threshold grid.
+
+    Model selection: chronological train/validation split -- coefficients are
+    fitted on the early fraction of rows, scored by RSS on the late fraction
+    (ties broken toward fewer terms), then the chosen support is refit on all
+    rows. Validation-based selection is robust to correlated derivative error,
+    which defeats plain BIC.
+    """
     if thresholds is None:
         ymax = float(np.std(dX))
         thresholds = np.geomspace(ymax * 1e-7, ymax * 10, 40)
+    n = len(dX)
+    n_tr = int(n * (1.0 - val_fraction))
+    Th_tr, dX_tr = Theta[:n_tr], dX[:n_tr]
+    Th_va, dX_va = Theta[n_tr:], dX[n_tr:]
+
     best = None
     for thr in thresholds:
-        C = stlsq(Theta, dX, thr)
-        score = bic(C, Theta, dX)
-        if best is None or score < best["bic"]:
-            best = {"C": C, "threshold": thr, "bic": score}
-    return best
+        C_tr = stlsq(Th_tr, dX_tr, thr)
+        k = int(np.count_nonzero(C_tr))
+        rss_va = float(np.sum((dX_va - Th_va @ C_tr) ** 2))
+        # normalize per-entry so systems of different scale compare
+        score = rss_va / dX_va.size
+        key = (score, k)
+        if best is None or key < best["key"]:
+            best = {"key": key, "threshold": thr, "support": C_tr != 0}
+    # final unbiased refit on all rows with the selected per-column support
+    C = np.zeros(Theta.shape[1:] + (dX.shape[1],)) if Theta.ndim > 1 else None
+    C = np.zeros((Theta.shape[1], dX.shape[1]))
+    for kk in range(dX.shape[1]):
+        sel = np.where(best["support"][:, kk])[0]
+        if len(sel):
+            C[sel, kk] = np.linalg.lstsq(Theta[:, sel], dX[:, kk], rcond=None)[0]
+    return {"C": C, "threshold": best["threshold"],
+            "bic": -best["key"][0], "val_score": best["key"][0]}
 
 
 # ------------------------------------------------------------------ baselines

@@ -44,22 +44,36 @@ def discover_invariant(traj_list, feat_fn):
             "spectral_gap": gap, "F": F, "n_constraints": len(A)}
 
 
-def invariant_drift(F, traj):
-    """Relative drift of F along a held-out trajectory: std / range."""
-    vals = F(traj)
-    rng = float(np.max(vals) - np.min(vals))
-    return float(np.std(vals) / max(rng, 1e-300))
+def conservation_ratio(F, traj_list):
+    """Scale-invariant conservation quality of a discovered invariant.
+
+    For each trajectory compute the span of F along it; normalize by the
+    cross-trajectory spread of mean(F). A perfectly conserved F gives ~0;
+    note that normalizing by the span *within* one trajectory is ill-posed
+    because a conserved quantity has (near-)zero within-trajectory range.
+    """
+    spans, means = [], []
+    for T in traj_list:
+        vals = F(T)
+        spans.append(float(np.ptp(vals)))
+        means.append(float(np.mean(vals)))
+    cross = float(np.ptp(means))
+    return float(max(spans) / max(cross, 1e-300))
 
 
 def affine_match(F_vals, H_vals):
-    """Best affine fit a*H+b ~ F; returns (a, b, R^2, resid_std_over_range)."""
+    """Best affine fit a*H+b ~ F over POOLED multi-energy samples.
+
+    Returns (a, b, R^2, resid_std_over_range_H). Evaluating on a single
+    trajectory is ill-posed (H is constant there by conservation).
+    """
     A = np.stack([H_vals, np.ones_like(H_vals)], axis=1)
     coef, *_ = np.linalg.lstsq(A, F_vals, rcond=None)
     pred = A @ coef
     ss_res = float(np.sum((F_vals - pred) ** 2))
     ss_tot = float(np.sum((F_vals - np.mean(F_vals)) ** 2))
     r2 = 1.0 - ss_res / max(ss_tot, 1e-300)
-    resid_rel = float(np.std(F_vals - pred) / max(np.ptp(F_vals), 1e-300))
+    resid_rel = float(np.std(F_vals - pred) / max(np.ptp(H_vals), 1e-300))
     return float(coef[0]), float(coef[1]), float(r2), resid_rel
 
 
@@ -91,6 +105,6 @@ def poly_features(X, degree=4, var_names=None):
             names.append(label)
             cols.append(term_fn(tuple(exponent))(X))
     Phi = np.column_stack(cols)
-    # drop constant column: it cannot contribute to differences but pollutes conditioning
-    keep = ~(np.allclose(Phi, Phi[0]))
+    # drop constant columns: they contribute nothing to differences but pollute conditioning
+    keep = ~np.all(np.isclose(Phi, Phi[0][None, :]), axis=0)
     return Phi[:, keep], [nm for nm, k in zip(names, keep) if k]

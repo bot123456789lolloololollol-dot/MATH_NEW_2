@@ -115,7 +115,9 @@ def two_body(mu=1.0, a=1.0, e=0.3, n_orbits=3, dt=1e-2, drag=None):
     t_end = 2 * np.pi * np.sqrt(a**3 / mu) * (n_orbits + 0.5)
     sol = _integrate(f, 0.0, t_end, [r0, 0.0, 0.0, v0], dt, events=periapsis)
     te = sol.t_events[0]
-    T_meas = te[-1] - te[0] if len(te) >= 2 else np.nan
+    # the start point (periapsis, y=0, upward) registers as an event at t~0,
+    # so average consecutive gaps instead of differencing first-to-last
+    T_meas = float(np.mean(np.diff(te))) if len(te) >= 3 else np.nan
     return {"X": sol.y.T, "t": sol.t, "names": ["x", "y", "vx", "vy"],
             "T": T_meas, "T_theory": 2 * np.pi * np.sqrt(a**3 / mu)}
 
@@ -159,10 +161,46 @@ def central_force_2d(mu=1.0, r0=(1.0, 0.3), v0=(0.2, 1.1), t_end=30.0, dt=1e-2):
     return {"X": sol.y.T, "t": sol.t, "names": ["x", "y", "vx", "vy"]}
 
 
-def finite_differences(X, dt, smooth=False):
-    """Central differences along axis 0; returns dX with same shape (endpoints one-sided)."""
+def differentiate(X, dt, smooth=False, order=6):
+    """Aligned (states, derivatives) pair for system identification.
+
+    Returns X_sub, dX where dX[i] approximates d/dt of X_sub[i].
+    order=6 uses a seven-point stencil (O(dt^6)); its leading truncation term
+    is ~3 orders of magnitude below the O(dt^4) one at our sampling rates,
+    which matters because truncation residue otherwise projects onto spurious
+    library terms during sparse regression.
+    """
+    if order == 6:
+        dX = (X[6:] - 9 * X[5:-1] + 45 * X[4:-2] - 45 * X[2:-4]
+              + 9 * X[1:-5] - X[:-6]) / (60 * dt)
+        # dX covers original indices 3..n-4; drop 3 more on each side
+        return X[6:-6], dX[3:-3]
+    dX = finite_differences(X, dt, smooth=smooth,
+                            order=order, trim=(order == 4))
+    if order == 4:
+        return X[4:-4], dX
+    return X, dX
+
+
+def finite_differences(X, dt, smooth=False, order=4, trim=True):
+    """Central-difference derivative along axis 0.
+
+    order=2: np.gradient (O(dt^2)); order=4: five-point stencil (O(dt^4)).
+    With order=4 the two edge rows on each side are dropped unless trim=False
+    (they would need contaminated one-sided formulas).
+    """
     if smooth:
         from scipy.signal import savgol_filter
         X = savgol_filter(X, window_length=11, polyorder=3, axis=0, mode="interp")
-    dX = np.gradient(X, dt, axis=0)
-    return dX
+    if order == 2:
+        return np.gradient(X, dt, axis=0)
+    if order != 4:
+        raise ValueError("order must be 2 or 4")
+    dX = (-X[4:] + 8 * X[3:-1] - 8 * X[1:-3] + X[:-4]) / (12 * dt)
+    if trim:
+        return dX[2:-2]
+    out = np.empty_like(X)
+    out[2:-2] = dX
+    out[:2] = np.gradient(X, dt, axis=0)[:2]
+    out[-2:] = np.gradient(X, dt, axis=0)[-2:]
+    return out
