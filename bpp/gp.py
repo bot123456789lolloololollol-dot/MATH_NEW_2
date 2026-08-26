@@ -53,6 +53,7 @@ FEAT_NAMES = [
     "is_new_bin",      # 17 1 for the virtual bin
     "bin_idx_frac",    # 18 bin index / m
     "age_frac",        # 19 (step - opened_at) / n
+    "dead_resid",      # 20 1 if fit>0 but NO remaining item fits the leftover
 ]
 NF = len(FEAT_NAMES)
 
@@ -163,6 +164,7 @@ def pack_gp(sizes, cap, ops, consts):
             X[17, b] = is_new
             X[18, b] = bidx
             X[19, b] = age / max(1, total_items)
+            X[20, b] = 1.0 if (fit > 0 and cf == 0.0 and nrem > 0) else 0.0
 
         # ---- run program once, vectorized over candidates
         sp = 0

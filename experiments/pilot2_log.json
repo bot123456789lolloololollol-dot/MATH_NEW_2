@@ -1,0 +1,97 @@
+{
+  "seed": 2026,
+  "islands": 3,
+  "pop_per_island": 40,
+  "gens": 12,
+  "n_train": 100,
+  "parsimony": 0.0003,
+  "train_names": [
+    "uniform",
+    "uniform_small_n",
+    "discrete_3",
+    "discrete_5",
+    "triplet",
+    "bimodal",
+    "clustered",
+    "sawtooth",
+    "almost_perfect",
+    "ffd_trap"
+  ],
+  "mode": "paired",
+  "best_fitness": 0.01934134798870282,
+  "history": [
+    {
+      "gen": 0,
+      "best": 0.01934134798870282,
+      "median": 0.024735825627831578,
+      "len_champ": 2
+    },
+    {
+      "gen": 1,
+      "best": 0.01934134798870282,
+      "median": 0.023985825627831577,
+      "len_champ": 2
+    },
+    {
+      "gen": 2,
+      "best": 0.01934134798870282,
+      "median": 0.02370458577021674,
+      "len_champ": 2
+    },
+    {
+      "gen": 3,
+      "best": 0.01934134798870282,
+      "median": 0.02368582562783158,
+      "len_champ": 2
+    },
+    {
+      "gen": 4,
+      "best": 0.01934134798870282,
+      "median": 0.02323527296350398,
+      "len_champ": 2
+    },
+    {
+      "gen": 5,
+      "best": 0.01934134798870282,
+      "median": 0.02250211537728492,
+      "len_champ": 2
+    },
+    {
+      "gen": 6,
+      "best": 0.01934134798870282,
+      "median": 0.021128144879056288,
+      "len_champ": 2
+    },
+    {
+      "gen": 7,
+      "best": 0.01934134798870282,
+      "median": 0.02084134798870282,
+      "len_champ": 2
+    },
+    {
+      "gen": 8,
+      "best": 0.01934134798870282,
+      "median": 0.02024134798870282,
+      "len_champ": 2
+    },
+    {
+      "gen": 9,
+      "best": 0.01934134798870282,
+      "median": 0.02024134798870282,
+      "len_champ": 2
+    },
+    {
+      "gen": 10,
+      "best": 0.01934134798870282,
+      "median": 0.01994134798870282,
+      "len_champ": 2
+    },
+    {
+      "gen": 11,
+      "best": 0.01934134798870282,
+      "median": 0.01994134798870282,
+      "len_champ": 2
+    }
+  ],
+  "champion_str": "inv(fit)"
+}

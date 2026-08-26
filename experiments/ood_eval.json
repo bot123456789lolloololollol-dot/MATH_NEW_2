@@ -1,0 +1,104 @@
+{
+  "champion": "perfect",
+  "results": {
+    "train_fresh": {
+      "n": 250,
+      "mean_excess_H": 0.052793373091270024,
+      "mean_excess_base": 0.052793373091270024,
+      "wins": 0,
+      "ties": 250,
+      "losses": 0,
+      "total_bins_H": 23256,
+      "total_bins_base": 23256,
+      "bins_saved": 0
+    },
+    "heldout": {
+      "n": 100,
+      "mean_excess_H": 0.05481584813581047,
+      "mean_excess_base": 0.05481584813581047,
+      "wins": 0,
+      "ties": 100,
+      "losses": 0,
+      "total_bins_H": 11942,
+      "total_bins_base": 11942,
+      "bins_saved": 0
+    },
+    "falkenauer_u": {
+      "n": 80,
+      "mean_excess_H": 0.013809631254062713,
+      "mean_excess_base": 0.013809631254062713,
+      "wins": 0,
+      "ties": 80,
+      "losses": 0,
+      "total_bins_H": 15243,
+      "total_bins_base": 15243,
+      "bins_saved": 0
+    },
+    "falkenauer_t": {
+      "n": 40,
+      "mean_excess_H": 0.1525,
+      "mean_excess_base": 0.1525,
+      "wins": 0,
+      "ties": 40,
+      "losses": 0,
+      "total_bins_H": 1380,
+      "total_bins_base": 1380,
+      "bins_saved": 0
+    },
+    "scholl_hard": {
+      "n": 10,
+      "mean_excess_H": 0.07393458393458392,
+      "mean_excess_base": 0.07393458393458392,
+      "wins": 0,
+      "ties": 10,
+      "losses": 0,
+      "total_bins_H": 596,
+      "total_bins_base": 596,
+      "bins_saved": 0
+    },
+    "waescher": {
+      "n": 22,
+      "mean_excess_H": 0.06134244360528946,
+      "mean_excess_base": 0.06134244360528946,
+      "wins": 0,
+      "ties": 22,
+      "losses": 0,
+      "total_bins_H": 415,
+      "total_bins_base": 415,
+      "bins_saved": 0
+    },
+    "hard28": {
+      "n": 28,
+      "mean_excess_H": 0.014393991142838307,
+      "mean_excess_base": 0.014393991142838307,
+      "wins": 0,
+      "ties": 28,
+      "losses": 0,
+      "total_bins_H": 1995,
+      "total_bins_base": 1995,
+      "bins_saved": 0
+    },
+    "scholl_small": {
+      "n": 360,
+      "mean_excess_H": 0.01091146967103593,
+      "mean_excess_base": 0.01091146967103593,
+      "wins": 0,
+      "ties": 360,
+      "losses": 0,
+      "total_bins_H": 14216,
+      "total_bins_base": 14216,
+      "bins_saved": 0
+    },
+    "scholl_big": {
+      "n": 360,
+      "mean_excess_H": 0.0065810944917286535,
+      "mean_excess_base": 0.0065810944917286535,
+      "wins": 0,
+      "ties": 360,
+      "losses": 0,
+      "total_bins_H": 64444,
+      "total_bins_base": 64444,
+      "bins_saved": 0
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "seed": 5,
+  "islands": 2,
+  "pop_per_island": 12,
+  "gens": 4,
+  "n_streams": 30,
+  "parsimony": 0.0003,
+  "best_fitness": 0.0028671296663136804,
+  "history": [
+    {
+      "gen": 0,
+      "best": 0.003459693442011914,
+      "median": 0.021846005114388133,
+      "len_champ": 1
+    },
+    {
+      "gen": 1,
+      "best": 0.003459693442011914,
+      "median": 0.005039009147386926,
+      "len_champ": 1
+    },
+    {
+      "gen": 2,
+      "best": 0.003459693442011914,
+      "median": 0.0037596934420119138,
+      "len_champ": 1
+    },
+    {
+      "gen": 3,
+      "best": 0.0028671296663136804,
+      "median": 0.0034671296663136807,
+      "len_champ": 1
+    }
+  ],
+  "champion_str": "perfect"
+}
