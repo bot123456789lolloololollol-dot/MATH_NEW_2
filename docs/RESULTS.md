@@ -25,8 +25,19 @@ Effect sizes are small but real: ~0.1–0.2% fewer bins on affected families,
 consistent with the theory that Best Fit's average case is near-optimal on
 i.i.d.-like streams and its losses concentrate in structured regimes.
 
+**Scale validation**: on 40 fresh streams of n=10,000 items (triplet_like),
+RSBF saves 169 bins vs BF (+0.099%, Wilcoxon p = 3.8e-06); on uniform
+n=20,000 and discrete_3 n=10,000 it is exactly BF (0 differing streams) —
+no false-trigger cost grows with stream length.
+
+**Tuning stability**: re-running the hyper-parameter search under three
+different tuning seeds yields warmup=20 and theta_mid=0.8 every time, with
+(eps, tau) jittering inside {(0.05,0.02), (0.05,0.05), (0.15,0.05)}; all
+variants in this neighbourhood reproduce the significant-regime-win /
+zero-regression pattern.
+
 Full table: experiments/RSBF_table.md; raw paired stats:
-experiments/RSBF_results.json.  Tuning (seeds 555) and evaluation (seed
+experiments/RSBF_results.json.  Tuning (seed 555) and evaluation (seed
 20260826) use disjoint stream draws; hyper-parameters (warmup=20,
 theta_mid=0.8, eps_small=0.15, tau=0.05) were chosen on tuning draws only.
 
