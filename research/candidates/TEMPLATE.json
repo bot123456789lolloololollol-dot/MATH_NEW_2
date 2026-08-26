@@ -1,0 +1,21 @@
+{
+  "id": "C-000",
+  "title": "",
+  "domain": "",
+  "status": "active",
+  "problem": "precise statement of the problem investigated",
+  "hypothesis": "the specific falsifiable claim being tested",
+  "baseline": "known best method/value, with citation",
+  "proposed_improvement": "what we propose and why it might beat/extend the baseline",
+  "experimental_evidence": [
+    {"what": "", "how_to_reproduce": "script path + exact command", "result": ""}
+  ],
+  "counterexamples": [],
+  "adversarial_attacks": [],
+  "novelty_status": "unknown | audited_clean | prior_work_found",
+  "novelty_notes": "closest prior work found and how we differ",
+  "proof_status": "observation | hypothesis | conjecture | experimentally_validated_result | proven_result | formally_verified_result",
+  "reproduction_status": "pending | independent_success | failed",
+  "score": {"novelty": 0, "usefulness": 0, "provability": 0, "reproducibility": 0, "improvement": 0, "total": 0},
+  "next_action": ""
+}
