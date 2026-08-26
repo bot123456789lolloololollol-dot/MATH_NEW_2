@@ -1,0 +1,30 @@
+{
+ "0.02": {
+  "deriv": {
+   "recovery_rate_rollout<5%": 0.5333333333333333,
+   "median_coeff_err": 0.0052479291597373745,
+   "median_jaccard": 1.0,
+   "median_rollout": 0.045712681306378955
+  },
+  "integral": {
+   "recovery_rate_rollout<5%": 0.5333333333333333,
+   "median_coeff_err": 0.003607450097357987,
+   "median_jaccard": 1.0,
+   "median_rollout": 0.042549176658460384
+  }
+ },
+ "0.05": {
+  "deriv": {
+   "recovery_rate_rollout<5%": 0.06666666666666667,
+   "median_coeff_err": 0.07606219712563109,
+   "median_jaccard": 0.3333333333333333,
+   "median_rollout": 0.37897174093717934
+  },
+  "integral": {
+   "recovery_rate_rollout<5%": 0.6333333333333333,
+   "median_coeff_err": 0.003044954328041062,
+   "median_jaccard": 1.0,
+   "median_rollout": 0.031133293445912417
+  }
+ }
+}

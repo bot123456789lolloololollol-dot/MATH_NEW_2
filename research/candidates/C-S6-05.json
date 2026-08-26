@@ -1,0 +1,22 @@
+{
+  "id": "C-S6-05",
+  "title": "Hidden modal structure from trajectories alone; integral formulation rescues the high-noise regime",
+  "domain": "equation discovery / linear dynamics / robust identification",
+  "status": "validated",
+  "problem": "(a) Does a discovered model carry hidden analytic structure -- specifically, do normal modes fall out of trajectories that never mention them? (b) Can the documented derivative-form failure at sigma=0.05 be rescued without changing the discovery criterion?",
+  "hypothesis": "(a) Linear sparse regression on coupled-oscillator trajectories yields A whose eigenfrequencies/mode-shapes match analytics to ~1e-12 clean and generalize to unseen ICs. (b) Regressing window-integrated states against integrated library values (never differentiating noisy states) substantially raises recovery at sigma=0.05.",
+  "baseline": "Textbook modal analysis of known A (ground truth); derivative STLSQ from exp02 as the failing baseline for exp13.",
+  "proposed_improvement": "No method novelty claimed (integral/weak forms exist in literature). Contributions: exact hidden-eigenstructure demonstration + measured derivative-vs-integral crossover with an honest correlated-residual caveat (THEORY P12).",
+  "experimental_evidence": [
+    {"what": "modal structure recovered", "how_to_reproduce": "python run_all.py exp12_modes", "result": "|A-A*|=7.8e-12, eigfreq err 7.5e-13, mode-shape err 4.7e-13, holdout traj 4.4e-10; sigma=0.01: all <=1.5e-3"},
+    {"what": "integral vs derivative at high noise", "how_to_reproduce": "python run_all.py exp13_integral", "result": "sigma=0.05: recovery 63% vs 7%, median rollout 0.031 vs 0.379; sigma=0.02: tie 0.53/0.53"}
+  ],
+  "counterexamples": [],
+  "adversarial_attacks": ["noise extensions in both experiments"],
+  "novelty_status": "audited_clean",
+  "novelty_notes": "Both ingredients are folklore/literature-known (weak-form integration; modal analysis); packaged demonstrations with preregistered endpoints are incremental (audit 2026-08-26).",
+  "proof_status": "experimentally_validated_result",
+  "reproduction_status": "pending",
+  "score": {"novelty": 2, "usefulness": 3, "provability": 3, "reproducibility": 5, "improvement": 3, "total": 270},
+  "next_action": "independent reproduction from PREREGISTERED_R3.md"
+}

@@ -14,14 +14,22 @@
     },
     {
      "seed": 1,
-     "nodes": 5,
+     "nodes": 12,
      "holdout_nmse": 0.0,
-     "expr": "sin(x)*cos(x)",
+     "expr": "zoo*sin(x)*cos(x)",
      "equivalent_to_truth": true,
      "max_rel_err_vs_truth": 0.0
     },
     {
      "seed": 2,
+     "nodes": 7,
+     "holdout_nmse": 0.00012851130414866179,
+     "expr": "sin(0.51735733871385*sin(2*x))",
+     "equivalent_to_truth": false,
+     "max_rel_err_vs_truth": 0.011607117624336843
+    },
+    {
+     "seed": 3,
      "nodes": 5,
      "holdout_nmse": 0.0,
      "expr": "sin(x)*cos(x)",
@@ -29,23 +37,15 @@
      "max_rel_err_vs_truth": 0.0
     },
     {
-     "seed": 3,
-     "nodes": 11,
-     "holdout_nmse": 5.765457501968611e-18,
-     "expr": "log(exp(sin(re(x))*cosh(im(x))) + 1.0e-9)*cos(x)",
-     "equivalent_to_truth": true,
-     "max_rel_err_vs_truth": 2.9170569320684748e-09
-    },
-    {
      "seed": 4,
-     "nodes": 19,
+     "nodes": 12,
      "holdout_nmse": 0.0,
      "expr": "sin(x)*cos(x)",
      "equivalent_to_truth": true,
      "max_rel_err_vs_truth": 0.0
     }
    ],
-   "n_equivalent_of_5": 5,
+   "n_equivalent_of_5": 4,
    "min_complexity_found": 5
   },
   {
@@ -54,32 +54,32 @@
    "runs": [
     {
      "seed": 0,
-     "nodes": 9,
-     "holdout_nmse": 7.463818826469805e-32,
-     "expr": "x**2 + x + 1",
-     "equivalent_to_truth": true,
-     "max_rel_err_vs_truth": 5.076489243345333e-15
+     "nodes": 22,
+     "holdout_nmse": 4.132617578329135e-06,
+     "expr": "0.3942*x*(2.3942*x + 1.49549715844448) + exp(sin(0.3942*x))",
+     "equivalent_to_truth": false,
+     "max_rel_err_vs_truth": 0.001905370965524039
     },
     {
      "seed": 1,
-     "nodes": 34,
-     "holdout_nmse": 1.4152806234665913e-05,
-     "expr": "-(-x - 0.5206)*(x + 0.434968841635187) + cos(cos(exp(-0.224977478738925*exp(-x))))",
+     "nodes": 50,
+     "holdout_nmse": 1.587609089171361e-06,
+     "expr": "-(-x - 1.3629*x/(x + cos(x) + 1.3874))*(x - cos(0.3192*x - 2.3121)) + cos(sin(1.3629*x/(x + exp(x)))*sqrt(Abs(0.63186576*x - 0.63186576*exp(x))))",
      "equivalent_to_truth": false,
-     "max_rel_err_vs_truth": 0.0025684884411176574
+     "max_rel_err_vs_truth": 0.0005539352233267
     },
     {
      "seed": 2,
-     "nodes": 19,
-     "holdout_nmse": 4.6732031411819834e-05,
-     "expr": "exp(x - 0.155719339163077*exp(-0.0568*x)*sin(x*sin(x - 1.789)))",
-     "equivalent_to_truth": false,
-     "max_rel_err_vs_truth": 0.003179091682622694
+     "nodes": 22,
+     "holdout_nmse": 3.1543313710331557e-19,
+     "expr": "x**2 + x + 1.000000001",
+     "equivalent_to_truth": true,
+     "max_rel_err_vs_truth": 1.4287291035086818e-10
     },
     {
      "seed": 3,
      "nodes": 17,
-     "holdout_nmse": 9.324588967601922e-32,
+     "holdout_nmse": 9.402288178850847e-32,
      "expr": "x**2 + x + 1",
      "equivalent_to_truth": true,
      "max_rel_err_vs_truth": 1.13634849050875e-14
@@ -87,7 +87,7 @@
     {
      "seed": 4,
      "nodes": 9,
-     "holdout_nmse": 6.830907864812416e-32,
+     "holdout_nmse": 8.246538278109358e-32,
      "expr": "x**2 + x + 1",
      "equivalent_to_truth": true,
      "max_rel_err_vs_truth": 4.888830209643725e-15
@@ -102,16 +102,16 @@
    "runs": [
     {
      "seed": 0,
-     "nodes": 6,
-     "holdout_nmse": 1.5128479757049506e-18,
+     "nodes": 8,
+     "holdout_nmse": 1.4879252093097593e-18,
      "expr": "log(Abs(x + 1) + 1.0e-9)",
      "equivalent_to_truth": true,
      "max_rel_err_vs_truth": 3.030543644390961e-10
     },
     {
      "seed": 1,
-     "nodes": 6,
-     "holdout_nmse": 1.5037685229682028e-18,
+     "nodes": 7,
+     "holdout_nmse": 1.5879984681928786e-18,
      "expr": "log(Abs(x + 1) + 1.0e-9)",
      "equivalent_to_truth": true,
      "max_rel_err_vs_truth": 3.029905647862646e-10
@@ -119,23 +119,23 @@
     {
      "seed": 2,
      "nodes": 6,
-     "holdout_nmse": 1.5152038820130028e-18,
+     "holdout_nmse": 1.5299728855562952e-18,
      "expr": "log(Abs(x + 1) + 1.0e-9)",
      "equivalent_to_truth": true,
      "max_rel_err_vs_truth": 3.030586665444887e-10
     },
     {
      "seed": 3,
-     "nodes": 8,
-     "holdout_nmse": 1.437613182783898e-18,
+     "nodes": 6,
+     "holdout_nmse": 1.5368405103710438e-18,
      "expr": "log(Abs(x + 1) + 1.0e-9)",
      "equivalent_to_truth": true,
      "max_rel_err_vs_truth": 3.030953274949094e-10
     },
     {
      "seed": 4,
-     "nodes": 6,
-     "holdout_nmse": 1.4753045212348037e-18,
+     "nodes": 10,
+     "holdout_nmse": 1.5378522541977607e-18,
      "expr": "log(Abs(x + 1) + 1.0e-9)",
      "equivalent_to_truth": true,
      "max_rel_err_vs_truth": 3.028453871674047e-10

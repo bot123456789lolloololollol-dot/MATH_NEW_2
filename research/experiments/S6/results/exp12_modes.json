@@ -1,0 +1,20 @@
+{
+ "clean": {
+  "max_abs_entry_err": 7.785772027091298e-12,
+  "max_rel_eig_freq_err": 7.529948174206381e-13,
+  "mode_shape_ratio_err": 4.71289673953379e-13,
+  "holdout_traj_rel_err": 4.375783731272259e-10
+ },
+ "sigma0.005": {
+  "max_abs_entry_err": 0.0015976605313952064,
+  "max_rel_eig_freq_err": 2.93028680436635e-05,
+  "mode_shape_ratio_err": 0.00037403839842853337,
+  "holdout_traj_rel_err": 0.0010666335113150216
+ },
+ "sigma0.01": {
+  "max_abs_entry_err": 0.001995915870635967,
+  "max_rel_eig_freq_err": 0.00021452107262551532,
+  "mode_shape_ratio_err": 0.0015101237449659521,
+  "holdout_traj_rel_err": 0.008033641649087672
+ }
+}

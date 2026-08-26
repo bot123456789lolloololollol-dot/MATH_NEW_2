@@ -10,6 +10,7 @@ This validates the optimizer's Occam bias -- a prerequisite for trusting
 discovered laws in exp04-07.
 """
 import sys
+import zlib
 import numpy as np
 
 sys.path.insert(0, ".")
@@ -68,7 +69,9 @@ def main():
     for case in ("S1_sincos", "S2_rational", "S3_log"):
         recs = []
         for seed in range(5):
-            rng = np.random.default_rng(hash((case, seed)) % 2**31)
+            # stable cross-process seed (hash() of str is process-randomized!)
+            rng = np.random.default_rng(
+                (zlib.crc32(case.encode()) * 1000 + seed) % 2**31)
             Xtr, ytr, Xte, yte, truth, f_true, domain = dataset(case, rng)
             reg = sr.SymbolicRegressor(1, population=600, generations=150,
                                        seed=seed).fit(Xtr, ytr)

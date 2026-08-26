@@ -20,6 +20,8 @@ EXPS = [
     "exp09_baselines",
     "exp10_pde",
     "exp11_control",
+    "exp12_modes",
+    "exp13_integral",
 ]
 
 

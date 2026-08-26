@@ -91,10 +91,12 @@ no spurious confident law survives the significance test on average.
 
 ### exp03 — Occam/equivalence tests
 Across 5 seeds × 3 controlled function classes, MDL-selected GP found the simpler
-equivalent form: sin(x)cos(x) 5/5 (minimal 5-node form in 4/5, incl. one ½sin 2x
-variant), log(x²−1)−log(x−1) → log(x+1)-equivalent 5/5, (x³−1)/(x−1) → x²+x+1 4/5
-(the remaining seed plateaued at NMSE 7e-7 near-miss). This validates the optimizer's
-Occam bias that the later experiments rely on, and documents its failure modes.
+equivalent form: sin(x)cos(x) 4/5 exact-equivalent (the remaining seed a near-miss at
+NMSE 1.3e-4 that is NOT accepted as equivalent), log(x²−1)−log(x−1) → log(x+1)-equivalent
+5/5, (x³−1)/(x−1) → x²+x+1 3/5 exact (near-misses at ~1e-6 otherwise). This validates
+the optimizer's Occam bias that the later experiments rely on, and documents its
+failure modes. Seed derivation was made process-stable after a regression pass exposed
+run-to-run drift (deviation log); outputs are now byte-identical across reruns.
 **Label:** observation → experimentally_validated_result within tested classes.
 
 ### exp04 — pendulum period generalization
@@ -272,3 +274,36 @@ gplearn is stronger (raw speed) we do not compete. Full JSON:
 `check_claims.py` re-reads committed JSONs and asserts 35 headline numbers from this
 report against tolerances: **35/35 PASS** at commit time. Run after any rerun:
 `python check_claims.py`.
+
+---
+
+# ROUND 3 ADDENDUM (preregistered in `experiments/S6/PREREGISTERED_R3.md`)
+
+## exp12 — hidden modal structure from trajectories alone
+
+> **C7.** Given only state trajectories of two coupled oscillators (k1=4, k2=9,
+> kc=1.5), linear sparse regression recovers the system matrix A entrywise to 7.8e-12;
+> the EIGENSTRUCTURE of the discovered A — normal-mode frequencies to a relative error
+> of 7.5e-13 and mode shapes (|q2/q1| displacement ratios) to 4.7e-13 — matches the
+> analytic spectrum, and held-out trajectories from unseen initial conditions are
+> predicted at rel err 4.4e-10. Under snapshot noise σ=0.01 all errors stay ≤1.5e-3.
+
+The point: eigenstructure is *hidden* physics — no data term looks like "normal mode" —
+yet it falls out of a discovered model exactly, and the discovery generalizes to unseen
+initial conditions. Label: **experimentally_validated_result**.
+Regenerate: `python run_all.py exp12_modes`.
+
+## exp13 — integral-form identification rescues the σ=5% regime
+
+> **C8.** At the noise level where derivative-based identification fails (LV σ=0.05:
+> recovery in 7% of runs, median rollout 0.379 — exp02's documented failure), the same
+> pipeline in integral form (sliding-window integration of both sides; noisy states are
+> never differentiated) recovers **63%** of runs with median rollout 0.031. At σ=0.02
+> the two forms tie (0.53 vs 0.53).
+
+This converts a documented failure mode into a conditional recipe: differentiate when
+noise is low, integrate when it is high; the crossover sits between our tested levels.
+Caveat disclosed in THEORY P12: overlapping windows correlate residuals, so for this
+experiment we report only the preregistered rollout endpoint. Label:
+**experimentally_validated_result** (empirical), P12 argument: sketch-level.
+Regenerate: `python run_all.py exp13_integral`.

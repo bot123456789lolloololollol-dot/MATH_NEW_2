@@ -232,6 +232,24 @@ a useful built-in consistency check). Both stencils in this repo are now unit-te
 against sin(ωt). Lesson generalized: *in discovery pipelines, derivative operators are
 part of the hypothesis class and deserve tests.*
 
+## P12 — Why the integral form beats differentiation under state noise (sketch)
+
+Let states be observed with iid noise ξ, Var(ξ)=σ². Differentiation amplifies:
+Var(dξ/dt) ≈ 2σ²/dt² for central differences — at dt=2e-3 that multiplies noise
+variance by 5e5 before regression. The window-integral formulation regresses
+X(t+W)−X(t) against ∫Θ dt; differencing two noisy samples keeps variance 2σ²
+(independent of dt), while each integrated feature column averages W samples, whose
+noise contribution to the *feature* side scales like σ²·dt²·W/3-ish and, more
+importantly, enters as an error-in-variables with mean zero uncorrelated across rows.
+Net effect measured on LV: recovery rate at σ=0.05 rises from 7% to 63% and median
+rollout error falls 12× (exp13). The trade-off: overlapping-window rows share cumulative
+sums, so residuals are strongly correlated and naive significance thresholds are
+optimistic; we therefore report the preregistered rollout endpoint, not p-values,
+for this experiment. Full error analysis is left as future work; what is claimed here
+is the empirical rescue plus the variance-scaling argument above.
+
+
+
 ## Honest-failure criterion (definition, not theorem)
 
 A discovery attempt on dataset D is labeled **"no compact law found"** iff the best

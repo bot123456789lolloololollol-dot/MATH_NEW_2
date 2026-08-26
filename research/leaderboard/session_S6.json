@@ -26,6 +26,12 @@
       "scores": {"novelty": 2, "usefulness": 4, "provability": 3, "reproducibility": 5, "improvement": 3},
       "total": 360,
       "justification": "Round 2: PDE discovery (Burgers exact to 1.5e-6, KdV structure recovered) with the traveling-wave degeneracy failure archived as a documented identifiability boundary (THEORY P9); control loop from discovered model matches oracle controller at IAE ratio 1.000 under known library mismatch; check_claims.py mechanically verifies 35 report numbers against committed artifacts."
+    },
+    {
+      "candidate": "C-S6-05",
+      "scores": {"novelty": 2, "usefulness": 3, "provability": 3, "reproducibility": 5, "improvement": 3},
+      "total": 270,
+      "justification": "Round 3: hidden modal structure recovered from trajectories alone (eigenfrequencies 7.5e-13, mode shapes 4.7e-13); integral formulation converts the sigma=0.05 failure into 63% recovery with 12x better median rollout; honest correlated-residual caveat recorded (P12)."
     }
   ],
   "notes_for_coordinator": "All claims regenerable via research/experiments/S6/run_all.py (+ exp09b/exp10/exp11); seeds preregistered before runs in PREREGISTERED.md and PREREGISTERED_R2.md with deviation logs; honest failures documented (GP root-form miss, conservation detectability boundary, traveling-wave degeneracy, sign-flipped stencil incident, poly15 beats GP in-domain). Reproduction by non-author agent still pending."

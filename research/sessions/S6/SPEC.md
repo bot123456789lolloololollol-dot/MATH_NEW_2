@@ -90,12 +90,35 @@ Compare to ground truth via affine fit a*H+b pooled across energies.
 ## G. File map & reproduction
 
     experiments/S6/
-      src/{systems,sindy,symreg,invariant,metrics,plotting,common}.py
+      src/{systems,sindy,symreg,invariant,metrics,plotting,common,pde}.py
       exp0{1..9}_*.py        # one script per experiment, writes results/*.json + figures/*.png
+      exp09b_gplearn.py      # external GP baseline (requires pip install gplearn)
+      exp10_pde.py           # PDE discovery: Burgers + KdV (round 2)
+      exp11_control.py       # controller synthesized from discovered model (round 2)
+      exp12_modes.py         # hidden modal structure in coupled oscillators (round 3)
+      exp13_integral.py      # integral-form identification at high noise (round 3)
       run_all.py             # regenerates EVERYTHING: python run_all.py
+      check_claims.py        # asserts REPORT.md headline numbers vs results/*.json
       PREREGISTERED.md       # seeds/protocol fixed before runs + deviation log
-      tests/test_core.py     # pytest tests/ -q
-    sessions/S6/REPORT.md    # findings with claim labels
+      PREREGISTERED_R2.md    # round-2 protocol + deviations
+      PREREGISTERED_R3.md    # round-3 protocol
+      tests/test_core.py     # pytest tests/ -q   (15 tests total incl. test_round2.py)
+    sessions/S6/REPORT.md    # findings with claim labels (incl. round 2/3 addenda)
+    sessions/S6/SPEC.md      # this file
     sessions/S6/proofs/THEORY.md, certificate_duffing.py
 
-All RNG through numpy.random.default_rng with seeds from PREREGISTERED.md.
+All RNG through numpy.random.default_rng with seeds from the preregistration files.
+
+## H. Round-2/3 method notes (beyond sections A-F)
+
+PDE discovery (exp10): spectral derivatives on a periodic grid; time derivative by
+4th-order central stencil over snapshot spacing; library {1,u,u2,u_x,u_xx,u_xxx,
+u u_x,u^2 u_x,u u_xx}; STLSQ as section C. CRITICAL requirements learned the hard way:
+(1) data must contain more than one traveling wave (single waves make the library
+collinear -- P9); (2) verify stencil signs against sin(3t) before trusting results;
+(3) rollouts of discovered-vs-truth PDEs must use IDENTICAL relaxed tolerances.
+Control loop (exp11): identify f_hat on bounded-angle excited data (input channel
+subtracted using the KNOWN gain); feedback linearization u = -f_hat - kp th - kd om,
+kp=4, kd=4; compare against identical controller built from true f.
+Integral form (exp13): target X(t+W)-X(t) vs cumulative-sum-integrated library,
+W=25 samples; never differentiate noisy states.
