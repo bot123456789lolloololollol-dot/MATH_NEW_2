@@ -54,12 +54,12 @@
      "x*y": 1.0
     }
    },
-   "coeff_rel_err": 0.03571428571428571,
+   "coeff_rel_err": 5.2409885954927764e-11,
    "support_jaccard": 1.0,
    "rollout_rel_err": 5.936761327747364e-10,
    "bic": -1.573283963539414e-13,
    "threshold": 6.390734348264482e-06,
-   "recovered_per_preregistered_criterion": false
+   "recovered_per_preregistered_criterion": true
   }
  ]
 }

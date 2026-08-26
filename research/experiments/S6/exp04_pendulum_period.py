@@ -83,10 +83,31 @@ def main():
               f"small-angle err {e['rel_err_small_angle_law']:.3e}")
     print("unseen g/L:", unseen_check)
 
-    # ---- (a) structural discovery via GP: find T(g, theta) form
+    # ---- (a) structural discovery: dimensionless collapse
+    # If T = sqrt(L/g) * f(theta0), then tau := T*sqrt(g/L) must be independent of g.
+    # Within each training amplitude, measure the relative spread of tau across g.
+    spreads = {}
+    for a in amp_train:
+        taus = arr[np.isclose(arr[:, 0], a)][:, 2] * np.sqrt(arr[np.isclose(arr[:, 0], a)][:, 1])
+        spreads[str(a)] = float(np.ptp(taus) / np.mean(taus))
+    max_spread = max(spreads.values())
+    print(f"dimensionless collapse: max within-amplitude spread of tau across "
+          f"g/L values = {max_spread:.2e} (0 means perfect collapse)")
+    # residual variance after removing the textbook factor vs before
+    resid_before = float(np.var(arr[:, 2] - np.mean(arr[:, 2])) / np.var(arr[:, 2]))
+    tau_resid = arr[:, 2] - np.stack(
+        [np.ones_like(theta), theta**2, theta**4], 1) @ coef
+    resid_after = float(np.var(tau_resid) / np.var(arr[:, 2]))
+    collapse = {"max_within_amplitude_spread": max_spread,
+                "per_amplitude": spreads,
+                "unexplained_variance_fraction_before_collapse": resid_before,
+                "after_collapse_plus_series": resid_after}
+
+    # ---- GP attempt at closed-form structure (documented limitation: finds the
+    # inverse-g dependence approximately but not the exact root form)
     X = arr[:, [1, 0]]  # features [g, theta]
     y = arr[:, 2]
-    reg = sr.SymbolicRegressor(2, population=350, generations=100, seed=7).fit(X, y)
+    reg = sr.SymbolicRegressor(2, population=800, generations=200, seed=7).fit(X, y)
     expr = sr.to_sympy(reg.best_, ["gL", "th"])
     te_nmse = sr.nmse(reg.best_, X, y)
     print(f"GP structure discovery: nmse={reg.best_nmse_:.3e} holdout={te_nmse:.3e}")
@@ -112,9 +133,13 @@ def main():
                                 "perturbation_theory": theory.tolist(),
                                 "relative_error": rel_coef_err.tolist()},
         "extrapolation": ext, "unseen_gL": unseen_check,
+        "collapse": collapse,
         "gp_structure": {"train_nmse": reg.best_nmse_,
                          "holdout_nmse": te_nmse,
-                         "expression": str(expr)}})
+                         "expression": str(expr),
+                         "note": "vanilla GP approximates the inverse-root scaling but "
+                                 "does not find its exact form; the collapse statistic "
+                                 "and series identification carry the structural claim"}})
 
 
 if __name__ == "__main__":

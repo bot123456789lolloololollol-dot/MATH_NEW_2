@@ -1,0 +1,17 @@
+mode=select n=14 k=7 seeds=1 workers=5
+Process Process-1:
+Traceback (most recent call last):
+  File "C:\Users\Deves\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Deves\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Deves\OneDrive\Desktop\MATH_2_NEW\research\experiments\S5\search_es.py", line 272, in es_chain
+    child = mutate(cur, n, rng)
+                ^^^^^^^^^^^^^^^^
+  File "C:\Users\Deves\OneDrive\Desktop\MATH_2_NEW\research\experiments\S5\search_es.py", line 188, in remove_repair
+    # ------------------------------------------------------------------ repair
+            ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Deves\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\random.py", line 313, in randrange
+    raise ValueError("empty range for randrange()")
+ValueError: empty range for randrange()
+done

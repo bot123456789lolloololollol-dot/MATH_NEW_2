@@ -35,20 +35,30 @@ def wire_masks(n):
 
 def expected_masks(n):
     """exp[k] has bit p set iff wire k of the ascending-sorted output on
-    input p is 1, i.e. iff popcount(p) >= n-k (the k-th smallest of |p| ones
-    is 1 exactly when fewer than k+1 zeros exist)."""
-    N = 1 << n
-    exp = [0] * n
-    for ones in range(n + 1):
+    input p is 1, i.e. iff popcount(p) >= n-k.
+
+    Built by doubling: over 2^n inputs split by the top input bit,
+    T(n,k) = [T(n-1,k) low half] ++ [T(n-1,k-1) high half]."""
+    # W[j][i] = mask over 2^i bits of {p : popcount(p) == j}
+    W = [[None] * (n + 1) for _ in range(n + 1)]
+    for i in range(n + 1):
+        W[0][i] = 1
+    for j in range(1, n + 1):
+        W[j][0] = 0
+    for i in range(1, n + 1):
+        half = 1 << (i - 1)
+        for j in range(1, i + 1):
+            lo = W[j][i - 1]
+            hi = W[j - 1][i - 1] << half
+            W[j][i] = lo | hi
+        for j in range(i + 1, n + 1):
+            W[j][i] = 0
+    exp = []
+    for k in range(n):
         m = 0
-        for combo in combinations(range(n), ones):
-            p = 0
-            for c in combo:
-                p |= 1 << c
-            m |= 1 << p
-        # wires k >= n-ones carry 1 (the last `ones` output positions)
-        for k in range(n - ones, n):
-            exp[k] |= m
+        for j in range(max(0, n - k), n + 1):
+            m |= W[j][n]
+        exp.append(m)
     return exp
 
 

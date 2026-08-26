@@ -1,0 +1,144 @@
+{
+ "conjecture": "Borodin-Kostochka (Delta>=9, omega<Delta => chi<=Delta-1)",
+ "finite_consequence": "no graph with delta>=8, Delta<=9, omega<=8, chi>=9 on n <= N",
+ "method": "complement reformulation + Tutte-Berge deficiency bound; deficiency bounded by complete enumeration of component size profiles under necessary conditions C1,C2,C3",
+ "proven_range": [
+  1,
+  15
+ ],
+ "per_n": {
+  "10": {
+   "def_bound": 10,
+   "required": 6,
+   "holds": false,
+   "witness": [
+    0,
+    [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ]
+   ]
+  },
+  "11": {
+   "def_bound": 3,
+   "required": 5,
+   "holds": true,
+   "witness": [
+    0,
+    [
+     2,
+     3,
+     3,
+     3
+    ]
+   ]
+  },
+  "12": {
+   "def_bound": 4,
+   "required": 4,
+   "holds": true,
+   "witness": [
+    0,
+    [
+     3,
+     3,
+     3,
+     3
+    ]
+   ]
+  },
+  "13": {
+   "def_bound": 1,
+   "required": 3,
+   "holds": true,
+   "witness": [
+    0,
+    [
+     4,
+     4,
+     5
+    ]
+   ]
+  },
+  "14": {
+   "def_bound": 2,
+   "required": 2,
+   "holds": true,
+   "witness": [
+    0,
+    [
+     5,
+     9
+    ]
+   ]
+  },
+  "15": {
+   "def_bound": 1,
+   "required": 1,
+   "holds": true,
+   "witness": [
+    0,
+    [
+     6,
+     9
+    ]
+   ]
+  },
+  "16": {
+   "def_bound": 2,
+   "required": 0,
+   "holds": false,
+   "witness": [
+    0,
+    [
+     7,
+     9
+    ]
+   ]
+  },
+  "17": {
+   "def_bound": 1,
+   "required": -1,
+   "holds": false,
+   "witness": [
+    0,
+    [
+     8,
+     9
+    ]
+   ]
+  },
+  "18": {
+   "def_bound": 2,
+   "required": -2,
+   "holds": false,
+   "witness": [
+    0,
+    [
+     9,
+     9
+    ]
+   ]
+  },
+  "19": {
+   "def_bound": 1,
+   "required": -3,
+   "holds": false,
+   "witness": [
+    0,
+    [
+     19
+    ]
+   ]
+  }
+ },
+ "runtime_sec": 61.4
+}

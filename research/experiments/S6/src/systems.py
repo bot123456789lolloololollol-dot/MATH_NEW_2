@@ -13,7 +13,7 @@ RTOL, ATOL = 1e-10, 1e-12
 
 
 def _integrate(f, t0, t1, y0, dt, events=None, dense=False):
-    t_eval = np.arange(t0, t1 + 0.5 * dt, dt)
+    t_eval = np.clip(np.arange(t0, t1 + 0.5 * dt, dt), t0, t1)
     sol = solve_ivp(f, (t0, t1), np.atleast_1d(y0), method="RK45",
                     rtol=RTOL, atol=ATOL, t_eval=t_eval, events=events,
                     dense_output=dense)
@@ -83,9 +83,11 @@ def pendulum_period(theta0_deg, g_over_L=1.0, n_periods_max=40.0):
     t_end = min(2 * np.pi / np.sqrt(g_over_L) * n_periods_max, 400.0)
     sol = _integrate(f, 0.0, t_end, [th0, 0.0], 5e-3, events=cross_up)
     te = sol.t_events[0]
+    # theta starts AT amplitude (no event at t=0); upward crossings occur once
+    # per period, so consecutive gaps are the period
     if len(te) < 3:
         raise RuntimeError(f"period not found for theta0={theta0_deg}")
-    T = te[2] - te[0]
+    T = float(np.mean(np.diff(te)))
     return T * np.sqrt(g_over_L)
 
 

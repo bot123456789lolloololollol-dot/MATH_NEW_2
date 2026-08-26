@@ -1,0 +1,775 @@
+[
+ {
+  "n": 2,
+  "ub": 1,
+  "levels": [
+   {
+    "k": 1,
+    "status": "SAT",
+    "nodes": 1,
+    "ms": 0,
+    "witness": [
+     0
+    ]
+   }
+  ],
+  "k_max": 1,
+  "witness": [
+   0
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 3,
+  "ub": 2,
+  "levels": [
+   {
+    "k": 2,
+    "status": "SAT",
+    "nodes": 2,
+    "ms": 0,
+    "witness": [
+     0,
+     1
+    ]
+   }
+  ],
+  "k_max": 2,
+  "witness": [
+   0,
+   1
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 4,
+  "ub": 2,
+  "levels": [
+   {
+    "k": 2,
+    "status": "SAT",
+    "nodes": 2,
+    "ms": 0,
+    "witness": [
+     0,
+     1
+    ]
+   }
+  ],
+  "k_max": 2,
+  "witness": [
+   0,
+   1
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 5,
+  "ub": 2,
+  "levels": [
+   {
+    "k": 2,
+    "status": "SAT",
+    "nodes": 2,
+    "ms": 0,
+    "witness": [
+     0,
+     1
+    ]
+   }
+  ],
+  "k_max": 2,
+  "witness": [
+   0,
+   1
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 6,
+  "ub": 2,
+  "levels": [
+   {
+    "k": 2,
+    "status": "SAT",
+    "nodes": 2,
+    "ms": 0,
+    "witness": [
+     0,
+     1
+    ]
+   }
+  ],
+  "k_max": 2,
+  "witness": [
+   0,
+   1
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 7,
+  "ub": 3,
+  "levels": [
+   {
+    "k": 3,
+    "status": "SAT",
+    "nodes": 3,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3
+    ]
+   }
+  ],
+  "k_max": 3,
+  "witness": [
+   0,
+   1,
+   3
+  ],
+  "certified": true,
+  "total_ms": 1
+ },
+ {
+  "n": 8,
+  "ub": 3,
+  "levels": [
+   {
+    "k": 3,
+    "status": "SAT",
+    "nodes": 3,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3
+    ]
+   }
+  ],
+  "k_max": 3,
+  "witness": [
+   0,
+   1,
+   3
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 9,
+  "ub": 3,
+  "levels": [
+   {
+    "k": 3,
+    "status": "SAT",
+    "nodes": 3,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3
+    ]
+   }
+  ],
+  "k_max": 3,
+  "witness": [
+   0,
+   1,
+   3
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 10,
+  "ub": 3,
+  "levels": [
+   {
+    "k": 3,
+    "status": "SAT",
+    "nodes": 3,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3
+    ]
+   }
+  ],
+  "k_max": 3,
+  "witness": [
+   0,
+   1,
+   3
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 11,
+  "ub": 3,
+  "levels": [
+   {
+    "k": 3,
+    "status": "SAT",
+    "nodes": 3,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3
+    ]
+   }
+  ],
+  "k_max": 3,
+  "witness": [
+   0,
+   1,
+   3
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 12,
+  "ub": 3,
+  "levels": [
+   {
+    "k": 3,
+    "status": "SAT",
+    "nodes": 3,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3
+    ]
+   }
+  ],
+  "k_max": 3,
+  "witness": [
+   0,
+   1,
+   3
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 13,
+  "ub": 4,
+  "levels": [
+   {
+    "k": 4,
+    "status": "SAT",
+    "nodes": 4,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     9
+    ]
+   }
+  ],
+  "k_max": 4,
+  "witness": [
+   0,
+   1,
+   3,
+   9
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 14,
+  "ub": 4,
+  "levels": [
+   {
+    "k": 4,
+    "status": "SAT",
+    "nodes": 5,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     4,
+     6
+    ]
+   }
+  ],
+  "k_max": 4,
+  "witness": [
+   0,
+   1,
+   4,
+   6
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 15,
+  "ub": 4,
+  "levels": [
+   {
+    "k": 4,
+    "status": "SAT",
+    "nodes": 4,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7
+    ]
+   }
+  ],
+  "k_max": 4,
+  "witness": [
+   0,
+   1,
+   3,
+   7
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 16,
+  "ub": 4,
+  "levels": [
+   {
+    "k": 4,
+    "status": "SAT",
+    "nodes": 4,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7
+    ]
+   }
+  ],
+  "k_max": 4,
+  "witness": [
+   0,
+   1,
+   3,
+   7
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 17,
+  "ub": 4,
+  "levels": [
+   {
+    "k": 4,
+    "status": "SAT",
+    "nodes": 4,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7
+    ]
+   }
+  ],
+  "k_max": 4,
+  "witness": [
+   0,
+   1,
+   3,
+   7
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 18,
+  "ub": 4,
+  "levels": [
+   {
+    "k": 4,
+    "status": "SAT",
+    "nodes": 4,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7
+    ]
+   }
+  ],
+  "k_max": 4,
+  "witness": [
+   0,
+   1,
+   3,
+   7
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 19,
+  "ub": 4,
+  "levels": [
+   {
+    "k": 4,
+    "status": "SAT",
+    "nodes": 4,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7
+    ]
+   }
+  ],
+  "k_max": 4,
+  "witness": [
+   0,
+   1,
+   3,
+   7
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 20,
+  "ub": 4,
+  "levels": [
+   {
+    "k": 4,
+    "status": "SAT",
+    "nodes": 4,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7
+    ]
+   }
+  ],
+  "k_max": 4,
+  "witness": [
+   0,
+   1,
+   3,
+   7
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 21,
+  "ub": 5,
+  "levels": [
+   {
+    "k": 5,
+    "status": "SAT",
+    "nodes": 19,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     4,
+     14,
+     16
+    ]
+   }
+  ],
+  "k_max": 5,
+  "witness": [
+   0,
+   1,
+   4,
+   14,
+   16
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 22,
+  "ub": 5,
+  "levels": [
+   {
+    "k": 5,
+    "status": "UNSAT",
+    "nodes": 489,
+    "ms": 2
+   },
+   {
+    "k": 4,
+    "status": "SAT",
+    "nodes": 4,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7
+    ]
+   }
+  ],
+  "k_max": 4,
+  "witness": [
+   0,
+   1,
+   3,
+   7
+  ],
+  "certified": true,
+  "total_ms": 2
+ },
+ {
+  "n": 23,
+  "ub": 5,
+  "levels": [
+   {
+    "k": 5,
+    "status": "SAT",
+    "nodes": 6,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     8,
+     14
+    ]
+   }
+  ],
+  "k_max": 5,
+  "witness": [
+   0,
+   1,
+   3,
+   8,
+   14
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 24,
+  "ub": 5,
+  "levels": [
+   {
+    "k": 5,
+    "status": "SAT",
+    "nodes": 7,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     9,
+     20
+    ]
+   }
+  ],
+  "k_max": 5,
+  "witness": [
+   0,
+   1,
+   3,
+   9,
+   20
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 25,
+  "ub": 5,
+  "levels": [
+   {
+    "k": 5,
+    "status": "SAT",
+    "nodes": 5,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12
+    ]
+   }
+  ],
+  "k_max": 5,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 26,
+  "ub": 5,
+  "levels": [
+   {
+    "k": 5,
+    "status": "SAT",
+    "nodes": 5,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12
+    ]
+   }
+  ],
+  "k_max": 5,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 27,
+  "ub": 5,
+  "levels": [
+   {
+    "k": 5,
+    "status": "SAT",
+    "nodes": 5,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12
+    ]
+   }
+  ],
+  "k_max": 5,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 28,
+  "ub": 5,
+  "levels": [
+   {
+    "k": 5,
+    "status": "SAT",
+    "nodes": 5,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12
+    ]
+   }
+  ],
+  "k_max": 5,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 29,
+  "ub": 5,
+  "levels": [
+   {
+    "k": 5,
+    "status": "SAT",
+    "nodes": 5,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12
+    ]
+   }
+  ],
+  "k_max": 5,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 30,
+  "ub": 5,
+  "levels": [
+   {
+    "k": 5,
+    "status": "SAT",
+    "nodes": 5,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12
+    ]
+   }
+  ],
+  "k_max": 5,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12
+  ],
+  "certified": true,
+  "total_ms": 0
+ }
+]

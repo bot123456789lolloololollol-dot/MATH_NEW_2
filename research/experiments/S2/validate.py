@@ -64,8 +64,8 @@ log(f"[gate1] MULTIFIT same -> Cmax={c_mf} expect 6 "
     f"{'PASS' if c_mf == 6 else 'FAIL'}")
 fails += c_mf != 6
 a_ls, c_ls = lpt_ls(p_hand, m_hand)
-log(f"[gate1] LPT+LS same -> Cmax={c_ls} (documented local optimum; LS cannot see "
-    f"the optimal {brute_opt(p_hand, m_hand)} from here without a wider neighborhood)")
+log(f"[gate1] LPT+LS same -> Cmax={c_ls} (here LS reaches OPT={brute_opt(p_hand, m_hand)} "
+    f"via one swap; LS remains heuristic in general - see gate23)")
 check_valid(a_ls, p_hand, m_hand, "LS-hand")
 ok_naive = ls_no_improving_move(a_ls, p_hand)
 log(f"[gate1] LS local-optimum verified by independent naive checker: {ok_naive} "

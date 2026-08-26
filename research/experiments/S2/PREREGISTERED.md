@@ -21,9 +21,17 @@ reproduce his exact PRNG streams — his files use his own LCG state which is no
 specified in the paper — we reproduce the distribution he specifies, with our own fixed
 seeds via numpy PCG64: `numpy.random.default_rng(seed).integers(1, 100, size=n)`).
 
-- Configurations (ALL of these, no others): m in {2,3,4,5,7,10} x n in {30,50,100,200,500} = 35 configs.
+- Configurations (ALL of these, no others): m in {2,3,4,5,7,10} x n in {30,50,100,200,500}.
 - DEV_SEEDS = [1000..1029] (30 seeds) — used ONLY for tuning candidate parameters.
 - EVAL_SEEDS = [3000..3029] (30 seeds) — used ONLY for the final evaluation.
+
+> ERRATUM (2026-08-26 00:47 EDT, before instance generation and before ANY algorithm was
+> executed on any generated instance): the original text said "35 configs"; the correct
+> count for the SAME preregistered sets is 6 x 5 = 30 configurations. No configuration,
+> seed, metric, or algorithm was changed. Additionally, the dev subset originally omitted
+> an m=4 configuration, leaving K*(m=4) undefined; we extend D by (4,100) so that every
+> evaluation m value {2,3,4,5,7,10} has a dev configuration. Both corrections are made
+> before any run; nothing below is interpreted from results.
 - Instance file name: `taillike-m{m}-n{n}-s{seed}.txt` in `research/benchmarks/S2-instances/`.
 - Instances are committed data files; all algorithms read exactly these files. The same
   instance file is fed to every algorithm (paired design).
@@ -63,8 +71,10 @@ Candidate (our mechanism):
   plain LPT (no rollout). Mechanism class: simulation-based decision making (rollout policy
   evaluation), distinct from static priority rules (LPT), bin-packing search (MULTIFIT), and
   neighborhood descent (LS).
-- Parameter K tuned ONLY on DEV_SEEDS x dev configs D = {(2,30),(3,50),(5,100),(7,200),(10,500)},
-  grid K in {m, 2m, 4m}. Selection rule: minimize mean gap over D; tie -> smaller K.
+- Parameter K tuned ONLY on DEV_SEEDS x dev configs D = {(2,30),(3,50),(4,100),(5,100),
+  (7,200),(10,500)} [erratum: (4,100) added pre-run, see above],
+  grid K in {m, 2m, 4m}. Selection rule: for each m with an eval configuration, minimize
+  mean gap over the dev configuration(s) of that m; tie -> smaller K.
   K* frozen before ANY eval-seed run. Eval uses K*(m) per configuration.
 
 ## Statistical protocol (fixed)
@@ -92,7 +102,7 @@ Candidate (our mechanism):
 
 ## Falsifiable hypotheses (stated now, before results)
 
-- H1 (primary): ROL(K*) has significantly smaller gap than LPT on the majority of the 35
+- H1 (primary): ROL(K*) has significantly smaller gap than LPT on the majority of the 30
   configs (Holm-adjusted p<0.05, favorable sign) and pooled across configs.
 - H2 (openly expected possible null): ROL does NOT beat LPT+LS; LS is expected to be the
   strongest method on these uniform instances.

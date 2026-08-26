@@ -92,7 +92,8 @@ KNUTH_SMALL = {
 if __name__ == "__main__":
     print(f"{'n':>3} {'ins':>5} {'OEM':>5} {'dOEM':>5} "
           f"{'OEMpruned':>10} {'dOEMp':>6} {'opt?':>6}")
-    for n in range(2, 33):
+    # bitset exhaustive check needs 2^n bits per wire; cap at n=22 (~4 MB/wire)
+    for n in range(2, 23):
         ins = insertion_net(n)
         oem = batcher_oem_net(n)
         assert netlib.is_sorting(ins, n), f"insertion broken at n={n}"

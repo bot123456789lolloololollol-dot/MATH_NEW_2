@@ -1,0 +1,30 @@
+{
+  "session": "S4",
+  "domain": "computational number theory",
+  "date": "2026-08-26",
+  "candidates": ["C-S4-01", "C-S4-02"],
+  "self_assessment": {
+    "novelty": {
+      "score": 4,
+      "one_liner": "Frontier terms absent from OEIS (both entries revised Jun-Aug 2026) and from the cited literature; not a stated-open gap with a waiting table, so not a 5."
+    },
+    "usefulness": {
+      "score": 3,
+      "one_liner": "OEIS table-keepers can adopt the values and, more usefully, the completeness method (deficit-multiset M* + window bound); niche sequences limit impact."
+    },
+    "provability": {
+      "score": 5,
+      "one_liner": "Complete written minimality proofs: shrinkage lemma, exact deficit characterization of minimal preimages, finite exhaustive window scans; no heuristic component."
+    },
+    "reproducibility": {
+      "score": 4,
+      "one_liner": "One-command deterministic rerun (<2 min), SPEC.md sufficient for reimplementation, independent second-algorithm checker with 8/8 tamper rejections; still awaiting cross-session reproduction."
+    },
+    "improvement": {
+      "score": 5,
+      "one_liner": "New exact record values extending two published/OEIS sequences by one frontier term each (a(14) has ~7.14e196 digits), plus first-ever minimality proof for a(13)."
+    },
+    "total": 1200
+  },
+  "notes": "Scores mirror C-S4-01 (the stronger artifact); C-S4-02 totals 960 due to provability 4 (consumes published A001273 formulas as cited input for the dominance bound)."
+}

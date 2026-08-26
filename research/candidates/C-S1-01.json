@@ -1,0 +1,36 @@
+{
+  "id": "C-S1-01",
+  "title": "Certified exact maximum Sidon set sizes f(n) in Z_n for n = 2..110 (modular Golomb ruler table re-certification)",
+  "domain": "extremal combinatorics / difference packing",
+  "status": "delivered_saturation_result",
+  "problem": "f(n) = max{|A| : A subset of Z_n with all sums a+b (doubles included) distinct} = OEIS A260999; inverse a(k)=min{n: f(n)>=k} = A004136. Determine f(n) exactly at machine-reachable sizes with deterministic exhaustive search + completeness argument + independent checker.",
+  "hypothesis": "Our independent solver reproduces the published exact values on [2,110] and extends the documented-certified prefix (peer-reviewed to n=84) to n=110; any mismatch would be a published-table error.",
+  "baseline": "OEIS A260999: values n<=84 credited to Haanpaa-Huima-Ostergard 'Sets in Z_n with Distinct Sums of Pairs', Discrete Appl. Math. 138 (2004) 99-106; n=85..295 witnesses+values contributed by F. Cariboni 2017-18 with undocumented proof status. Related: Buratti & Stinson arXiv:2007.01908 (MGR existence k<=11); Gordon arXiv:2408.16721.",
+  "proposed_improvement": "Rerunnable deterministic DFS (translation-only symmetry => trivially complete argument), counting-bound level protocol, two cross-checked implementations, definition-based independent checker with corruption battery, plus audit of all published witness sets for n<=110.",
+  "experimental_evidence": [
+    {
+      "what": "Exact f(n) certified for all n in [2,110]; 0 timeouts; hardest proof n=105 k=10 UNSAT (244,412,475 nodes, ~91 s); matches OEIS b-file everywhere (0 mismatches); 109/109 Cariboni witnesses valid under strict checker; recomputed inverse a(2..10)=3,7,13,21,31,48,57,73,91 equals A004136.",
+      "how_to_reproduce": "bash research/experiments/S1/run.sh  (or stepwise: python research/experiments/S1/run.py solve --lo 2 --hi 90 --tag chunkA --deadline-ms 300000 ; ... verify --hi 110 --results main_chunkA.json main_chunkB.json main_chunkC.json)",
+      "result": "outputs/verification_upto_110.json verdict CLEAN; outputs/summary_n2_110.csv holds 109 certified rows with witnesses"
+    },
+    {
+      "what": "Adversarial testing of pipeline: checker corruption battery (10 cases incl. weak-vs-strict trap), naive itertools ground truth vs solvers on n=2..14, python-vs-node agreement on n=2..30, determinism rerun (identical node counts/witnesses for n=92,105).",
+      "how_to_reproduce": "python research/experiments/S1/run_tests.py --agree-to 30 --naive-to 14 --js-deadline-ms 30000 ; node research/experiments/S1/solver.js --only 92,105 --out outputs/determinism_spot.json",
+      "result": "OVERALL PASS; outputs/tests_raw.json"
+    }
+  ],
+  "counterexamples": [],
+  "adversarial_attacks": [
+    "checker corruption battery incl. deliberately broken objects and an A260998-convention object that must FAIL strict checking",
+    "third brute-force implementation (no symmetry assumptions) as ground truth at small n",
+    "cross-language reimplementation agreement (values AND witnesses)",
+    "determinism reruns (bit-identical node counts)",
+    "audit of third-party published witness sets (all passed)"
+  ],
+  "novelty_status": "prior_work_found",
+  "novelty_notes": "Family is well tabulated: peer-reviewed exact values to n=84 (Haanpaa et al. 2004), OEIS extension to n=295 by Cariboni (witnesses only). No new exact value within our reach: extending f(n) past n~111 needs k=11 UNSAT proofs beyond budget; extending A004136 past k=18 is blocked by open projective-plane-of-order-18 existence. Contribution is honest saturation/re-certification with public completeness arguments, positioned per mission option (c). Audit: research/literature/S1-novelty.md (accessed 2026-08-26).",
+  "proof_status": "proven_result",
+  "reproduction_status": "pending",
+  "score": {"novelty": 2, "usefulness": 3, "provability": 5, "reproducibility": 4, "improvement": 2, "total": 240},
+  "next_action": "Push certified prefix past n=110 (first place a genuinely new exact value can appear): add unit-multiplication canonicalization / canonical augmentation or CDCL SAT encoding for k=11 UNSAT proofs at n=111..119."
+}

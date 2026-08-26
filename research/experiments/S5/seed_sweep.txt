@@ -1,0 +1,1 @@
+sorter seeds: 30 reproduced bitset+numpy (n<=20), 147 reproduced via SAT checker (n>20), 0 failed

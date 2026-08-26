@@ -1,0 +1,64 @@
+{
+ "check_passed": true,
+ "notes": [
+  "pass: tail anchors: t(4)=0, t(2)=1, t(15999)=12",
+  "pass: A094406 a(0..12) reproduced independently",
+  "pass: a(13): sigma=15999 minimal witness verified (M* = '577'+196 nines)",
+  "pass: phase B window [15999,16119] rescan: unique hit 15999",
+  "pass: a(14): sigma=a13+0 witness ('5888' + 71358024691358024691358024691358024691358024691358024691358024691358024691358024691358024691358024691358024691358024691358024691358024691358024691358024691358024691358024691358024691358024691358022 nines) fully verified: shortest length AND lexicographically minimal",
+  "pass: phase C window = [a13, 81*d(winner)] as required",
+  "pass: phase C independent rescan: 1 hit(s) at delta=[0], argmin agrees",
+  "pass: phase D: happy-branch lower bound (>10^200 digits) dominates winner (713580246913... digits)"
+ ],
+ "tamper_tests": [
+  {
+   "test": "flip last prefix digit 8->9/7",
+   "expected_reject": true,
+   "rejected": true,
+   "verdict": "PASS"
+  },
+  {
+   "test": "transpose prefix digits (same multiset)",
+   "expected_reject": true,
+   "rejected": true,
+   "verdict": "PASS"
+  },
+  {
+   "test": "remove one nine everywhere",
+   "expected_reject": true,
+   "rejected": true,
+   "verdict": "PASS"
+  },
+  {
+   "test": "add one spurious nine",
+   "expected_reject": true,
+   "rejected": true,
+   "verdict": "PASS"
+  },
+  {
+   "test": "inject fake smaller-M* hit",
+   "expected_reject": true,
+   "rejected": true,
+   "verdict": "PASS"
+  },
+  {
+   "test": "corrupt a(13) prefix",
+   "expected_reject": true,
+   "rejected": true,
+   "verdict": "PASS"
+  },
+  {
+   "test": "misstate winner tail",
+   "expected_reject": true,
+   "rejected": true,
+   "verdict": "PASS"
+  },
+  {
+   "test": "shift completeness window bound",
+   "expected_reject": true,
+   "rejected": true,
+   "verdict": "PASS"
+  }
+ ],
+ "all_tamper_tests_behave": true
+}

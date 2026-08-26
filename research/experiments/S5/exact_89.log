@@ -1,0 +1,17 @@
+SEL(8,4) L=2: UNSAT [0.1s]
+SEL(8,4) L=3: UNSAT [1.0s]
+SEL(8,4) L=4: UNSAT [4.1s]
+SEL(8,4) L=5: UNSAT [12.4s]
+SEL(8,4) L=6: UNSAT [51.2s]
+SEL(8,4) L=7: UNSAT [118.5s]
+SEL(8,4) L=8: UNSAT [452.0s]
+Exception in thread Thread-8:
+Traceback (most recent call last):
+  File "C:\Users\Deves\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\threading.py", line 1045, in _bootstrap_inner
+SEL(8,4) L=9: UNSAT [1389.4s]
+    self.run()
+  File "C:\Users\Deves\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\threading.py", line 1401, in run
+    self.function(*self.args, **self.kwargs)
+  File "C:\Users\Deves\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages\pysat\solvers.py", line 2169, in interrupt
+    raise NotImplementedError('Limited solve is currently unsupported by CaDiCaL.')
+NotImplementedError: Limited solve is currently unsupported by CaDiCaL.

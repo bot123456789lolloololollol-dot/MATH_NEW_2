@@ -1,0 +1,54 @@
+{
+ "verified_ns": 109,
+ "uncertified": [],
+ "witness_fails": [],
+ "bfile_mismatches": [],
+ "bfile_missing": [],
+ "cariboni_audit": {
+  "checked": 109,
+  "fails": [],
+  "size_mismatch": []
+ },
+ "inverse_a004136": {
+  "recomputed": {
+   "1": 2,
+   "2": 3,
+   "3": 7,
+   "4": 13,
+   "5": 21,
+   "6": 31,
+   "7": 48,
+   "8": 57,
+   "9": 73,
+   "10": 91
+  },
+  "oeis": [
+   1,
+   3,
+   7,
+   13,
+   21,
+   31,
+   48,
+   57,
+   73,
+   91,
+   120,
+   133,
+   168,
+   183,
+   255,
+   255,
+   273,
+   307
+  ],
+  "mismatches": [
+   {
+    "k": 1,
+    "ours": 2,
+    "oeis": 1
+   }
+  ]
+ },
+ "checker_passed": 109
+}

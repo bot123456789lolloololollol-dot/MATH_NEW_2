@@ -24,7 +24,7 @@ DETECTED = lambda r: bool(r["sigma_ratio"] < 1e-8 and r["spectral_gap"] > 100)
 
 def duffing_case():
     train = [sy.duffing(x0=1.8)["X"], sy.duffing(x0=-0.4, v0=0.9)["X"]]
-    feat = lambda S: inv.poly_features(S, degree=4)[0]
+    feat = lambda S: inv.poly_features(S, degree=4, var_names=["x", "v"])[0]
     res = inv.discover_invariant(train, feat)
     pool = [sy.duffing(x0=x0, v0=v0) for x0, v0 in
             [(1.8, 0.0), (-0.4, 0.9), (0.7, -1.1), (2.2, 0.0), (-1.9, 0.4)]]
@@ -36,7 +36,7 @@ def duffing_case():
     Hp = np.concatenate([T["H_true"] for T in pool])
     a, b, r2, resid = inv.affine_match(Fp, Hp)
     # analytic direction comparison in feature space
-    _, pnames = inv.poly_features(pool[0]["X"], degree=4)
+    _, pnames = inv.poly_features(pool[0]["X"], degree=4, var_names=["x", "v"])
     hdir = np.zeros(len(pnames))
     hdir[pnames.index("v^2")] = 0.5
     hdir[pnames.index("x^2")] = -0.5
@@ -72,7 +72,7 @@ def central_force_case():
 
 def negative_controls():
     out = {}
-    feat = lambda S: inv.poly_features(S, degree=4)[0]
+    feat = lambda S: inv.poly_features(S, degree=4, var_names=["x", "v"])[0]
     res_d = inv.discover_invariant([sy.duffing(delta=0.3)["X"]], feat)
     out["damped_delta0.3"] = {"sigma_ratio": res_d["sigma_ratio"],
                               "spectral_gap": res_d["spectral_gap"],
@@ -90,7 +90,7 @@ def negative_controls():
 
 
 def calibration_sweep():
-    feat = lambda S: inv.poly_features(S, degree=4)[0]
+    feat = lambda S: inv.poly_features(S, degree=4, var_names=["x", "v"])[0]
     rows = []
     for delta in (0.0, 0.005, 0.01, 0.02, 0.05, 0.1, 0.2, 0.3):
         trajs = [sy.duffing(delta=delta, x0=1.8)["X"],

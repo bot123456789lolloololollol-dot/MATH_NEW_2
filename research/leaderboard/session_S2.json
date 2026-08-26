@@ -1,0 +1,11 @@
+{
+  "session": "S2",
+  "candidates": [
+    {
+      "id": "C-S2-01",
+      "title": "ROL: bounded-lookahead rollout LPT dispatch for P||Cmax",
+      "scores": {"novelty": 2, "usefulness": 3, "provability": 2, "reproducibility": 5, "improvement": 3},
+      "justification": "novelty 2: mechanism class (rollout) established; exact instantiation not found in reachable indexes but increment-level only. usefulness 3: cheap deterministic drop-in after LPT with a validated regime of gain (small-n/moderate-m) and honest guidance that MULTIFIT is the stronger default baseline. provability 2: no proofs; empirical dominance over LPT (0/900 losses) is an observation, not a theorem. reproducibility 5: preregistered seeds/protocol, committed instances and raw outputs, one-command rerun, byte-identical determinism verified. improvement 3: robust significant improvement over LPT (p=1.15e-28 pooled, -39% mean gap) but does NOT beat MULTIFIT or full local search."
+    }
+  ]
+}

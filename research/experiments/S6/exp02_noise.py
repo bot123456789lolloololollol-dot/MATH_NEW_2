@@ -42,24 +42,27 @@ def one_run(system, sigma, seed):
     C = fit["C"]
 
     scale = 1.1 if system == "lotka_volterra" else 28.0
-    tol = 0.05 * scale
+    tol = 1e-6 * scale   # scale-relative support tolerance (absolute dust exclusion)
     if system == "lotka_volterra":
         tvals = {("x", 0): 1.0, ("x*y", 0): -0.1, ("y", 1): -1.1, ("x*y", 1): 0.4}
     else:
-        tvals = {("y", 0): 10, ("x", 0): -10, ("x", 1): 28, ("z", 1): -1,
+        tvals = {("y", 0): 10, ("x", 0): -10, ("x", 1): 28, ("y", 1): -1,
                  ("x*z", 1): -1, ("x*y", 2): 1, ("z", 2): -8 / 3}
     C_true = np.zeros_like(C)
     for (nmeq, k), ct in tvals.items():
         i = nm.index(nmeq)
         C_true[i, k] = ct
     cerr = mt.coeff_rel_err(C, C_true)
+    act_hat = sd.significant_support(Theta, dX, C, z=5.0)
     at = np.zeros(len(nm), bool)
     for nmeq in active:
         at[nm.index(nmeq)] = True
-    jac = mt.support_jaccard(C, at, tol)
+    jac = float(np.sum(act_hat.any(1) & at) / np.sum(act_hat.any(1) | at))
     mdl = sd.DiscoveredModel(C, theta_fn, d["X"].shape[1])
     rerr = mt.rollout_error(mdl.rhs, true_rhs, y0,
-                            np.arange(0.0, horizon + 1e-9, 0.01))
+                            np.arange(0.0, horizon + 1e-9, 0.02))
+    if not np.isfinite(rerr):
+        rerr = 1e6  # diverged rollout counts as total failure, stays aggregatable
     return {"coeff_rel_err": cerr, "support_jaccard": jac, "rollout_rel_err": rerr}
 
 

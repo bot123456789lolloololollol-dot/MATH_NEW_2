@@ -1,0 +1,67 @@
+{
+  "id": "C-S5-01",
+  "title": "Session S5 combined: (W1) validated SAT pipeline with certified exact minima for sorting/merging/median comparator networks + SB2-median unsoundness finding; (W2) proven-optimal and improved k-selection networks via SAT + evolutionary search",
+  "domain": "circuit/logic optimization - comparator networks",
+  "status": "active",
+  "problem": "Two concurrent S5 workstreams on one mission. W1: decide existence of a network with <= T comparators satisfying sort / merge(m,n) / median properties; certify minima by UNSAT at T-1 and SAT at T. W2: minimal-size networks placing the k smallest of n inputs on wires 0..k-1 (SEL(n,k)); no published proven optima or best-known table known for this property.",
+  "hypothesis": "W1: a direct 0-1-principle slot encoding with total channel semantics and property-aware symmetry breaking reproduces literature-proven s(n) and yields certifiable variant minima within single-machine reach. W2: hybrid evolution with error-guided remove-and-repair beats derived upper bounds at mid n, and a slot-model SAT decision proves exact small-n SEL values.",
+  "baseline": "Plain sorters: proven sizes n<=12 (Harder arXiv:2012.04400 v3, Dec 2020, Isabelle-verified checker; Codish et al. arXiv:1405.5754, 2014); living best-known table Dobbelaere (updated Nov 2025); smallest open case s(13) in [43/44,45]. Variants: Batcher odd-even merges as constructive upper bounds; med(5)=7 folklore-known; median records from Dobbelaere/SorterHunter (fetched 2026-08-26).",
+  "proposed_improvement": "W1: open DIMACS encoder (sat_net.py) with total simulation semantics (partial variant shown UNSOUND), per-property soundness analysis of symmetry breakers (SB2 proven unsound for designated-output properties), certified exact values M(2,2)=3, M(2,3)=5, M(3,3)=6, M(2,4)=6, med(5)=7, validated reproduction of s(4..6), honest scaling limits. W2: ES with (error,size) lexicographic fitness + crossover between Pareto-record seeds; exact SEL ladder at small n.",
+  "experimental_evidence": [
+    {
+      "what": "[W1] Encoder validation: UNSAT at s(n)-1 and SAT at s(n), n=4,5,6",
+      "how_to_reproduce": "research/experiments/S5/run.sh; python solve_run.py --dimacs cnf_n6_T11.dimacs --engine glucose --timeout 400",
+      "result": "SEL(6,3)=8 exactly; UNSAT@9 certifies SEL(7,3)>=10 and SEL(8,4)>=10; verified witnesses give SEL(7,3)<=11 (11@d5), SEL(8,4)<=14"
+    },
+    {
+      "what": "[W1] Certified variant minima",
+      "how_to_reproduce": "run.sh sections 'merging networks' and 'median networks'; witnesses net_merge_*.json, net_med_n5_T7.json",
+      "result": "M(2,2)=3, M(2,3)=5, M(3,3)=6, M(2,4)=6 (UNSAT below incl. Glucose cross-checks; witnesses PASS 9..16 constant-input checks); med(5)=7 (UNSAT@6 two engines; witness PASS 32/32)"
+    },
+    {
+      "what": "[W1] SB2-median unsoundness demonstration",
+      "how_to_reproduce": "generate median n=5 T=7 with and without --no-sb2 and solve both",
+      "result": "SB2 ON: spurious UNSAT; SB2 OFF: SAT@7 with valid witness - hazard documented for anyone reusing sorter symmetries on selection properties"
+    },
+    {
+      "what": "[W1] Scaling limits of direct encoding",
+      "how_to_reproduce": "commands in REPORT.md Part II section 11",
+      "result": "n=7 T=15 UNSAT TIMEOUT >500s; med(7) T=12 TIMEOUT >480s (CPU-contended machine); clause growth ~2^n*n*T*P is the wall"
+    },
+    {
+      "what": "[W2] SEL(6,3)=8 exactly (UNSAT L<=7, verified witness)",
+      "how_to_reproduce": "python run_exact.py 6,3 900 ; python verify_selector.py (experiments/S5/)",
+      "result": "results_exact.jsonl"
+    },
+    {
+      "what": "[W2] Improved selector sizes vs derived baselines",
+      "how_to_reproduce": "python select_baselines.py && python search_es.py --mode select --n 16 --k 8 ... && python merge_runs.py runs_sel16_8",
+      "result": "SEL(10,5):21->20@d7; SEL(12,6):29->28@d9; SEL(14,7):38->36@d9; SEL(16,8):47->45@d11; dual-verified F1+F2"
+    },
+    {
+      "what": "[W2] Negative result on sorter records N=13..17",
+      "how_to_reproduce": "python search_es.py --mode sort --n 13 --minutes 20 --workers 11",
+      "result": "no improvement over published records in ~40 CPU-min/target"
+    }
+  ],
+  "counterexamples": [],
+  "adversarial_attacks": [
+    "[W1] checker.py self-test rejects truncated/redundant/broken nets (8 cases, incl. an author hand-anchor the checker correctly refuted)",
+    "[W1] trajectory clause-audit: forcing a known-optimal checked network must satisfy every generated clause (caught 4 encoder bugs during development)",
+    "[W1] second-engine agreement on every reported UNSAT (Glucose vs CaDiCaL; z3 native build for smallest cases); no DRUP proof re-check (noted)",
+    "[W2] three independent verifiers (bitset bigint, numpy, symbolic SAT) agree on 28 mixed known/broken nets; every result dual-checked F1+F2",
+    "[W2] all 177 downloaded SorterHunter record networks re-verified, 0 failures"
+  ],
+  "novelty_status": "audited_clean",
+  "novelty_notes": "Audit: research/literature/S5-novelty.md sections A-D (accessed 2026-08-26). Plain-s(n) frontier fully occupied by prior work; we claim no new bound there and document compute-scale reasons. W1 variant values are likely classical (med(5)=7 folklore-corroborated; M(m,n) small values probably derivable) - shipped as certificates not novelty claims; genuinely new artifacts = the validated encoder, the SB2 unsoundness finding, and per-value certificate chains. W2: no prior proven-optimal or best-known tables found for general-k SEL(n,k); adjacent art exists (median networks, SorterHunter records).",
+  "proof_status": "experimentally_validated_result",
+  "reproduction_status": "pending",
+  "score": {
+    "novelty": 4,
+    "usefulness": 3,
+    "provability": 4,
+    "reproducibility": 4,
+    "improvement": 3
+  },
+  "next_action": "coordinator: treat C-S5-01 as ONE combined session record (two workstreams merged additively; original W2-only record archived at experiments/S5/archived_C-S5-01_workstream2_selection.json). Technical next steps: incremental/assumption solving or Codish-style pruning to bring n=7 sorter UNSAT into minutes; then med(7), M(3,4), M(4,4), SEL exact ladder extension to n=9..10."
+}

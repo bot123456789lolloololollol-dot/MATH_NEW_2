@@ -1,0 +1,27 @@
+{
+  "session": "S1",
+  "candidate_id": "C-S1-01",
+  "scores": {
+    "novelty": {
+      "value": 2,
+      "justification": "Family and values are published (HHO 2004 to n=84; OEIS/Cariboni to n=295); our increment is the documented completeness argument for n=85..110 plus a full audit, not a new value."
+    },
+    "usefulness": {
+      "value": 3,
+      "justification": "Table keepers (OEIS) get an independently rerunnable certification of the 85..110 stretch whose proof status was previously undocumented, plus validated witnesses; niche but real."
+    },
+    "provability": {
+      "value": 5,
+      "justification": "Every claimed value carries a complete exhaustive-search certificate: written symmetry/pruning completeness arguments, counting-bound UNSAT levels, independent checker, third ground-truth implementation; nothing claimed beyond what finished."
+    },
+    "reproducibility": {
+      "value": 4,
+      "justification": "One-command deterministic rerun (run.sh, ~25 min), raw outputs committed, cross-language agreement; not yet independently reproduced by a second agent (reproduction_status pending)."
+    },
+    "improvement": {
+      "value": 2,
+      "justification": "Extends the certified (proof-documented) prefix from 84 to 110 (+26 moduli, ~31%); no new record or new exact value."
+    }
+  },
+  "total": 240
+}

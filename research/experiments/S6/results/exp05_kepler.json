@@ -1,0 +1,29 @@
+{
+ "coefficients": {
+  "const": 1.837877066921245,
+  "log_a": 1.4999999999887466,
+  "log_mu": -0.5000000000008572,
+  "e": 4.199145475780597e-10,
+  "e2": -9.9467190040059e-10
+ },
+ "expected_const_log2pi": 1.8378770664093453,
+ "bootstrap_ci_e_coeff": [
+  3.9998981904432185e-10,
+  4.407308712428559e-10
+ ],
+ "bootstrap_ci_e2_coeff": [
+  -1.0644956541239204e-09,
+  -9.299020501535304e-10
+ ],
+ "train_rms_resid": 2.2813231908016083e-12,
+ "heldout_rms_resid": 9.24521120615927e-11,
+ "eccentricity_practically_invariant": true,
+ "eccentricity_ci_excludes_zero": true,
+ "note": "CIs are at integrator precision (~1e-10); practical-equivalence threshold 1e-6 is the meaningful invariance claim",
+ "drag_falsification": {
+  "apparent_period_first_orbits": 2.1900000000000004,
+  "kepler_prediction": 8.259461581745484,
+  "relative_per_orbit_drift": -0.4695945945945945,
+  "flagged_violated": true
+ }
+}

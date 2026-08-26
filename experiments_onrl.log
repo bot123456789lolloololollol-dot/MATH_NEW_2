@@ -1,0 +1,4 @@
+[startup] spawning 6 workers...
+[startup] pool ready
+[gen   0] best=+0.000600 median=+0.004844 elapsed=17s champ=-(fit)
+[gen   5] best=+0.000600 median=+0.003451 elapsed=35s champ=-(fit)

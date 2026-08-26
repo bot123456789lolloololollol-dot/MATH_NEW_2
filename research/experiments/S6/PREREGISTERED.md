@@ -76,4 +76,21 @@ out-of-class truth y=tanh(x), confounded causal test, chaos horizon) · exp09 ba
   trimmed edges. Reason: O(dt^2) truncation bias projected onto spurious library terms
   at the 1e-6 level; the 4th-order operator removes the bias rather than loosening the
   recovery criterion. No result files existed when this change was made.
+- 2026-08-26 (bring-up): stencil upgraded once more to 7-point 6th order after the
+  O(dt^4) residue was observed to leave ~1e-7 "dust" terms in Lorenz; model selection
+  changed from BIC to chronological validation-split RSS for the same reason (BIC's iid
+  residual assumption is violated by correlated FD error). Both changes affect all
+  experiments symmetrically; recovery criteria unchanged.
+- 2026-08-26 (bring-up): support-recovery tolerance clarified as scale-relative
+  |c| < 1e-6 * max|c_true| per system (an earlier absolute tolerance misclassified
+  unit-coefficient terms in Lorenz). Subsequently replaced entirely by a z=5
+  significance test (|c| > 5 standard errors from the OLS covariance on the selected
+  support), which is the correct noise-floor rule under P2 of THEORY.md; a fixed
+  tolerance either counts fitted noise as active or hides real small terms.
+- 2026-08-26 (bring-up, adversarial A2 only): verdict requires (i) holdout NMSE < 1e-2,
+  (ii) compactness <= 25 nodes (positive-case truths have <= 17), and (iii) domain
+  transfer: NMSE < 1e-2 on [3.5,6] u [-6,-3.5], outside the training interval.
+  Rationale discovered during bring-up: a 16-node expression fits tanh(2x) in-domain
+  without representing its mechanism; without (iii) curve fitting would pass as law.
+
 

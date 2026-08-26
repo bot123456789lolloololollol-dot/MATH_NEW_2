@@ -1,0 +1,25 @@
+SEL(6,3) L=2: UNSAT [0.0s]
+SEL(6,3) L=3: UNSAT [0.0s]
+SEL(6,3) L=4: UNSAT [0.3s]
+SEL(6,3) L=5: UNSAT [2.5s]
+SEL(6,3) L=6: UNSAT [6.8s]
+SEL(6,3) L=7: UNSAT [15.1s]
+SEL(6,3) L=8: SAT [2.4s]
+  witness verified: True, net=[(0, 1), (2, 3), (4, 5), (3, 5), (0, 4), (1, 3), (1, 4), (2, 4)]
+SEL(7,3) L=2: UNSAT [0.0s]
+SEL(7,3) L=3: UNSAT [0.2s]
+SEL(7,3) L=4: UNSAT [1.2s]
+SEL(7,3) L=5: UNSAT [16.4s]
+SEL(7,3) L=6: UNSAT [22.3s]
+SEL(7,3) L=7: UNSAT [52.6s]
+SEL(7,3) L=8: UNSAT [163.6s]
+Exception in thread Thread-15:
+Traceback (most recent call last):
+  File "C:\Users\Deves\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\threading.py", line 1045, in _bootstrap_inner
+SEL(7,3) L=9: UNSAT [1881.5s]
+    self.run()
+  File "C:\Users\Deves\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\threading.py", line 1401, in run
+    self.function(*self.args, **self.kwargs)
+  File "C:\Users\Deves\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages\pysat\solvers.py", line 2169, in interrupt
+    raise NotImplementedError('Limited solve is currently unsupported by CaDiCaL.')
+NotImplementedError: Limited solve is currently unsupported by CaDiCaL.

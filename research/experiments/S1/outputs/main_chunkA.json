@@ -1,0 +1,2927 @@
+[
+ {
+  "n": 2,
+  "ub": 1,
+  "levels": [
+   {
+    "k": 1,
+    "status": "SAT",
+    "nodes": 1,
+    "ms": 0,
+    "witness": [
+     0
+    ]
+   }
+  ],
+  "k_max": 1,
+  "witness": [
+   0
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 3,
+  "ub": 2,
+  "levels": [
+   {
+    "k": 2,
+    "status": "SAT",
+    "nodes": 2,
+    "ms": 0,
+    "witness": [
+     0,
+     1
+    ]
+   }
+  ],
+  "k_max": 2,
+  "witness": [
+   0,
+   1
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 4,
+  "ub": 2,
+  "levels": [
+   {
+    "k": 2,
+    "status": "SAT",
+    "nodes": 2,
+    "ms": 0,
+    "witness": [
+     0,
+     1
+    ]
+   }
+  ],
+  "k_max": 2,
+  "witness": [
+   0,
+   1
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 5,
+  "ub": 2,
+  "levels": [
+   {
+    "k": 2,
+    "status": "SAT",
+    "nodes": 2,
+    "ms": 0,
+    "witness": [
+     0,
+     1
+    ]
+   }
+  ],
+  "k_max": 2,
+  "witness": [
+   0,
+   1
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 6,
+  "ub": 2,
+  "levels": [
+   {
+    "k": 2,
+    "status": "SAT",
+    "nodes": 2,
+    "ms": 0,
+    "witness": [
+     0,
+     1
+    ]
+   }
+  ],
+  "k_max": 2,
+  "witness": [
+   0,
+   1
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 7,
+  "ub": 3,
+  "levels": [
+   {
+    "k": 3,
+    "status": "SAT",
+    "nodes": 3,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3
+    ]
+   }
+  ],
+  "k_max": 3,
+  "witness": [
+   0,
+   1,
+   3
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 8,
+  "ub": 3,
+  "levels": [
+   {
+    "k": 3,
+    "status": "SAT",
+    "nodes": 3,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3
+    ]
+   }
+  ],
+  "k_max": 3,
+  "witness": [
+   0,
+   1,
+   3
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 9,
+  "ub": 3,
+  "levels": [
+   {
+    "k": 3,
+    "status": "SAT",
+    "nodes": 3,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3
+    ]
+   }
+  ],
+  "k_max": 3,
+  "witness": [
+   0,
+   1,
+   3
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 10,
+  "ub": 3,
+  "levels": [
+   {
+    "k": 3,
+    "status": "SAT",
+    "nodes": 3,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3
+    ]
+   }
+  ],
+  "k_max": 3,
+  "witness": [
+   0,
+   1,
+   3
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 11,
+  "ub": 3,
+  "levels": [
+   {
+    "k": 3,
+    "status": "SAT",
+    "nodes": 3,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3
+    ]
+   }
+  ],
+  "k_max": 3,
+  "witness": [
+   0,
+   1,
+   3
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 12,
+  "ub": 3,
+  "levels": [
+   {
+    "k": 3,
+    "status": "SAT",
+    "nodes": 3,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3
+    ]
+   }
+  ],
+  "k_max": 3,
+  "witness": [
+   0,
+   1,
+   3
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 13,
+  "ub": 4,
+  "levels": [
+   {
+    "k": 4,
+    "status": "SAT",
+    "nodes": 4,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     9
+    ]
+   }
+  ],
+  "k_max": 4,
+  "witness": [
+   0,
+   1,
+   3,
+   9
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 14,
+  "ub": 4,
+  "levels": [
+   {
+    "k": 4,
+    "status": "SAT",
+    "nodes": 5,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     4,
+     6
+    ]
+   }
+  ],
+  "k_max": 4,
+  "witness": [
+   0,
+   1,
+   4,
+   6
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 15,
+  "ub": 4,
+  "levels": [
+   {
+    "k": 4,
+    "status": "SAT",
+    "nodes": 4,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7
+    ]
+   }
+  ],
+  "k_max": 4,
+  "witness": [
+   0,
+   1,
+   3,
+   7
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 16,
+  "ub": 4,
+  "levels": [
+   {
+    "k": 4,
+    "status": "SAT",
+    "nodes": 4,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7
+    ]
+   }
+  ],
+  "k_max": 4,
+  "witness": [
+   0,
+   1,
+   3,
+   7
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 17,
+  "ub": 4,
+  "levels": [
+   {
+    "k": 4,
+    "status": "SAT",
+    "nodes": 4,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7
+    ]
+   }
+  ],
+  "k_max": 4,
+  "witness": [
+   0,
+   1,
+   3,
+   7
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 18,
+  "ub": 4,
+  "levels": [
+   {
+    "k": 4,
+    "status": "SAT",
+    "nodes": 4,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7
+    ]
+   }
+  ],
+  "k_max": 4,
+  "witness": [
+   0,
+   1,
+   3,
+   7
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 19,
+  "ub": 4,
+  "levels": [
+   {
+    "k": 4,
+    "status": "SAT",
+    "nodes": 4,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7
+    ]
+   }
+  ],
+  "k_max": 4,
+  "witness": [
+   0,
+   1,
+   3,
+   7
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 20,
+  "ub": 4,
+  "levels": [
+   {
+    "k": 4,
+    "status": "SAT",
+    "nodes": 4,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7
+    ]
+   }
+  ],
+  "k_max": 4,
+  "witness": [
+   0,
+   1,
+   3,
+   7
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 21,
+  "ub": 5,
+  "levels": [
+   {
+    "k": 5,
+    "status": "SAT",
+    "nodes": 19,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     4,
+     14,
+     16
+    ]
+   }
+  ],
+  "k_max": 5,
+  "witness": [
+   0,
+   1,
+   4,
+   14,
+   16
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 22,
+  "ub": 5,
+  "levels": [
+   {
+    "k": 5,
+    "status": "UNSAT",
+    "nodes": 489,
+    "ms": 2
+   },
+   {
+    "k": 4,
+    "status": "SAT",
+    "nodes": 4,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7
+    ]
+   }
+  ],
+  "k_max": 4,
+  "witness": [
+   0,
+   1,
+   3,
+   7
+  ],
+  "certified": true,
+  "total_ms": 2
+ },
+ {
+  "n": 23,
+  "ub": 5,
+  "levels": [
+   {
+    "k": 5,
+    "status": "SAT",
+    "nodes": 6,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     8,
+     14
+    ]
+   }
+  ],
+  "k_max": 5,
+  "witness": [
+   0,
+   1,
+   3,
+   8,
+   14
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 24,
+  "ub": 5,
+  "levels": [
+   {
+    "k": 5,
+    "status": "SAT",
+    "nodes": 7,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     9,
+     20
+    ]
+   }
+  ],
+  "k_max": 5,
+  "witness": [
+   0,
+   1,
+   3,
+   9,
+   20
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 25,
+  "ub": 5,
+  "levels": [
+   {
+    "k": 5,
+    "status": "SAT",
+    "nodes": 5,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12
+    ]
+   }
+  ],
+  "k_max": 5,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 26,
+  "ub": 5,
+  "levels": [
+   {
+    "k": 5,
+    "status": "SAT",
+    "nodes": 5,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12
+    ]
+   }
+  ],
+  "k_max": 5,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 27,
+  "ub": 5,
+  "levels": [
+   {
+    "k": 5,
+    "status": "SAT",
+    "nodes": 5,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12
+    ]
+   }
+  ],
+  "k_max": 5,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 28,
+  "ub": 5,
+  "levels": [
+   {
+    "k": 5,
+    "status": "SAT",
+    "nodes": 5,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12
+    ]
+   }
+  ],
+  "k_max": 5,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 29,
+  "ub": 5,
+  "levels": [
+   {
+    "k": 5,
+    "status": "SAT",
+    "nodes": 5,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12
+    ]
+   }
+  ],
+  "k_max": 5,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 30,
+  "ub": 5,
+  "levels": [
+   {
+    "k": 5,
+    "status": "SAT",
+    "nodes": 5,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12
+    ]
+   }
+  ],
+  "k_max": 5,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 31,
+  "ub": 6,
+  "levels": [
+   {
+    "k": 6,
+    "status": "SAT",
+    "nodes": 14,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     8,
+     12,
+     18
+    ]
+   }
+  ],
+  "k_max": 6,
+  "witness": [
+   0,
+   1,
+   3,
+   8,
+   12,
+   18
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 32,
+  "ub": 6,
+  "levels": [
+   {
+    "k": 6,
+    "status": "UNSAT",
+    "nodes": 4529,
+    "ms": 7
+   },
+   {
+    "k": 5,
+    "status": "SAT",
+    "nodes": 5,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12
+    ]
+   }
+  ],
+  "k_max": 5,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12
+  ],
+  "certified": true,
+  "total_ms": 7
+ },
+ {
+  "n": 33,
+  "ub": 6,
+  "levels": [
+   {
+    "k": 6,
+    "status": "UNSAT",
+    "nodes": 8017,
+    "ms": 4
+   },
+   {
+    "k": 5,
+    "status": "SAT",
+    "nodes": 5,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12
+    ]
+   }
+  ],
+  "k_max": 5,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12
+  ],
+  "certified": true,
+  "total_ms": 4
+ },
+ {
+  "n": 34,
+  "ub": 6,
+  "levels": [
+   {
+    "k": 6,
+    "status": "UNSAT",
+    "nodes": 6277,
+    "ms": 2
+   },
+   {
+    "k": 5,
+    "status": "SAT",
+    "nodes": 5,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12
+    ]
+   }
+  ],
+  "k_max": 5,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12
+  ],
+  "certified": true,
+  "total_ms": 2
+ },
+ {
+  "n": 35,
+  "ub": 6,
+  "levels": [
+   {
+    "k": 6,
+    "status": "SAT",
+    "nodes": 6,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20
+    ]
+   }
+  ],
+  "k_max": 6,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 36,
+  "ub": 6,
+  "levels": [
+   {
+    "k": 6,
+    "status": "SAT",
+    "nodes": 18,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     8,
+     23,
+     27
+    ]
+   }
+  ],
+  "k_max": 6,
+  "witness": [
+   0,
+   1,
+   3,
+   8,
+   23,
+   27
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 37,
+  "ub": 6,
+  "levels": [
+   {
+    "k": 6,
+    "status": "SAT",
+    "nodes": 8,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     16,
+     26
+    ]
+   }
+  ],
+  "k_max": 6,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   16,
+   26
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 38,
+  "ub": 6,
+  "levels": [
+   {
+    "k": 6,
+    "status": "SAT",
+    "nodes": 9,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     17,
+     30
+    ]
+   }
+  ],
+  "k_max": 6,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   17,
+   30
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 39,
+  "ub": 6,
+  "levels": [
+   {
+    "k": 6,
+    "status": "SAT",
+    "nodes": 6,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     22
+    ]
+   }
+  ],
+  "k_max": 6,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   22
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 40,
+  "ub": 6,
+  "levels": [
+   {
+    "k": 6,
+    "status": "SAT",
+    "nodes": 9,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     17,
+     28
+    ]
+   }
+  ],
+  "k_max": 6,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   17,
+   28
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 41,
+  "ub": 6,
+  "levels": [
+   {
+    "k": 6,
+    "status": "SAT",
+    "nodes": 6,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20
+    ]
+   }
+  ],
+  "k_max": 6,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 42,
+  "ub": 6,
+  "levels": [
+   {
+    "k": 6,
+    "status": "SAT",
+    "nodes": 6,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20
+    ]
+   }
+  ],
+  "k_max": 6,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 43,
+  "ub": 7,
+  "levels": [
+   {
+    "k": 7,
+    "status": "UNSAT",
+    "nodes": 47761,
+    "ms": 21
+   },
+   {
+    "k": 6,
+    "status": "SAT",
+    "nodes": 6,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20
+    ]
+   }
+  ],
+  "k_max": 6,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20
+  ],
+  "certified": true,
+  "total_ms": 21
+ },
+ {
+  "n": 44,
+  "ub": 7,
+  "levels": [
+   {
+    "k": 7,
+    "status": "UNSAT",
+    "nodes": 40829,
+    "ms": 9
+   },
+   {
+    "k": 6,
+    "status": "SAT",
+    "nodes": 6,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20
+    ]
+   }
+  ],
+  "k_max": 6,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20
+  ],
+  "certified": true,
+  "total_ms": 9
+ },
+ {
+  "n": 45,
+  "ub": 7,
+  "levels": [
+   {
+    "k": 7,
+    "status": "UNSAT",
+    "nodes": 68905,
+    "ms": 15
+   },
+   {
+    "k": 6,
+    "status": "SAT",
+    "nodes": 6,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20
+    ]
+   }
+  ],
+  "k_max": 6,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20
+  ],
+  "certified": true,
+  "total_ms": 15
+ },
+ {
+  "n": 46,
+  "ub": 7,
+  "levels": [
+   {
+    "k": 7,
+    "status": "UNSAT",
+    "nodes": 53741,
+    "ms": 12
+   },
+   {
+    "k": 6,
+    "status": "SAT",
+    "nodes": 6,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20
+    ]
+   }
+  ],
+  "k_max": 6,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20
+  ],
+  "certified": true,
+  "total_ms": 12
+ },
+ {
+  "n": 47,
+  "ub": 7,
+  "levels": [
+   {
+    "k": 7,
+    "status": "UNSAT",
+    "nodes": 94927,
+    "ms": 20
+   },
+   {
+    "k": 6,
+    "status": "SAT",
+    "nodes": 6,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20
+    ]
+   }
+  ],
+  "k_max": 6,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20
+  ],
+  "certified": true,
+  "total_ms": 20
+ },
+ {
+  "n": 48,
+  "ub": 7,
+  "levels": [
+   {
+    "k": 7,
+    "status": "SAT",
+    "nodes": 367,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     15,
+     20,
+     38,
+     42
+    ]
+   }
+  ],
+  "k_max": 7,
+  "witness": [
+   0,
+   1,
+   3,
+   15,
+   20,
+   38,
+   42
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 49,
+  "ub": 7,
+  "levels": [
+   {
+    "k": 7,
+    "status": "SAT",
+    "nodes": 65,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     27,
+     35,
+     40
+    ]
+   }
+  ],
+  "k_max": 7,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   27,
+   35,
+   40
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 50,
+  "ub": 7,
+  "levels": [
+   {
+    "k": 7,
+    "status": "SAT",
+    "nodes": 81,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     8,
+     14,
+     18,
+     30
+    ]
+   }
+  ],
+  "k_max": 7,
+  "witness": [
+   0,
+   1,
+   3,
+   8,
+   14,
+   18,
+   30
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 51,
+  "ub": 7,
+  "levels": [
+   {
+    "k": 7,
+    "status": "SAT",
+    "nodes": 7,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20,
+     30
+    ]
+   }
+  ],
+  "k_max": 7,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20,
+   30
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 52,
+  "ub": 7,
+  "levels": [
+   {
+    "k": 7,
+    "status": "SAT",
+    "nodes": 8,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     22,
+     35
+    ]
+   }
+  ],
+  "k_max": 7,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   22,
+   35
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 53,
+  "ub": 7,
+  "levels": [
+   {
+    "k": 7,
+    "status": "SAT",
+    "nodes": 8,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     22,
+     40
+    ]
+   }
+  ],
+  "k_max": 7,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   22,
+   40
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 54,
+  "ub": 7,
+  "levels": [
+   {
+    "k": 7,
+    "status": "SAT",
+    "nodes": 28,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     16,
+     26,
+     37
+    ]
+   }
+  ],
+  "k_max": 7,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   16,
+   26,
+   37
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 55,
+  "ub": 7,
+  "levels": [
+   {
+    "k": 7,
+    "status": "SAT",
+    "nodes": 7,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20,
+     30
+    ]
+   }
+  ],
+  "k_max": 7,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20,
+   30
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 56,
+  "ub": 7,
+  "levels": [
+   {
+    "k": 7,
+    "status": "SAT",
+    "nodes": 7,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20,
+     41
+    ]
+   }
+  ],
+  "k_max": 7,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20,
+   41
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 57,
+  "ub": 8,
+  "levels": [
+   {
+    "k": 8,
+    "status": "SAT",
+    "nodes": 1336,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     13,
+     32,
+     36,
+     43,
+     52
+    ]
+   }
+  ],
+  "k_max": 8,
+  "witness": [
+   0,
+   1,
+   3,
+   13,
+   32,
+   36,
+   43,
+   52
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 58,
+  "ub": 8,
+  "levels": [
+   {
+    "k": 8,
+    "status": "UNSAT",
+    "nodes": 364815,
+    "ms": 93
+   },
+   {
+    "k": 7,
+    "status": "SAT",
+    "nodes": 7,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20,
+     43
+    ]
+   }
+  ],
+  "k_max": 7,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20,
+   43
+  ],
+  "certified": true,
+  "total_ms": 93
+ },
+ {
+  "n": 59,
+  "ub": 8,
+  "levels": [
+   {
+    "k": 8,
+    "status": "UNSAT",
+    "nodes": 615649,
+    "ms": 151
+   },
+   {
+    "k": 7,
+    "status": "SAT",
+    "nodes": 7,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20,
+     34
+    ]
+   }
+  ],
+  "k_max": 7,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20,
+   34
+  ],
+  "certified": true,
+  "total_ms": 151
+ },
+ {
+  "n": 60,
+  "ub": 8,
+  "levels": [
+   {
+    "k": 8,
+    "status": "UNSAT",
+    "nodes": 527055,
+    "ms": 128
+   },
+   {
+    "k": 7,
+    "status": "SAT",
+    "nodes": 7,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20,
+     38
+    ]
+   }
+  ],
+  "k_max": 7,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20,
+   38
+  ],
+  "certified": true,
+  "total_ms": 128
+ },
+ {
+  "n": 61,
+  "ub": 8,
+  "levels": [
+   {
+    "k": 8,
+    "status": "UNSAT",
+    "nodes": 830089,
+    "ms": 204
+   },
+   {
+    "k": 7,
+    "status": "SAT",
+    "nodes": 7,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20,
+     30
+    ]
+   }
+  ],
+  "k_max": 7,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20,
+   30
+  ],
+  "certified": true,
+  "total_ms": 204
+ },
+ {
+  "n": 62,
+  "ub": 8,
+  "levels": [
+   {
+    "k": 8,
+    "status": "UNSAT",
+    "nodes": 665299,
+    "ms": 165
+   },
+   {
+    "k": 7,
+    "status": "SAT",
+    "nodes": 7,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20,
+     30
+    ]
+   }
+  ],
+  "k_max": 7,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20,
+   30
+  ],
+  "certified": true,
+  "total_ms": 165
+ },
+ {
+  "n": 63,
+  "ub": 8,
+  "levels": [
+   {
+    "k": 8,
+    "status": "SAT",
+    "nodes": 56,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     15,
+     20,
+     31,
+     41
+    ]
+   }
+  ],
+  "k_max": 8,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   15,
+   20,
+   31,
+   41
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 64,
+  "ub": 8,
+  "levels": [
+   {
+    "k": 8,
+    "status": "SAT",
+    "nodes": 560,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     8,
+     19,
+     25,
+     29,
+     52
+    ]
+   }
+  ],
+  "k_max": 8,
+  "witness": [
+   0,
+   1,
+   3,
+   8,
+   19,
+   25,
+   29,
+   52
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 65,
+  "ub": 8,
+  "levels": [
+   {
+    "k": 8,
+    "status": "SAT",
+    "nodes": 2427,
+    "ms": 1,
+    "witness": [
+     0,
+     1,
+     3,
+     11,
+     15,
+     20,
+     36,
+     42
+    ]
+   }
+  ],
+  "k_max": 8,
+  "witness": [
+   0,
+   1,
+   3,
+   11,
+   15,
+   20,
+   36,
+   42
+  ],
+  "certified": true,
+  "total_ms": 1
+ },
+ {
+  "n": 66,
+  "ub": 8,
+  "levels": [
+   {
+    "k": 8,
+    "status": "SAT",
+    "nodes": 9,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20,
+     41,
+     51
+    ]
+   }
+  ],
+  "k_max": 8,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20,
+   41,
+   51
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 67,
+  "ub": 8,
+  "levels": [
+   {
+    "k": 8,
+    "status": "SAT",
+    "nodes": 8,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20,
+     30,
+     46
+    ]
+   }
+  ],
+  "k_max": 8,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20,
+   30,
+   46
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 68,
+  "ub": 8,
+  "levels": [
+   {
+    "k": 8,
+    "status": "SAT",
+    "nodes": 10,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20,
+     43,
+     53
+    ]
+   }
+  ],
+  "k_max": 8,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20,
+   43,
+   53
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 69,
+  "ub": 8,
+  "levels": [
+   {
+    "k": 8,
+    "status": "SAT",
+    "nodes": 14,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     22,
+     30,
+     56
+    ]
+   }
+  ],
+  "k_max": 8,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   22,
+   30,
+   56
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 70,
+  "ub": 8,
+  "levels": [
+   {
+    "k": 8,
+    "status": "SAT",
+    "nodes": 17,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     22,
+     45,
+     53
+    ]
+   }
+  ],
+  "k_max": 8,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   22,
+   45,
+   53
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 71,
+  "ub": 8,
+  "levels": [
+   {
+    "k": 8,
+    "status": "SAT",
+    "nodes": 18,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     22,
+     30,
+     46
+    ]
+   }
+  ],
+  "k_max": 8,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   22,
+   30,
+   46
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 72,
+  "ub": 8,
+  "levels": [
+   {
+    "k": 8,
+    "status": "SAT",
+    "nodes": 9,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20,
+     34,
+     49
+    ]
+   }
+  ],
+  "k_max": 8,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20,
+   34,
+   49
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 73,
+  "ub": 9,
+  "levels": [
+   {
+    "k": 9,
+    "status": "SAT",
+    "nodes": 202,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     15,
+     31,
+     36,
+     54,
+     63
+    ]
+   }
+  ],
+  "k_max": 9,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   15,
+   31,
+   36,
+   54,
+   63
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 74,
+  "ub": 9,
+  "levels": [
+   {
+    "k": 9,
+    "status": "UNSAT",
+    "nodes": 3645475,
+    "ms": 1068
+   },
+   {
+    "k": 8,
+    "status": "SAT",
+    "nodes": 12,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20,
+     45,
+     59
+    ]
+   }
+  ],
+  "k_max": 8,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20,
+   45,
+   59
+  ],
+  "certified": true,
+  "total_ms": 1068
+ },
+ {
+  "n": 75,
+  "ub": 9,
+  "levels": [
+   {
+    "k": 9,
+    "status": "UNSAT",
+    "nodes": 5995373,
+    "ms": 1715
+   },
+   {
+    "k": 8,
+    "status": "SAT",
+    "nodes": 9,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20,
+     34,
+     50
+    ]
+   }
+  ],
+  "k_max": 8,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20,
+   34,
+   50
+  ],
+  "certified": true,
+  "total_ms": 1715
+ },
+ {
+  "n": 76,
+  "ub": 9,
+  "levels": [
+   {
+    "k": 9,
+    "status": "UNSAT",
+    "nodes": 4990373,
+    "ms": 1538
+   },
+   {
+    "k": 8,
+    "status": "SAT",
+    "nodes": 8,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20,
+     30,
+     51
+    ]
+   }
+  ],
+  "k_max": 8,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20,
+   30,
+   51
+  ],
+  "certified": true,
+  "total_ms": 1538
+ },
+ {
+  "n": 77,
+  "ub": 9,
+  "levels": [
+   {
+    "k": 9,
+    "status": "UNSAT",
+    "nodes": 7753617,
+    "ms": 2405
+   },
+   {
+    "k": 8,
+    "status": "SAT",
+    "nodes": 8,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20,
+     30,
+     44
+    ]
+   }
+  ],
+  "k_max": 8,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20,
+   30,
+   44
+  ],
+  "certified": true,
+  "total_ms": 2405
+ },
+ {
+  "n": 78,
+  "ub": 9,
+  "levels": [
+   {
+    "k": 9,
+    "status": "UNSAT",
+    "nodes": 6300997,
+    "ms": 1862
+   },
+   {
+    "k": 8,
+    "status": "SAT",
+    "nodes": 13,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20,
+     47,
+     57
+    ]
+   }
+  ],
+  "k_max": 8,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20,
+   47,
+   57
+  ],
+  "certified": true,
+  "total_ms": 1862
+ },
+ {
+  "n": 79,
+  "ub": 9,
+  "levels": [
+   {
+    "k": 9,
+    "status": "UNSAT",
+    "nodes": 10113805,
+    "ms": 2884
+   },
+   {
+    "k": 8,
+    "status": "SAT",
+    "nodes": 8,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20,
+     30,
+     44
+    ]
+   }
+  ],
+  "k_max": 8,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20,
+   30,
+   44
+  ],
+  "certified": true,
+  "total_ms": 2884
+ },
+ {
+  "n": 80,
+  "ub": 9,
+  "levels": [
+   {
+    "k": 9,
+    "status": "SAT",
+    "nodes": 6211,
+    "ms": 3,
+    "witness": [
+     0,
+     1,
+     3,
+     9,
+     22,
+     27,
+     34,
+     38,
+     66
+    ]
+   }
+  ],
+  "k_max": 9,
+  "witness": [
+   0,
+   1,
+   3,
+   9,
+   22,
+   27,
+   34,
+   38,
+   66
+  ],
+  "certified": true,
+  "total_ms": 3
+ },
+ {
+  "n": 81,
+  "ub": 9,
+  "levels": [
+   {
+    "k": 9,
+    "status": "UNSAT",
+    "nodes": 13387937,
+    "ms": 3998
+   },
+   {
+    "k": 8,
+    "status": "SAT",
+    "nodes": 8,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20,
+     30,
+     45
+    ]
+   }
+  ],
+  "k_max": 8,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20,
+   30,
+   45
+  ],
+  "certified": true,
+  "total_ms": 3998
+ },
+ {
+  "n": 82,
+  "ub": 9,
+  "levels": [
+   {
+    "k": 9,
+    "status": "UNSAT",
+    "nodes": 10553941,
+    "ms": 3343
+   },
+   {
+    "k": 8,
+    "status": "SAT",
+    "nodes": 9,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20,
+     34,
+     59
+    ]
+   }
+  ],
+  "k_max": 8,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20,
+   34,
+   59
+  ],
+  "certified": true,
+  "total_ms": 3343
+ },
+ {
+  "n": 83,
+  "ub": 9,
+  "levels": [
+   {
+    "k": 9,
+    "status": "UNSAT",
+    "nodes": 16966217,
+    "ms": 5042
+   },
+   {
+    "k": 8,
+    "status": "SAT",
+    "nodes": 8,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20,
+     30,
+     44
+    ]
+   }
+  ],
+  "k_max": 8,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20,
+   30,
+   44
+  ],
+  "certified": true,
+  "total_ms": 5042
+ },
+ {
+  "n": 84,
+  "ub": 9,
+  "levels": [
+   {
+    "k": 9,
+    "status": "UNSAT",
+    "nodes": 14284365,
+    "ms": 4455
+   },
+   {
+    "k": 8,
+    "status": "SAT",
+    "nodes": 8,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20,
+     30,
+     51
+    ]
+   }
+  ],
+  "k_max": 8,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20,
+   30,
+   51
+  ],
+  "certified": true,
+  "total_ms": 4455
+ },
+ {
+  "n": 85,
+  "ub": 9,
+  "levels": [
+   {
+    "k": 9,
+    "status": "SAT",
+    "nodes": 7248,
+    "ms": 3,
+    "witness": [
+     0,
+     1,
+     3,
+     8,
+     14,
+     29,
+     33,
+     49,
+     76
+    ]
+   }
+  ],
+  "k_max": 9,
+  "witness": [
+   0,
+   1,
+   3,
+   8,
+   14,
+   29,
+   33,
+   49,
+   76
+  ],
+  "certified": true,
+  "total_ms": 3
+ },
+ {
+  "n": 86,
+  "ub": 9,
+  "levels": [
+   {
+    "k": 9,
+    "status": "SAT",
+    "nodes": 5931,
+    "ms": 2,
+    "witness": [
+     0,
+     1,
+     3,
+     8,
+     17,
+     36,
+     42,
+     63,
+     74
+    ]
+   }
+  ],
+  "k_max": 9,
+  "witness": [
+   0,
+   1,
+   3,
+   8,
+   17,
+   36,
+   42,
+   63,
+   74
+  ],
+  "certified": true,
+  "total_ms": 2
+ },
+ {
+  "n": 87,
+  "ub": 9,
+  "levels": [
+   {
+    "k": 9,
+    "status": "SAT",
+    "nodes": 1677,
+    "ms": 1,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     17,
+     36,
+     49,
+     67,
+     79
+    ]
+   }
+  ],
+  "k_max": 9,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   17,
+   36,
+   49,
+   67,
+   79
+  ],
+  "certified": true,
+  "total_ms": 1
+ },
+ {
+  "n": 88,
+  "ub": 9,
+  "levels": [
+   {
+    "k": 9,
+    "status": "SAT",
+    "nodes": 3803,
+    "ms": 2,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     27,
+     41,
+     52,
+     60,
+     73
+    ]
+   }
+  ],
+  "k_max": 9,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   27,
+   41,
+   52,
+   60,
+   73
+  ],
+  "certified": true,
+  "total_ms": 2
+ },
+ {
+  "n": 89,
+  "ub": 9,
+  "levels": [
+   {
+    "k": 9,
+    "status": "SAT",
+    "nodes": 20,
+    "ms": 0,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     12,
+     20,
+     35,
+     49,
+     65
+    ]
+   }
+  ],
+  "k_max": 9,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   12,
+   20,
+   35,
+   49,
+   65
+  ],
+  "certified": true,
+  "total_ms": 0
+ },
+ {
+  "n": 90,
+  "ub": 9,
+  "levels": [
+   {
+    "k": 9,
+    "status": "SAT",
+    "nodes": 2607,
+    "ms": 1,
+    "witness": [
+     0,
+     1,
+     3,
+     7,
+     20,
+     28,
+     51,
+     61,
+     75
+    ]
+   }
+  ],
+  "k_max": 9,
+  "witness": [
+   0,
+   1,
+   3,
+   7,
+   20,
+   28,
+   51,
+   61,
+   75
+  ],
+  "certified": true,
+  "total_ms": 1
+ }
+]

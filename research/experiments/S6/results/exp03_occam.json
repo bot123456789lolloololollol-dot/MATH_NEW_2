@@ -1,0 +1,148 @@
+{
+ "cases": [
+  {
+   "case": "S1_sincos",
+   "truth": "sin(x)*cos(x)",
+   "runs": [
+    {
+     "seed": 0,
+     "nodes": 5,
+     "holdout_nmse": 0.0,
+     "expr": "sin(x)*cos(x)",
+     "equivalent_to_truth": true,
+     "max_rel_err_vs_truth": 0.0
+    },
+    {
+     "seed": 1,
+     "nodes": 5,
+     "holdout_nmse": 0.0,
+     "expr": "sin(x)*cos(x)",
+     "equivalent_to_truth": true,
+     "max_rel_err_vs_truth": 0.0
+    },
+    {
+     "seed": 2,
+     "nodes": 5,
+     "holdout_nmse": 0.0,
+     "expr": "sin(x)*cos(x)",
+     "equivalent_to_truth": true,
+     "max_rel_err_vs_truth": 0.0
+    },
+    {
+     "seed": 3,
+     "nodes": 11,
+     "holdout_nmse": 5.765457501968611e-18,
+     "expr": "log(exp(sin(re(x))*cosh(im(x))) + 1.0e-9)*cos(x)",
+     "equivalent_to_truth": true,
+     "max_rel_err_vs_truth": 2.9170569320684748e-09
+    },
+    {
+     "seed": 4,
+     "nodes": 19,
+     "holdout_nmse": 0.0,
+     "expr": "sin(x)*cos(x)",
+     "equivalent_to_truth": true,
+     "max_rel_err_vs_truth": 0.0
+    }
+   ],
+   "n_equivalent_of_5": 5,
+   "min_complexity_found": 5
+  },
+  {
+   "case": "S2_rational",
+   "truth": "(x^3-1)/(x-1)",
+   "runs": [
+    {
+     "seed": 0,
+     "nodes": 9,
+     "holdout_nmse": 7.463818826469805e-32,
+     "expr": "x**2 + x + 1",
+     "equivalent_to_truth": true,
+     "max_rel_err_vs_truth": 5.076489243345333e-15
+    },
+    {
+     "seed": 1,
+     "nodes": 34,
+     "holdout_nmse": 1.4152806234665913e-05,
+     "expr": "-(-x - 0.5206)*(x + 0.434968841635187) + cos(cos(exp(-0.224977478738925*exp(-x))))",
+     "equivalent_to_truth": false,
+     "max_rel_err_vs_truth": 0.0025684884411176574
+    },
+    {
+     "seed": 2,
+     "nodes": 19,
+     "holdout_nmse": 4.6732031411819834e-05,
+     "expr": "exp(x - 0.155719339163077*exp(-0.0568*x)*sin(x*sin(x - 1.789)))",
+     "equivalent_to_truth": false,
+     "max_rel_err_vs_truth": 0.003179091682622694
+    },
+    {
+     "seed": 3,
+     "nodes": 17,
+     "holdout_nmse": 9.324588967601922e-32,
+     "expr": "x**2 + x + 1",
+     "equivalent_to_truth": true,
+     "max_rel_err_vs_truth": 1.13634849050875e-14
+    },
+    {
+     "seed": 4,
+     "nodes": 9,
+     "holdout_nmse": 6.830907864812416e-32,
+     "expr": "x**2 + x + 1",
+     "equivalent_to_truth": true,
+     "max_rel_err_vs_truth": 4.888830209643725e-15
+    }
+   ],
+   "n_equivalent_of_5": 3,
+   "min_complexity_found": 9
+  },
+  {
+   "case": "S3_log",
+   "truth": "log(x^2-1)-log(x-1)",
+   "runs": [
+    {
+     "seed": 0,
+     "nodes": 6,
+     "holdout_nmse": 1.5128479757049506e-18,
+     "expr": "log(Abs(x + 1) + 1.0e-9)",
+     "equivalent_to_truth": true,
+     "max_rel_err_vs_truth": 3.030543644390961e-10
+    },
+    {
+     "seed": 1,
+     "nodes": 6,
+     "holdout_nmse": 1.5037685229682028e-18,
+     "expr": "log(Abs(x + 1) + 1.0e-9)",
+     "equivalent_to_truth": true,
+     "max_rel_err_vs_truth": 3.029905647862646e-10
+    },
+    {
+     "seed": 2,
+     "nodes": 6,
+     "holdout_nmse": 1.5152038820130028e-18,
+     "expr": "log(Abs(x + 1) + 1.0e-9)",
+     "equivalent_to_truth": true,
+     "max_rel_err_vs_truth": 3.030586665444887e-10
+    },
+    {
+     "seed": 3,
+     "nodes": 8,
+     "holdout_nmse": 1.437613182783898e-18,
+     "expr": "log(Abs(x + 1) + 1.0e-9)",
+     "equivalent_to_truth": true,
+     "max_rel_err_vs_truth": 3.030953274949094e-10
+    },
+    {
+     "seed": 4,
+     "nodes": 6,
+     "holdout_nmse": 1.4753045212348037e-18,
+     "expr": "log(Abs(x + 1) + 1.0e-9)",
+     "equivalent_to_truth": true,
+     "max_rel_err_vs_truth": 3.028453871674047e-10
+    }
+   ],
+   "n_equivalent_of_5": 5,
+   "min_complexity_found": 6
+  }
+ ]
+}

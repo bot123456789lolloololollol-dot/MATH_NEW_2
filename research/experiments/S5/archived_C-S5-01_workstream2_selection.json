@@ -1,0 +1,27 @@
+{
+  "id": "C-S5-01",
+  "title": "Proven-optimal and improved k-selection comparator networks (SEL(n,k)) via validated SAT + evolutionary search",
+  "domain": "circuit/logic optimization - comparator networks",
+  "status": "active",
+  "problem": "Minimal-size comparator networks placing the k smallest of n inputs on wires 0..k-1 (property SEL(n,k)); no published proven optima or best-known table exists for this property.",
+  "hypothesis": "A slot-model SAT encoding (validated against literature-proven sorter optima and brute force) proves exact minima at small n, and hybrid evolution with error-guided remove-and-repair beats derived upper bounds at mid n.",
+  "baseline": "(a) best-known record sorters truncated+pruned to selectors; (b) SorterHunter median-selection networks (Dobbelaere, fetched 2026-08-26); (c) for sorters: published best-known 45/51/56/60/71 CEs for N=13..17.",
+  "proposed_improvement": "ES with (error,size) lexicographic fitness + crossover between Pareto-record seeds + SAT decision procedure with sound symmetry breaking for exact values.",
+  "experimental_evidence": [
+    {"what": "SEL(6,3)=8 exactly (UNSAT L<=7, verified witness)", "how_to_reproduce": "python run_exact.py 6,3 900 ; python verify_selector.py", "result": "results_exact.jsonl"},
+    {"what": "Improved selector sizes vs baselines", "how_to_reproduce": "python select_baselines.py && python search_es.py --mode select --n 16 --k 8 ... && python merge_runs.py runs_sel16_8", "result": "SEL(10,5):21->20@d7; SEL(12,6):29->28@d9; SEL(14,7):38->36@d9; SEL(16,8):47->45@d11; all dual-verified F1+F2"},
+    {"what": "Negative result on sorter records N=13..17", "how_to_reproduce": "python search_es.py --mode sort --n 13 --minutes 20 --workers 11", "result": "no improvement over published records in ~40 CPU-min/target"}
+  ],
+  "counterexamples": [],
+  "adversarial_attacks": [
+    "encoder validated: reproduces s(3)=3,s(4)=5,s(5)=9 (SAT at optimum, UNSAT below); agrees with brute-force SEL(4,2)=4, SEL(5,2)=6",
+    "every claimed network re-verified by two independent exhaustive verifiers in fresh processes",
+    "witness networks decoded from SAT models re-verified before recording"
+  ],
+  "novelty_status": "audited_clean",
+  "novelty_notes": "No prior proven-optimal or best-known tables found for general-k selection property SEL(n,k) (audit in ../literature/S5-novelty.md sections B,D). Median-network records (Dobbelaere) are a stronger-constrained variant and serve as baselines only.",
+  "proof_status": "experimentally_validated_result (exact small-n values are proven_result modulo written completeness argument in REPORT.md)",
+  "reproduction_status": "pending",
+  "score": {"novelty": 4, "usefulness": 3, "provability": 4, "reproducibility": 4, "improvement": 3, "total": 576},
+  "next_action": "independent reproduction from SPEC alone; extend exact search to n=9..10 with better symmetry breaking"
+}

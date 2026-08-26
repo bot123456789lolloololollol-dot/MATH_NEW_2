@@ -1,0 +1,23 @@
+{
+ "n_circuits_total": 46,
+ "measurement_rel_err": {
+  "alpha_median": 0.00011942400861045144,
+  "omega_d_median": 0.00016757593206847405,
+  "alpha_max": 0.1790987031540226,
+  "omega_d_max": 0.4502345011385859,
+  "n_unmeasurable": 0
+ },
+ "alpha_formula": {
+  "R_over_L_coef": 0.5003102339975494,
+  "intercept": -0.14589943565025304
+ },
+ "omega_formula": {
+  "inv_LC_coef": 1.0000792106449963,
+  "R2_L2_coef": -0.24988257695872237,
+  "intercept": 468.8416018421102
+ },
+ "heldout_max_rel_err": {
+  "alpha": 0.005215509430911425,
+  "omega_d": 0.0006144428695909015
+ }
+}

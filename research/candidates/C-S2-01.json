@@ -1,0 +1,30 @@
+{
+  "id": "C-S2-01",
+  "title": "ROL: bounded-lookahead rollout LPT dispatch for P||Cmax",
+  "domain": "combinatorial optimization / makespan minimization on identical parallel machines (P||Cmax)",
+  "status": "archived_mixed_result",
+  "problem": "Minimize makespan on m identical parallel machines for n jobs with integer processing times; evaluate heuristics by relative gap to LB = max(p_max, ceil(sum(p)/m)) on Taillard-distribution instances (uniform integers {1..99}, Taillard EJOR 64 (1993)).",
+  "hypothesis": "H1 (primary): a K-bounded rollout completion of LPT (tune K only on preregistered dev seeds) achieves smaller gap than plain LPT. H2 (openly expected): it would not beat full local search. H3: MULTIFIT <= LPT.",
+  "baseline": "LPT (Graham 1969, SIAM J. Appl. Math. 17(2):416-429); MULTIFIT (Coffman, Garey & Johnson 1978, SIAM J. Comput. 7(1):1-17); LPT + full relocation/interchange steepest-descent local search to a local optimum (validated against independent naive checker and naive reference implementation).",
+  "proposed_improvement": "For each of the first K=k_mult*m largest jobs, try every distinct-load machine placement, complete the schedule by plain-LPT simulation (rollout), and commit the placement minimizing simulated final makespan; finish with plain LPT. Deterministic, ~0.8 ms/instance. Mechanism class (simulation-based decision making) differs from static priority rules, bin-packing search, and neighborhood descent.",
+  "experimental_evidence": [
+    {
+      "what": "Preregistered paired evaluation, 30 configs x 30 seeds (900 instances), same instance files to all algorithms; two-sided paired Wilcoxon + Holm; rank-biserial and dz effect sizes",
+      "how_to_reproduce": "research/experiments/S2/run.sh (bash run.sh from that directory); raw data outputs/results_eval.csv; stats outputs/stats_summary.json and outputs/analysis.txt",
+      "result": "ROL vs LPT: pooled mean gap 0.2676 vs 0.4397 (-39%), Wilcoxon p=1.15e-28, significant favorable on 9/30 configs after Holm, ROL never worse on any of 900 pairs (164 better / 0 worse / 736 ties). ROL vs MULTIFIT: significantly worse pooled (p=1.86e-22; MF also wins 14/30 configs under Holm). ROL vs LPT+LS: significantly worse pooled (p=2.59e-09; LS wins 12/30 configs), though numerically better than LS on small-n configs e.g. (7,30): 0.83 vs 1.07 (n.s. after Holm, p=0.087). Unexpected finding: MULTIFIT is the strongest method overall (pooled mean 0.127), beating LS at larger n/m."
+    }
+  ],
+  "counterexamples": [],
+  "adversarial_attacks": [
+    "Seed integrity: DEV seeds 1000-1029 and EVAL seeds 3000-3029 fixed in PREREGISTERED.md written before any run; no post-hoc seed changes (one dated pre-run erratum corrects config-count arithmetic and adds dev config (4,100) before any run)",
+    "Implementation attacks: hand-checkable Graham instance; 200 random tiny instances vs brute-force optimum; independent no-improving-move checker for LS endpoints; independent numpy-free LPT reimplementation matched on 40 sampled rows; vectorized LS matched an independent naive steepest descent on realistic instances (a scan bug found in the NAIVE reference was fixed; production passed the full-neighborhood checker throughout)",
+    "Determinism attack: two full evaluations byte-identical except wall-clock column",
+    "Integrity attack at analysis time: LB recomputed from committed instance files for all 3600 rows, gap arithmetic verified, 0 failures"
+  ],
+  "novelty_status": "audited_clean",
+  "novelty_notes": "No prior art found for K-bounded LPT-rollout dispatch on P||Cmax (DBLP/arXiv/Mojeek/Wikipedia queries dated 2026-08-26; 'lookahead' in scheduling literature means online information models). Mechanism class (greedy rollout / policy simulation) is established, so novelty is increment-level. Closest prior art: Lee & Massey 1988 (LPT+MULTIFIT hybrid), rollout algorithms for unrelated machines (IJPR 2025). See research/literature/S2-novelty.md.",
+  "proof_status": "experimentally_validated_result",
+  "reproduction_status": "pending",
+  "score": {"novelty": 2, "usefulness": 3, "provability": 2, "reproducibility": 5, "improvement": 3, "total": 180},
+  "next_action": "Coordinator may assign independent reproduction from SPEC.md alone; if reproduced, archive as a validated cheap improvement over LPT (not over MULTIFIT/LS). Possible extension: combine ROL start with LS, or test non-uniform distributions."
+}

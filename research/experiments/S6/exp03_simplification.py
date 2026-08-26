@@ -20,15 +20,18 @@ from src.plotting import newfig, savefig                            # noqa: E402
 
 def dataset(case, rng):
     if case == "S1_sincos":
-        Xtr = rng.uniform(-3, 3, (600, 1)); Xte = rng.uniform(-3, 3, (400, 1))
+        lo, hi = -3.0, 3.0
+        Xtr = rng.uniform(lo, hi, (600, 1)); Xte = rng.uniform(lo, hi, (400, 1))
         f = lambda X: np.sin(X[:, 0]) * np.cos(X[:, 0])
         truth = "sin(x)*cos(x)"
     elif case == "S2_rational":
+        lo, hi = 0.0, 2.0
+
         def sample(n):
-            x = rng.uniform(0.0, 2.0, n)
+            x = rng.uniform(lo, hi, n)
             x = x[np.abs(x - 1.0) > 0.02][:n]  # keep away from removable singularity
             while len(x) < n:
-                more = rng.uniform(0.0, 2.0, n)
+                more = rng.uniform(lo, hi, n)
                 more = more[np.abs(more - 1.0) > 0.02]
                 x = np.concatenate([x, more])[:n]
             return x
@@ -37,14 +40,20 @@ def dataset(case, rng):
         f = lambda X: (X[:, 0] ** 3 - 1) / (X[:, 0] - 1)
         truth = "(x^3-1)/(x-1)"
     else:  # S3_log
-        Xtr = rng.uniform(1.05, 4.0, (600, 1)); Xte = rng.uniform(1.05, 4.0, (400, 1))
+        lo, hi = 1.05, 4.0
+        Xtr = rng.uniform(lo, hi, (600, 1)); Xte = rng.uniform(lo, hi, (400, 1))
         f = lambda X: np.log(X[:, 0] ** 2 - 1) - np.log(X[:, 0] - 1)
         truth = "log(x^2-1)-log(x-1)"
-    return Xtr, f(Xtr), Xte, f(Xte), truth, f
+    return Xtr, f(Xtr), Xte, f(Xte), truth, f, (lo, hi)
 
 
-def check_equivalence(tree, f_true, rng, tol=1e-8):
-    X = rng.uniform(-3, 4, (4096, 1))
+def check_equivalence(tree, f_true, domain, rng_master, tol=1e-8):
+    # sample inside the DATA domain: equivalence is only claimed where the law lives
+    lo, hi = domain
+    X = rng_master.uniform(lo, hi, (4096, 1))
+    if lo < 1 < hi:
+        keep = np.abs(X[:, 0] - 1.0) > 1e-3
+        X = X[keep]
     with np.errstate(all="ignore"):
         pred = sr.evaluate(tree, X)
         true = f_true(X)
@@ -60,8 +69,8 @@ def main():
         recs = []
         for seed in range(5):
             rng = np.random.default_rng(hash((case, seed)) % 2**31)
-            Xtr, ytr, Xte, yte, truth, f_true = dataset(case, rng)
-            reg = sr.SymbolicRegressor(1, population=300, generations=80,
+            Xtr, ytr, Xte, yte, truth, f_true, domain = dataset(case, rng)
+            reg = sr.SymbolicRegressor(1, population=600, generations=150,
                                        seed=seed).fit(Xtr, ytr)
             # MDL choice on final Pareto front, evaluated on held-out data
             best = None
@@ -71,7 +80,7 @@ def main():
                 if best is None or cost < best[0]:
                     best = (cost, k, tree, e_te)
             _, k_best, tree, te_nmse = best
-            equiv, relerr = check_equivalence(tree, f_true, rng_master)
+            equiv, relerr = check_equivalence(tree, f_true, domain, rng_master)
             expr = str(sr.to_sympy(tree, ["x"]))
             recs.append({"seed": seed, "nodes": int(k_best), "holdout_nmse": te_nmse,
                          "expr": expr, "equivalent_to_truth": bool(equiv),
@@ -86,8 +95,8 @@ def main():
 
     # figure: Pareto front for S1
     rng = np.random.default_rng(0)
-    Xtr, ytr, Xte, yte, _ = dataset("S1_sincos", rng)
-    reg = sr.SymbolicRegressor(1, population=300, generations=80, seed=0).fit(Xtr, ytr)
+    Xtr, ytr, Xte, yte, _, _, _ = dataset("S1_sincos", rng)
+    reg = sr.SymbolicRegressor(1, population=600, generations=150, seed=0).fit(Xtr, ytr)
     ks = sorted(reg.pareto_front_)
     vals = [max(reg.pareto_front_[k][1], 1e-16) for k in ks]
     fig, ax = newfig()

@@ -45,7 +45,7 @@ def predictability_horizon(Xm, Xt, thresh=0.25):
     return None if len(idx) == 0 else int(idx[0])
 
 
-def lyapunov_benettin(f, y0, dt=0.01, n_steps=2000, delta0=1e-8, renorm_every=10,
+def lyapunov_benettin(f, y0, dt=0.01, n_steps=6000, delta0=1e-7, renorm_every=10,
                       seed=0):
     """Largest Lyapunov exponent via Benettin et al.; f maps state->dstate/dt."""
     rng = np.random.default_rng(seed)
@@ -54,9 +54,9 @@ def lyapunov_benettin(f, y0, dt=0.01, n_steps=2000, delta0=1e-8, renorm_every=10
         return np.asarray(f(s[None, :])[0])
     y = np.asarray(y0, float).copy()
     d = np.asarray(y0, float) + delta0 * rng.normal(size=len(y0))
-    lam, dlen = 0.0, len(y0)
+    lam, n_rounds = 0.0, n_steps // renorm_every
     from scipy.integrate import solve_ivp
-    for _ in range(n_steps // renorm_every):
+    for _ in range(n_rounds):
         sY = solve_ivp(rhs, (0, dt * renorm_every), y, rtol=1e-11, atol=1e-13)
         sD = solve_ivp(rhs, (0, dt * renorm_every), d, rtol=1e-11, atol=1e-13)
         y = sY.y[:, -1]
@@ -64,7 +64,7 @@ def lyapunov_benettin(f, y0, dt=0.01, n_steps=2000, delta0=1e-8, renorm_every=10
         dist = np.linalg.norm(diff)
         lam += np.log(dist / delta0)
         d = y + diff * (delta0 / dist)
-    return float(lam / (n_steps // renorm_every * dt))
+    return float(lam / (n_rounds * dt * renorm_every))
 
 
 def nmse(pred, y):

@@ -79,7 +79,9 @@ def main():
     fit, names, mdl = identify(L["X"], L["t"][1] - L["t"][0], ["x", "y", "z"], 3)
     Ct = np.zeros((len(names), 3)); at = np.zeros(len(names), bool)
     Ct[names.index("y"), 0] = 10; Ct[names.index("x"), 0] = -10
-    Ct[names.index("x"), 1] = 28; Ct[names.index("z"), 1] = -1; Ct[names.index("x*z"), 1] = -1
+    # y_dot = 28 x - y - x z  (no bare z term)
+    Ct[names.index("x"), 1] = 28; Ct[names.index("y"), 1] = -1
+    Ct[names.index("x*z"), 1] = -1
     Ct[names.index("x*y"), 2] = 1; Ct[names.index("z"), 2] = -8.0 / 3.0
     for nm in ("x", "y", "z", "x*z", "x*y"):
         at[names.index(nm)] = True

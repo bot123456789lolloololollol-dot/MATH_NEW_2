@@ -1,0 +1,9 @@
+{
+  "session": "S5",
+  "candidates": [
+    {"id": "C-S5-01", "title": "Combined session record: (W1) validated SAT pipeline + certified exact minima (sort/merge/median) + SB2-median unsoundness finding; (W2) proven-optimal and improved k-selection networks",
+     "scores": {"novelty": 4, "usefulness": 3, "provability": 4, "reproducibility": 4, "improvement": 3},
+     "justification": "novelty: W2's SEL(n,k) tables have no found prior art; W1's encoder/certificates are new artifacts though the small values themselves are likely classical (honestly labeled); usefulness: selection/median primitives for hardware + a reusable validated DIMACS encoder with documented pitfalls; provability: UNSAT certificates + written completeness arguments on both workstreams, multi-engine agreement (CaDiCaL/Glucose/z3), residual trust: no DRAT proof re-check; reproducibility: one-command run.sh + self-testing independent checkers shipped in experiments/S5; improvement: SEL upper bounds improved 1-2 CEs at 4 sizes + first exact SEL(6,3)=8; sorter-record attempts honestly negative; plain s(n) frontier correctly left untouched."}
+  ],
+  "note": "Two concurrent S5 agents were spawned on identical mission text and merged their outputs additively (see REPORT.md Part II header and candidates/C-S5-01.json coordination note). Original W2-only candidate JSON archived at experiments/S5/archived_C-S5-01_workstream2_selection.json."
+}

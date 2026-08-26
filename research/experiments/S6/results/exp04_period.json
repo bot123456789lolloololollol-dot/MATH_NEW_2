@@ -1,0 +1,85 @@
+{
+ "series_coefficients": {
+  "discovered": [
+   6.2831916341875305,
+   0.39248887435771956,
+   0.023631346540002623
+  ],
+  "perturbation_theory": [
+   6.283185307179586,
+   0.39269908169872414,
+   0.022498384888989403
+  ],
+  "relative_error": [
+   1.00697458930574e-06,
+   0.0005352885983213102,
+   0.050357465951597555
+  ]
+ },
+ "extrapolation": {
+  "45.0": {
+   "exact": 6.534345229832591,
+   "discovered": 6.534290332368015,
+   "rel_err_discovered": 8.401371927146961e-06,
+   "rel_err_small_angle_law": 0.03843689211680046
+  },
+  "60.0": {
+   "exact": 6.743001419250384,
+   "discovered": 6.742022464829842,
+   "rel_err_discovered": 0.0001451808118781983,
+   "rel_err_small_angle_law": 0.06819160837755178
+  },
+  "75.0": {
+   "exact": 7.03062699086178,
+   "discovered": 7.025092107265482,
+   "rel_err_discovered": 0.0007872531999624233,
+   "rel_err_small_angle_law": 0.10631223710967719
+  },
+  "90.0": {
+   "exact": 7.4162987092054875,
+   "discovered": 7.395488363770618,
+   "rel_err_discovered": 0.0028060284854813933,
+   "rel_err_small_angle_law": 0.15278691520602095
+  },
+  "105.0": {
+   "exact": 7.930709501712675,
+   "discovered": 7.867864583795531,
+   "rel_err_discovered": 0.007924249136041728,
+   "rel_err_small_angle_law": 0.2077398238048308
+  },
+  "120.0": {
+   "exact": 8.626062589998572,
+   "discovered": 8.459538362145096,
+   "rel_err_discovered": 0.019304778526248012,
+   "rel_err_small_angle_law": 0.2716044844765465
+  }
+ },
+ "unseen_gL": {
+  "g_over_L": 1.25,
+  "amp_deg": 30.0,
+  "predicted_T": 5.717689189652122,
+  "measured_T": 5.717686646730568,
+  "rel_err": 4.447465751233892e-07
+ },
+ "collapse": {
+  "max_within_amplitude_spread": 1.3341652042481056e-12,
+  "per_amplitude": {
+   "5.0": 2.5757295903596053e-13,
+   "10.0": 3.345217884472686e-13,
+   "15.0": 4.833446614072599e-13,
+   "20.0": 6.131733141739935e-13,
+   "25.0": 7.661315680103841e-13,
+   "30.0": 9.29920206645143e-13,
+   "35.0": 1.1078525724032444e-12,
+   "40.0": 1.3341652042481056e-12
+  },
+  "unexplained_variance_fraction_before_collapse": 1.0000000000000002,
+  "after_collapse_plus_series": 0.9983166067989702
+ },
+ "gp_structure": {
+  "train_nmse": 0.009554006834536569,
+  "holdout_nmse": 0.009554006834536569,
+  "expression": "(-gL*(0.0036 - sin(gL)) + 2*gL + 3.3614)/gL",
+  "note": "vanilla GP approximates the inverse-root scaling but does not find its exact form; the collapse statistic and series identification carry the structural claim"
+ }
+}

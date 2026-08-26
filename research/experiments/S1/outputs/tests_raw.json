@@ -1,0 +1,22 @@
+{
+ "tests": [
+  {
+   "name": "checker_corruption_selftest",
+   "ok": true,
+   "detail": []
+  },
+  {
+   "name": "naive_vs_pysolver",
+   "range": "2..14",
+   "ok": true,
+   "mismatches": []
+  },
+  {
+   "name": "py_vs_node_agreement",
+   "range": "2..30",
+   "node_ran": true,
+   "ok": true,
+   "mismatches": []
+  }
+ ]
+}

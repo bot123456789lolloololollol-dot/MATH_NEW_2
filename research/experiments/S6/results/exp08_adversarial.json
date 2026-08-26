@@ -1,0 +1,35 @@
+{
+ "A1_noise_only": {
+  "iid_raw_support_rate": 0.23333333333333334,
+  "iid_gated_false_law_rate": 0.0,
+  "smooth_ou_support": 0,
+  "smooth_ou_gate_nmse": 1.0001462927860842,
+  "gp_best_nmse_on_noise": 1.0000000821579713
+ },
+ "A2_out_of_class": {
+  "holdout_nmse": 5.187685710774793e-05,
+  "nodes": 16,
+  "compact_bar": 25,
+  "extrapolation_nmse": 1.3286684309517882,
+  "transfers_out_of_domain": false,
+  "verdict": "NOT a law: fits in-domain (5.2e-05 NMSE, 16 nodes) but extrapolation NMSE=1.33e+00 -> domain-limited curve fit"
+ },
+ "A3_confounder": {
+  "observational_coef_mean": -0.769254577821487,
+  "observational_coef_std": 0.005465325696831017,
+  "interventional_R2_mean": 0.00045601862964579355
+ },
+ "A4_chaos_horizon": {
+  "lyapunov": 0.9453376317892109,
+  "median_horizon_discovered": 21.71,
+  "median_horizon_twin_1e-10": 24.675,
+  "median_horizon_twin_1e-6": 16.939999999999998,
+  "coef_max_rel_err": 5.2409885954927764e-11,
+  "measured_gap_1e-10_vs_1e-6": 7.735000000000003,
+  "theory_gap_ln_ratio_over_lambda": 9.742910958219298,
+  "predicted_from_calibration": {
+   "twin_1e-10": 26.682910958219296,
+   "discovered": 27.366343974602007
+  }
+ }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "C-S4-01",
+  "title": "Certified extension of OEIS A094406: first value past a(13)",
+  "domain": "computational number theory (digit-map iteration records)",
+  "status": "active",
+  "problem": "A094406(n) = smallest unhappy number requiring exactly n iterations of the sum-of-squares-of-digits map ssd (A003132) to reach the 8-cycle {4,16,37,58,89,145,42,20}. Published/OEIS range ended at n=13 (a(13)=578*10^196-1, stated without proof artifact). Extend the sequence with certified computation.",
+  "hypothesis": "a(14) equals M*(a(13)), where M*(sigma) is the smallest integer whose digit-square-sum is sigma, because tail(m)=n implies ssd(m)>=a(n-1) and m>=M*(ssd(m)), reducing minimality to an exhaustive finite window scan [a(13), 81*digits(U)].",
+  "baseline": "OEIS A094406 as of 2026-08-26 (entry rev. 2026-08-22): terms a(0..12) small (largest 15999), a(13)=578*10^196-1 given as a comment attributed historically to W. Schneider's page (archived 2004); b-file covers n=0..13; no proof of minimality published there.",
+  "proposed_improvement": "Deficit-multiset characterization of M* (sigma achievable with d digits iff Delta=81d-sigma is a sum of <=d elements of V={0,17,32,45,56,65,72,77,80,81}), plus digit-count pigeonhole window bound, gives exact minimal values at sizes unreachable by naive enumeration (the answer itself has ~7.14e196 digits).",
+  "experimental_evidence": [
+    {
+      "what": "Re-certification of published a(13)=578*10^196-1 via exhaustive window scan [15999,16119] (121 integers, unique tail-12 hit sigma=15999) plus exact M*(15999)='577'+196 nines",
+      "how_to_reproduce": "python research/experiments/S4/extend.py  (phase B)",
+      "result": "matches published claim; first completeness proof for this term"
+    },
+    {
+      "what": "NEW TERM a(14) = '5888' followed by N nines, N = 71358024691358024691358024691358024691358024691358024691358024691358024691358024691358024691358024691358024691358024691358024691358024691358024691358024691358024691358024691358024691358022 (197-digit integer); total digit count N+4; equivalently a(14)=5889*10^N-1; ssd(a(14))=a(13), tail(a(14))=14",
+      "how_to_reproduce": "python research/experiments/S4/extend.py  (phase C); verify with python research/experiments/S4/checker_independent.py",
+      "result": "window [a(13), 81*(N+4)] of width 108 scanned exhaustively: unique tail-13 hit at delta=0, so a(14)=M*(a(13)); minimality certificate complete"
+    },
+    {
+      "what": "Independent second-algorithm verification (meet-in-the-middle deficit feasibility instead of DP tables; fresh tail simulation; re-derived window bounds; lexicographic-minimality recheck) plus adversarial tamper suite",
+      "how_to_reproduce": "python research/experiments/S4/checker_independent.py -> out/check_report.json",
+      "result": "ALL PASS; 8/8 corrupted variants rejected (digit flip, same-multiset transposition, +-1 nine count, fake smaller hit, corrupt a(13), wrong tail metadata, shifted window)"
+    }
+  ],
+  "counterexamples": [],
+  "adversarial_attacks": [
+    "Attempted hand derivation of a smaller competitor prefix ('668'-family vs '5888'): both satisfy deficit 107; lexicographic comparison settles it; encoded as explicit lex-minimality check.",
+    "Checked off-by-one risk in greedy early-exit against brute-force ground truth on sigma<=350 after catching a real off-by-one during development (fixed, then validated 350/350).",
+    "Checker initially ignored stored tail metadata; tamper test exposed it; checker now validates all stored fields (test added before final run)."
+  ],
+  "novelty_status": "audited_clean",
+  "novelty_notes": "OEIS A094406 current entry (rev 2026-08-22, accessed 2026-08-26) ends at a(13) with no proof artifact; b-file synthesized from entry covers 0..13. Literature (Grundman-Teeple 2003; Cai-Zhou 2008; Mei-Read-McFarland 2015; Lapointe arXiv:1904.12032 - other bases only) reports no unhappy-side records beyond a(13). General web engines blocked automated queries (documented); audit radius = OEIS + cited literature + arXiv. No prior report of a(14) found.",
+  "proof_status": "proven_result",
+  "reproduction_status": "pending",
+  "score": {"novelty": 4, "usefulness": 3, "provability": 5, "reproducibility": 4, "improvement": 5, "total": 1200},
+  "next_action": "Submit a(14) (compact form + certificate pointer) as an OEIS contribution extending A094406 with the completeness argument; request independent reproduction by another session (S1/S3 have relevant brute-force discipline)."
+}

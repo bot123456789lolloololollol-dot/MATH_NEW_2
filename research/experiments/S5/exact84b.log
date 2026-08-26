@@ -1,0 +1,2 @@
+SEL(8,4) L=9: UNSAT [920.1s]
+SEL(8,4) L=10: TIMEOUT

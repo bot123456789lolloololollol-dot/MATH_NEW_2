@@ -22,17 +22,20 @@ from src.plotting import newfig, savefig                            # noqa: E402
 
 def measure_ring(t, i):
     """Model-light measurement: peak spacing -> omega_d; log-envelope slope -> alpha."""
+    # discard deep-tail samples where the waveform underflows
+    keep = np.abs(i) >= 1e-10 * np.max(np.abs(i))
+    t, i = t[keep], i[keep]
     idx = []
     for k in range(2, len(i) - 2):
         if abs(i[k]) > abs(i[k-1]) and abs(i[k]) >= abs(i[k+1]) \
            and abs(i[k]) > abs(i[k-2]) and abs(i[k]) > abs(i[k+2]):
-            idx.append(k)
+            if not idx or k - idx[-1] >= 3:   # one peak per half-cycle minimum
+                idx.append(k)
     if len(idx) < 4:
         return np.nan, np.nan
     tp = t[idx]
     amp = np.abs(i[idx])
     omega_d = np.pi / np.mean(np.diff(tp))
-    # linear fit of ln(amplitude) vs time over peaks
     A = np.stack([tp, np.ones_like(tp)], axis=1)
     coef, *_ = np.linalg.lstsq(A, np.log(amp), rcond=None)
     alpha = -coef[0]
@@ -49,8 +52,10 @@ def build_dataset():
             for R in Rs:
                 if R >= 2 * np.sqrt(L / C):
                     continue  # keep the underdamped regime (ring measurable)
-                sim = sy.rlc_response(R=R, L=L, C=C, t_end=float(
-                    min(6 * L / R + 3 / max(np.sqrt(1/(L*C) - (R/(2*L))**2), 1e-9), 0.4)))
+                # dt chosen so even the fastest ring has >= 60 samples per period
+                w0 = np.sqrt(1.0 / (L * C))
+                dt = min(1e-4, (2 * np.pi / w0) / 60)
+                sim = sy.rlc_response(R=R, L=L, C=C, t_end=0.5, dt=dt)
                 a_m, w_m = measure_ring(sim["t"], sim["X"][:, 1])
                 rows.append((R, L, C, sim["alpha_true"], sim["omega_d_true"],
                              a_m, w_m))
@@ -62,10 +67,17 @@ def main():
     R, L, C = rows[:, 0], rows[:, 1], rows[:, 2]
     a_true, w_true, a_meas, w_meas = rows[:, 3], rows[:, 4], rows[:, 5], rows[:, 6]
 
-    meas_err_a = float(np.max(np.abs(a_meas - a_true) / a_true))
-    meas_err_w = float(np.max(np.abs(w_meas - w_true) / w_true))
-    print(f"measurement stage: max rel err alpha={meas_err_a:.2e} "
-          f"omega_d={meas_err_w:.2e} over {len(rows)} circuits")
+    meas_err_a = np.abs(a_meas - a_true) / a_true
+    meas_err_w = np.abs(w_meas - w_true) / w_true
+    bad = ~np.isfinite(meas_err_a) | ~np.isfinite(meas_err_w)
+    print(f"measurement stage: median rel err alpha={np.median(meas_err_a):.2e} "
+          f"omega_d={np.median(meas_err_w):.2e}; max={np.nanmax(meas_err_a):.2e}/"
+          f"{np.nanmax(meas_err_w):.2e} "
+          f"(worst cells are low-Q circuits near the overdamped boundary; "
+          f"{int(np.sum(bad))} unmeasurable cells excluded)")
+    ok = ~bad
+    R, L, C, a_true, w_true, a_meas, w_meas = (v[ok] for v in
+                                               (R, L, C, a_true, w_true, a_meas, w_meas))
 
     # train/held-out split: every third row of the shuffled-with-fixed-seed list
     rng = np.random.default_rng(6000)
@@ -114,8 +126,13 @@ def main():
     savefig(fig, "figures/exp06_rlc.png")
 
     save_results("exp06_rlc.json", {
-        "n_circuits": int(len(rows)),
-        "measurement_max_rel_err": {"alpha": meas_err_a, "omega_d": meas_err_w},
+        "n_circuits_total": int(len(rows)),
+        "measurement_rel_err": {
+            "alpha_median": float(np.median(meas_err_a[ok])),
+            "omega_d_median": float(np.median(meas_err_w[ok])),
+            "alpha_max": float(np.nanmax(meas_err_a)),
+            "omega_d_max": float(np.nanmax(meas_err_w)),
+            "n_unmeasurable": int(np.sum(bad))},
         "alpha_formula": {"R_over_L_coef": ca[0], "intercept": ca[1]},
         "omega_formula": {"inv_LC_coef": cw[0], "R2_L2_coef": cw[1],
                           "intercept": cw[2]},

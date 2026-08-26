@@ -97,6 +97,29 @@ def bic(C, Theta, dX):
     return n * np.log(rss / n) + k * np.log(n)
 
 
+def significant_support(Theta, dX, C, z=5.0):
+    """Statistical significance test on a fitted sparse model.
+
+    A term is 'active' iff its coefficient exceeds z standard errors in ANY
+    target column, with SEs from the OLS covariance on the selected support.
+    This implements the P2 noise-floor bound instead of an arbitrary tolerance.
+    """
+    act = np.zeros_like(C, dtype=bool)
+    sel = np.abs(C) > 0
+    for k in range(dX.shape[1]):
+        idx = np.where(sel[:, k])[0]
+        if len(idx) == 0:
+            continue
+        Th_s = Theta[:, idx]
+        resid = dX[:, k] - Th_s @ C[idx, k]
+        dof = max(len(dX) - len(idx), 1)
+        s2 = float(np.sum(resid**2)) / dof
+        inv = np.linalg.pinv(Th_s.T @ Th_s)
+        se = np.sqrt(np.maximum(s2 * np.diag(inv), 1e-300))
+        act[idx, k] = np.abs(C[idx, k]) > z * se
+    return act
+
+
 def fit_sindy(Theta, dX, thresholds=None, val_fraction=0.25):
     """STLSQ over a threshold grid.
 

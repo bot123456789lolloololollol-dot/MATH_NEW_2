@@ -1,0 +1,13 @@
+Both implementations are steepest descents over the SAME neighborhood {relocation, interchange} but with DIFFERENT documented tie-breaks, so they may converge to different local optima. Required properties:
+  (a) each endpoint is a genuine local optimum (independent naive checker);
+  (b) each endpoint never exceeds the LPT starting makespan;
+  (c) endpoint values agree within the spread reported below.
+m= 2 n= 50 s=3005: start(LPT)=1366 fast=1365 naive=1365 OK (diff +0)
+m= 3 n= 50 s=3010: start(LPT)=939 fast=938 naive=938 OK (diff +0)
+m= 4 n= 30 s=3020: start(LPT)=271 fast=271 naive=271 OK (diff +0)
+m= 5 n= 50 s=3001: start(LPT)=552 fast=547 naive=547 OK (diff +0)
+m= 7 n= 30 s=3007: start(LPT)=201 fast=197 naive=197 OK (diff +0)
+m=10 n= 30 s=3013: start(LPT)=148 fast=142 naive=142 OK (diff +0)
+m= 5 n= 30 s=3000: start(LPT)=286 fast=281 naive=281 OK (diff +0)
+m=10 n= 50 s=3029: start(LPT)=241 fast=241 naive=241 OK (diff +0)
+EXTRA LS CHECK PASS

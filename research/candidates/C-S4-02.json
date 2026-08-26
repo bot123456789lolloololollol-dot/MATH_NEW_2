@@ -1,0 +1,33 @@
+{
+  "id": "C-S4-02",
+  "title": "Certified extension of OEIS A176762 to n=21 (mixed happy/unhappy cycle-reach records)",
+  "domain": "computational number theory (digit-map iteration records)",
+  "status": "active",
+  "problem": "A176762(n) = smallest positive integer taking exactly n steps to reach a cycle (fixed point 1 or the unhappy 8-cycle) under iteration of ssd (A003132). Data field ends at a(19)=15999; the entry's own formula field gives a(n)=min(A001273(n), A094406(n-7)) but values for n>=21 are stated nowhere. Extend with certified computation.",
+  "hypothesis": "A176762(21) = A094406(14): the metric decomposes as T(m)=height(m) for happy m and T(m)=tail(m)+7 for other unhappy m, so index 21 on the unhappy side is tail 14; the happy branch is dominated by a digit-count pigeonhole bound built from published A001273 data.",
+  "baseline": "OEIS A176762 (rev 2026-07-09, accessed 2026-08-26): terms a(0..19), largest displayed 15999; sibling sequences: A094406 known through n=13, A001273 through n=19 (Lu formulas, Jul 2025).",
+  "proposed_improvement": "Exhaustive metric-decomposition verification (m<20000), exact computation of the new unhappy-side record (see C-S4-01), and an explicit dominance inequality showing every happy height-21 number has more than 10^248 digits versus ~7.14e196 digits for the unhappy winner.",
+  "experimental_evidence": [
+    {
+      "what": "Metric decomposition T=happy-height / 7 / tail+7 verified exhaustively for all 1<=m<20000; min-formula identity A176762(n)=A094406(n-7) confirmed numerically on the whole published overlap n=7..19",
+      "how_to_reproduce": "python research/experiments/S4/extend.py (verify_decomposition + happy_core.verify_published relation rows)",
+      "result": "zero violations"
+    },
+    {
+      "what": "NEW DERIVED VALUE: A176762(21) = '5888' followed by N nines (N = the 197-digit integer recorded in out/a094406_certification.json), i.e. the C-S4-01 number; also derived A176762(20)=A094406(13)=578*10^196-1 (implicit in the entry's formula but nowhere displayed)",
+      "how_to_reproduce": "python research/experiments/S4/extend.py (phase D); python research/experiments/S4/checker_independent.py",
+      "result": "dominance assertions pass inside checker; independent check ALL PASS"
+    }
+  ],
+  "counterexamples": [],
+  "adversarial_attacks": [
+    "Considered whether A001273(21) could be smaller despite huge-looking formulas: heights are NOT monotone in m (published terms decrease early: 23,19,7), so monotonicity shortcuts were rejected in favor of the pigeonhole digit-count bound, which needs no monotonicity.",
+    "Verified the decomposition lemma by exhaustive sweep rather than trusting the algebra, catching the definition subtlety that cycle members have T=7 (not 0)."
+  ],
+  "novelty_status": "audited_clean",
+  "novelty_notes": "OEIS A176762 accessed 2026-08-26: nothing at n>=21 anywhere in entry or b-file; Hasler's Jul 2026 comment is definitional only. No literature found computing mixed cycle-reach records. Caveat: same audit-radius limitation as C-S4-01.",
+  "proof_status": "proven_result",
+  "reproduction_status": "pending",
+  "score": {"novelty": 4, "usefulness": 3, "provability": 4, "reproducibility": 4, "improvement": 5, "total": 960},
+  "next_action": "Bundle with C-S4-01 into one OEIS contribution draft for A176762 (a(20) remark + a(21) compact value); provability of the dominance step would reach 5 if the consumed A001273 formulas were re-derived here."
+}

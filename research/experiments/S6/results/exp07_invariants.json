@@ -1,0 +1,81 @@
+{
+ "duffing": {
+  "sigma_ratio": 1.9570002284640672e-09,
+  "spectral_gap": 33501404.97175308,
+  "heldout_conservation_ratio": 1.9958376326332145e-09,
+  "affine_R2_vs_true_H": 1.0,
+  "resid_over_rangeH": 1.965709127845862e-09,
+  "cos_angle_to_H_direction": 1.0000000000000002,
+  "detected": true
+ },
+ "central_force": {
+  "sigma_ratio": 3.2691601752779546e-09,
+  "spectral_gap": 4279877.818878358,
+  "heldout_conservation_ratio": 1.7872025829032872e-09,
+  "cos_angle_to_Lz_direction": 1.0,
+  "detected": true,
+  "note": "energy is NOT polynomial (contains 1/r); only Lz is recoverable"
+ },
+ "negative_controls": {
+  "damped_delta0.3": {
+   "sigma_ratio": 0.007499129875489532,
+   "spectral_gap": 1.7116193247109361,
+   "correctly_rejected": true
+  },
+  "forced_F0.5": {
+   "sigma_ratio": 0.009812599800316785,
+   "spectral_gap": 6.498402768744162,
+   "correctly_rejected": true
+  }
+ },
+ "calibration": [
+  {
+   "delta": 0.0,
+   "sigma_ratio": 1.9570002284640672e-09,
+   "spectral_gap": 33501404.97175308,
+   "detected": true
+  },
+  {
+   "delta": 0.005,
+   "sigma_ratio": 0.001448513276466973,
+   "spectral_gap": 50.53020300819034,
+   "detected": false
+  },
+  {
+   "delta": 0.01,
+   "sigma_ratio": 0.0028546529185347106,
+   "spectral_gap": 29.567225432492837,
+   "detected": false
+  },
+  {
+   "delta": 0.02,
+   "sigma_ratio": 0.005549133577922645,
+   "spectral_gap": 18.633022235549237,
+   "detected": false
+  },
+  {
+   "delta": 0.05,
+   "sigma_ratio": 0.012769173439984967,
+   "spectral_gap": 8.274259525736609,
+   "detected": false
+  },
+  {
+   "delta": 0.1,
+   "sigma_ratio": 0.022168371561131286,
+   "spectral_gap": 3.4296629196550694,
+   "detected": false
+  },
+  {
+   "delta": 0.2,
+   "sigma_ratio": 0.03461615427885857,
+   "spectral_gap": 1.5476369926944418,
+   "detected": false
+  },
+  {
+   "delta": 0.3,
+   "sigma_ratio": 0.03550796079741918,
+   "spectral_gap": 1.1160751624576435,
+   "detected": false
+  }
+ ]
+}
